@@ -1,0 +1,224 @@
+{
+ "ROV Pilot Technician": {
+  "Workplace Health And Safety": [
+   "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+   "Completes risk assessments and toolbox talks before work starts, and records them.",
+   "Identifies hazards in the work area and stops the job when a control is missing.",
+   "Applies permit-to-work and isolation procedures without prompting.",
+   "Reports near misses and unsafe conditions through the correct channel.",
+   "Keeps the working area, walkways and deck free of avoidable hazards.",
+   "Selects and wears the correct personal protective equipment for the task.",
+   "Understands manual handling limits and asks for assistance before exceeding them."
+  ],
+  "Emergency Response": [
+   "Knows the muster arrangements and their role in each alarm condition.",
+   "Responds correctly to loss of hydraulic power during an operation.",
+   "Follows the agreed sequence for a dead-vehicle recovery.",
+   "Acts correctly on entanglement, including when to stop and call for support.",
+   "Maintains control of the vehicle when camera or sonar picture is lost.",
+   "Communicates status clearly and calmly to the bridge and the client representative."
+  ],
+  "Behavioural Factors": [
+   "Hands over at shift change with enough detail for the next person to continue safely.",
+   "Asks for help before a problem becomes an incident.",
+   "Gives and receives technical feedback without defensiveness.",
+   "Keeps the client informed of progress and of realistic timescales.",
+   "Supports less experienced colleagues without taking the task from them."
+  ],
+  "Preventative Maintenance": [
+   "Carries out scheduled maintenance to the interval and records it accurately.",
+   "Identifies wear and degradation before it becomes a failure.",
+   "Uses correct torque values and locking methods on critical fasteners.",
+   "Maintains hydraulic cleanliness during any intervention on the system.",
+   "Keeps spares and consumables accounted for and reorders in good time."
+  ],
+  "Test Equipment": [
+   "Selects the right instrument for the measurement and knows its limits.",
+   "Verifies calibration status before relying on a reading.",
+   "Interprets insulation resistance and continuity results correctly.",
+   "Uses an oscilloscope to characterise a signal fault rather than guessing.",
+   "Records test results so another technician can reproduce them."
+  ],
+  "Fault Finding": [
+   "Works from symptom to cause by elimination rather than by replacement.",
+   "Reads schematics and traces a circuit through connectors and junction boxes.",
+   "Distinguishes a fault in the vehicle from one in the umbilical or the surface equipment.",
+   "Documents the diagnosis and the fix so a repeat is recognised.",
+   "Knows when a fault exceeds shipboard repair and escalates it."
+  ],
+  "Piloting An ROV (Piloting / Technical)": [
+   "Maintains position and heading in current while carrying out a task.",
+   "Flies the vehicle clear of structures, umbilicals and deployed tooling.",
+   "Manages tether and clump weight to keep the working envelope available.",
+   "Operates manipulators accurately enough for hot stab and torque tool interfaces.",
+   "Monitors vehicle health during the dive and reacts to a developing fault.",
+   "Carries out GVI, CVI and DVI inspection to the required standard.",
+   "Conducts cathodic protection and field gradient measurements correctly."
+  ],
+  "Technical (Umbilical / Tether Termination)": [
+   "Terminates umbilical and tether assemblies to the specified procedure.",
+   "Prepares, tests and records optical fibre terminations.",
+   "Makes and verifies electrical penetrator connections to the required IR value.",
+   "Applies correct bend radius and strain relief at every termination.",
+   "Pressure tests a completed termination before returning it to service."
+  ],
+  "Specialist Equipment": [
+   "Operates torque tools within the class and range specified for the interface.",
+   "Deploys and recovers hot stabs without damage to the receptacle.",
+   "Sets up and operates survey sensors and verifies the data is usable.",
+   "Handles cutting and dredging tooling within its operating envelope.",
+   "Configures the vehicle for the specific tooling skid in use."
+  ],
+  "Project Activities": [
+   "Understands the scope of the campaign and where the current task sits in it.",
+   "Works to the procedure issued for the task and flags a deviation before acting.",
+   "Completes dive logs and task records accurately and on time.",
+   "Contributes to pre-commissioning, tie-in and IMR activities as required.",
+   "Supports trenching and flexlay operations within the agreed plan."
+  ]
+ },
+ "ROV Sub-Engineer": {
+  "Workplace Health And Safety": [
+   "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+   "Completes risk assessments and toolbox talks before work starts, and records them.",
+   "Identifies hazards in the work area and stops the job when a control is missing.",
+   "Applies permit-to-work and isolation procedures without prompting.",
+   "Reports near misses and unsafe conditions through the correct channel.",
+   "Keeps the working area, walkways and deck free of avoidable hazards.",
+   "Selects and wears the correct personal protective equipment for the task.",
+   "Understands manual handling limits and asks for assistance before exceeding them."
+  ],
+  "Emergency Response": [
+   "Knows the muster arrangements and their role in each alarm condition.",
+   "Responds correctly to loss of hydraulic power during an operation.",
+   "Follows the agreed sequence for a dead-vehicle recovery.",
+   "Acts correctly on entanglement, including when to stop and call for support.",
+   "Maintains control of the vehicle when camera or sonar picture is lost.",
+   "Communicates status clearly and calmly to the bridge and the client representative."
+  ],
+  "Behavioural Factors": [
+   "Hands over at shift change with enough detail for the next person to continue safely.",
+   "Asks for help before a problem becomes an incident.",
+   "Gives and receives technical feedback without defensiveness.",
+   "Keeps the client informed of progress and of realistic timescales.",
+   "Supports less experienced colleagues without taking the task from them."
+  ],
+  "Preventative Maintenance": [
+   "Carries out scheduled maintenance to the interval and records it accurately.",
+   "Identifies wear and degradation before it becomes a failure.",
+   "Uses correct torque values and locking methods on critical fasteners.",
+   "Maintains hydraulic cleanliness during any intervention on the system.",
+   "Keeps spares and consumables accounted for and reorders in good time."
+  ],
+  "Test Equipment": [
+   "Selects the right instrument for the measurement and knows its limits.",
+   "Verifies calibration status before relying on a reading.",
+   "Interprets insulation resistance and continuity results correctly.",
+   "Uses an oscilloscope to characterise a signal fault rather than guessing.",
+   "Records test results so another technician can reproduce them."
+  ],
+  "Fault Finding": [
+   "Works from symptom to cause by elimination rather than by replacement.",
+   "Reads schematics and traces a circuit through connectors and junction boxes.",
+   "Distinguishes a fault in the vehicle from one in the umbilical or the surface equipment.",
+   "Documents the diagnosis and the fix so a repeat is recognised.",
+   "Knows when a fault exceeds shipboard repair and escalates it."
+  ],
+  "Technical (Umbilical / Tether Termination)": [
+   "Terminates umbilical and tether assemblies to the specified procedure.",
+   "Prepares, tests and records optical fibre terminations.",
+   "Makes and verifies electrical penetrator connections to the required IR value.",
+   "Applies correct bend radius and strain relief at every termination.",
+   "Pressure tests a completed termination before returning it to service."
+  ],
+  "Specialist Equipment": [
+   "Operates torque tools within the class and range specified for the interface.",
+   "Deploys and recovers hot stabs without damage to the receptacle.",
+   "Sets up and operates survey sensors and verifies the data is usable.",
+   "Handles cutting and dredging tooling within its operating envelope.",
+   "Configures the vehicle for the specific tooling skid in use."
+  ],
+  "Project Activities": [
+   "Understands the scope of the campaign and where the current task sits in it.",
+   "Works to the procedure issued for the task and flags a deviation before acting.",
+   "Completes dive logs and task records accurately and on time.",
+   "Contributes to pre-commissioning, tie-in and IMR activities as required.",
+   "Supports trenching and flexlay operations within the agreed plan."
+  ]
+ },
+ "ROV Supervisor": {
+  "Workplace Health And Safety": [
+   "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+   "Completes risk assessments and toolbox talks before work starts, and records them.",
+   "Identifies hazards in the work area and stops the job when a control is missing.",
+   "Applies permit-to-work and isolation procedures without prompting.",
+   "Reports near misses and unsafe conditions through the correct channel.",
+   "Keeps the working area, walkways and deck free of avoidable hazards.",
+   "Selects and wears the correct personal protective equipment for the task.",
+   "Understands manual handling limits and asks for assistance before exceeding them."
+  ],
+  "Emergency Response": [
+   "Knows the muster arrangements and their role in each alarm condition.",
+   "Responds correctly to loss of hydraulic power during an operation.",
+   "Follows the agreed sequence for a dead-vehicle recovery.",
+   "Acts correctly on entanglement, including when to stop and call for support.",
+   "Maintains control of the vehicle when camera or sonar picture is lost.",
+   "Communicates status clearly and calmly to the bridge and the client representative."
+  ],
+  "Running The Shift": [
+   "Plans the shift against the operational programme and the weather window.",
+   "Allocates work to match experience and keeps development in mind.",
+   "Maintains the dive log and the client interface throughout the shift.",
+   "Escalates to the superintendent with a recommendation, not just a problem."
+  ],
+  "Planning And Risk": [
+   "Produces a task plan that names the hazards and the controls.",
+   "Reviews procedures against the actual spread and reports gaps.",
+   "Balances schedule pressure against operational limits, and says so in writing.",
+   "Plans mobilisation and demobilisation so the spread is ready on arrival."
+  ],
+  "Safety Leadership": [
+   "Sets the standard expected on deck by doing it first.",
+   "Intervenes on unsafe acts regardless of who is performing them.",
+   "Runs incident reviews that reach a cause rather than a culprit.",
+   "Makes it easy for the team to stop the job."
+  ]
+ },
+ "ROV Superintendent": {
+  "Workplace Health And Safety": [
+   "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+   "Completes risk assessments and toolbox talks before work starts, and records them.",
+   "Identifies hazards in the work area and stops the job when a control is missing.",
+   "Applies permit-to-work and isolation procedures without prompting.",
+   "Reports near misses and unsafe conditions through the correct channel.",
+   "Keeps the working area, walkways and deck free of avoidable hazards.",
+   "Selects and wears the correct personal protective equipment for the task.",
+   "Understands manual handling limits and asks for assistance before exceeding them."
+  ],
+  "Emergency Response": [
+   "Knows the muster arrangements and their role in each alarm condition.",
+   "Responds correctly to loss of hydraulic power during an operation.",
+   "Follows the agreed sequence for a dead-vehicle recovery.",
+   "Acts correctly on entanglement, including when to stop and call for support.",
+   "Maintains control of the vehicle when camera or sonar picture is lost.",
+   "Communicates status clearly and calmly to the bridge and the client representative."
+  ],
+  "Planning And Risk": [
+   "Produces a task plan that names the hazards and the controls.",
+   "Reviews procedures against the actual spread and reports gaps.",
+   "Balances schedule pressure against operational limits, and says so in writing.",
+   "Plans mobilisation and demobilisation so the spread is ready on arrival."
+  ],
+  "Safety Leadership": [
+   "Sets the standard expected on deck by doing it first.",
+   "Intervenes on unsafe acts regardless of who is performing them.",
+   "Runs incident reviews that reach a cause rather than a culprit.",
+   "Makes it easy for the team to stop the job."
+  ],
+  "Equipment And Spares": [
+   "Maintains the spares holding against campaign duration and criticality.",
+   "Tracks certification and calibration expiry across the spread.",
+   "Plans overhaul and change-out around the operational programme."
+  ]
+ }
+}

@@ -1,0 +1,625 @@
+{
+  "_source": "Terminology checked against IMCA C005 (grades R20/R01/R02/R03/R04 and tooling R11-R14), API RP 17H (hot stabs, torque classes 1-4, ROV interfaces), IMCA metrology guides, GVI/CVI/DVI + CP + FMD inspection, and subsea construction glossaries (flexlay, tie-in, pre-comm, trenching, IMR).",
+  "campaigns": {
+    "flexlay": {
+      "name": "Flexlay campaign",
+      "scopes": [
+        "ROV support to flexible lay operations, hot stab intervention and ROV equipment maintenance / tooling.",
+        "Flexible lay support - overboarding, touchdown monitoring and subsea connection of flexible risers and flowlines.",
+        "ROV support to flexlay: lay corridor survey, touchdown monitoring, pull-in and first end / second end connections.",
+        "Flexlay scope - reel-lay of flexible flowlines, pull-in to the structure and tie-in of the second end."
+      ],
+      "tasks": [
+        "touchdown monitoring",
+        "overboarding of the flexible",
+        "pull-in head recovery",
+        "first end initiation",
+        "second end laydown",
+        "bend restrictor and bend stiffener installation",
+        "lay corridor survey",
+        "riser hang-off monitoring",
+        "tether management during lay",
+        "as-laid survey of the flowline",
+        "removal of the installation aids",
+        "monitoring of the tensioners during overboarding"
+      ],
+      "tooling": [
+        "the flying lead orientation tool",
+        "the pull-in rigging",
+        "the hot stab panel",
+        "the class 1 to 4 torque tool",
+        "the cutting tool",
+        "the lift rigging and shackles",
+        "the subsea load cell"
+      ],
+      "systems": [
+        "the survey sensors",
+        "the manipulators",
+        "the camera and lighting spread",
+        "the sonar head",
+        "the USBL positioning"
+      ]
+    },
+    "rigidlay": {
+      "name": "Rigid lay campaign",
+      "scopes": [
+        "ROV support to rigid pipelay operations, touchdown monitoring and as-laid survey.",
+        "Pipelay support - S-lay / reel-lay operations, initiation, laydown and post-lay survey.",
+        "ROV support to rigid lay: initiation, touchdown monitoring, abandonment and recovery, and as-laid survey.",
+        "Rigid lay scope - J-lay tower support, PLET laydown and free span identification along the route."
+      ],
+      "tasks": [
+        "initiation of the pipeline",
+        "touchdown monitoring",
+        "abandonment and recovery operations",
+        "post-lay survey",
+        "anode inspection along the route",
+        "free span identification and measurement",
+        "PLET and PLEM laydown",
+        "stroke monitoring on the A&R wire",
+        "crossing inspection",
+        "as-laid position verification"
+      ],
+      "tooling": [
+        "the A&R rigging",
+        "the cutting tool",
+        "the survey skid",
+        "the pipetracker",
+        "the grabber"
+      ],
+      "systems": [
+        "the survey sensors",
+        "the DVL and INS",
+        "the camera and lighting spread",
+        "the multibeam head",
+        "the USBL positioning"
+      ]
+    },
+    "tie-in": {
+      "name": "Subsea tie-in campaign",
+      "scopes": [
+        "ROV support to subsea tie-in, spool installation and connection of jumpers and flying leads.",
+        "Subsea tie-in scope - metrology, spool installation, connector stroking and leak testing.",
+        "ROV support to tie-in operations: metrology, rigging, spool landing and hydraulic connection.",
+        "Tie-in and jumper installation - direct pull-in, connector make up and flying lead installation."
+      ],
+      "tasks": [
+        "spool metrology",
+        "jumper metrology and as-built verification",
+        "spool installation and landing",
+        "connector stroking and make up",
+        "hydraulic flying lead installation",
+        "electrical flying lead installation",
+        "leak test of the connection",
+        "torque operations on the clamp connector",
+        "AX and VX gasket change out",
+        "installation of the tie-in tool",
+        "deflect to connect operations",
+        "hub cleaning before make up"
+      ],
+      "tooling": [
+        "the API 17H hot stab",
+        "the class 1 to 4 torque tool",
+        "the class 5 to 7 torque tool",
+        "the flying lead orientation tool",
+        "the tie-in tool",
+        "the metrology frame",
+        "the AX / VX gasket tool",
+        "the hub cleaning tool",
+        "the lift rigging and shackles"
+      ],
+      "systems": [
+        "the manipulators",
+        "the hydraulic valve pack",
+        "the tooling skid",
+        "the camera and lighting spread",
+        "the survey sensors"
+      ]
+    },
+    "precomm": {
+      "name": "Pre-commissioning campaign",
+      "scopes": [
+        "ROV support to pre-commissioning - flooding, gauging, hydrotesting and dewatering of the flowlines.",
+        "Pre-commissioning scope: hot stab operations, valve overrides and monitoring of flooding and dewatering.",
+        "ROV support to pre-comm and leak testing, including hot stab intervention and valve operations.",
+        "Pre-commissioning and commissioning support - system hydrotest, leak test and function testing of the subsea equipment."
+      ],
+      "tasks": [
+        "hot stab intervention on the pre-comm panel",
+        "flooding and gauging monitoring",
+        "hydrotest monitoring",
+        "dewatering operations",
+        "valve override operations",
+        "pressure monitoring at the subsea panel",
+        "leak detection around the connection",
+        "chemical injection support",
+        "function testing of the subsea valves",
+        "pigging support",
+        "monitoring of the return flow"
+      ],
+      "tooling": [
+        "the API 17H hot stab",
+        "the zero leak hot stab",
+        "the paddle valve",
+        "the class 1 to 4 torque tool",
+        "the linear valve override tool",
+        "the flow meter skid",
+        "the subsea load cell"
+      ],
+      "systems": [
+        "the manipulators",
+        "the hydraulic circuit",
+        "the pressure monitoring instrumentation",
+        "the camera and lighting spread"
+      ]
+    },
+    "imr": {
+      "name": "IMR campaign",
+      "scopes": [
+        "ROV support to inspection, maintenance and repair of subsea assets.",
+        "IMR scope - general visual inspection, CP readings, anode retrofit and valve intervention.",
+        "ROV support to IMR: GVI and CVI inspection, cleaning, CP survey and component change out.",
+        "Inspection, maintenance and repair - structure inspection, anomaly close out and subsea intervention."
+      ],
+      "tasks": [
+        "general visual inspection",
+        "close visual inspection",
+        "detailed visual inspection of anomalies",
+        "cathodic protection stab readings",
+        "anode wastage measurement",
+        "anode retrofit",
+        "marine growth removal",
+        "debris clearance",
+        "component change out",
+        "flooded member detection on the braces and legs",
+        "valve intervention on the tree",
+        "seal and gasket replacement",
+        "coating condition assessment",
+        "close out of outstanding anomalies from the previous campaign"
+      ],
+      "tooling": [
+        "the CP probe",
+        "the contact CP stab",
+        "the cleaning brush and cavitation lance",
+        "the class 1 to 4 torque tool",
+        "the grinder",
+        "the FMD tool",
+        "the API 17H hot stab",
+        "the grabber",
+        "the dredge pump"
+      ],
+      "systems": [
+        "the manipulators",
+        "the camera and lighting spread",
+        "the tooling skid",
+        "the sonar head",
+        "the pan and tilt units"
+      ]
+    },
+    "survey": {
+      "name": "Survey campaign",
+      "scopes": [
+        "ROV support to survey operations - pipeline and route survey, debris clearance and light construction.",
+        "Survey scope: multibeam and pipetracker survey, seabed classification and as-built verification.",
+        "ROV support to survey and light construction, including boulder clearance and route clearance.",
+        "Pipeline survey scope - GVI, CP survey, free span measurement and burial depth verification."
+      ],
+      "tasks": [
+        "pipeline route survey",
+        "multibeam data acquisition",
+        "pipetracker survey",
+        "burial depth verification",
+        "boulder and debris clearance",
+        "seabed classification",
+        "as-built verification",
+        "free span measurement",
+        "crossing and mattress inspection",
+        "scour assessment around the structures",
+        "touchdown point monitoring"
+      ],
+      "tooling": [
+        "the survey skid",
+        "the pipetracker",
+        "the multibeam head",
+        "the grabber",
+        "the CP probe"
+      ],
+      "systems": [
+        "the survey sensors",
+        "the DVL and INS",
+        "the USBL positioning",
+        "the camera and lighting spread",
+        "the depth and altimeter sensors"
+      ]
+    },
+    "trenching": {
+      "name": "Trenching and backfill campaign",
+      "scopes": [
+        "ROV support to trenching, backfill and rock placement operations.",
+        "Trenching scope - jet trencher support, burial depth verification and post-trench survey.",
+        "ROV support to burial operations, including trencher monitoring and depth of lowering survey.",
+        "Post-lay trenching and protection - trenching support, rock dump monitoring and mattress installation."
+      ],
+      "tasks": [
+        "trencher monitoring",
+        "depth of lowering survey",
+        "backfill verification",
+        "rock placement monitoring",
+        "post-trench survey",
+        "umbilical burial support",
+        "jetting support",
+        "mattress and GRP cover installation",
+        "verification of the burial profile"
+      ],
+      "tooling": [
+        "the survey skid",
+        "the pipetracker",
+        "the grabber",
+        "the lift rigging and shackles"
+      ],
+      "systems": [
+        "the survey sensors",
+        "the camera and lighting spread",
+        "the sonar head",
+        "the DVL and INS"
+      ]
+    },
+    "mobilisation": {
+      "name": "Mobilisation / M&R period",
+      "scopes": [
+        "Vessel M&R period and mobilisation - ROV equipment maintenance, tooling integration and system testing.",
+        "Mobilisation scope: build up and testing of the ROV systems, tooling skids and LARS ahead of the campaign.",
+        "ROV equipment maintenance and mobilisation, including overhaul of the tooling and function testing.",
+        "Maintenance and repair period - planned maintenance, tooling integration and wet testing before the campaign."
+      ],
+      "tasks": [
+        "tooling skid integration",
+        "LARS inspection and load testing",
+        "umbilical termination",
+        "system function testing",
+        "hydraulic oil sampling and change out",
+        "manipulator overhaul",
+        "thruster change out",
+        "camera and light change out",
+        "fibre optic termination and OTDR testing",
+        "insulation resistance testing of the subsea power",
+        "sea trials and wet testing",
+        "planned maintenance routines",
+        "spares inventory and preservation"
+      ],
+      "tooling": [
+        "the class 1 to 4 torque tool",
+        "the API 17H hot stab",
+        "the test rig",
+        "the hand tools and test equipment",
+        "the subsea load cell"
+      ],
+      "systems": [
+        "the LARS and A-frame",
+        "the TMS and tether",
+        "the hydraulic power unit",
+        "the fibre optic multiplexer",
+        "the manipulators",
+        "the valve packs",
+        "the slip rings",
+        "the umbilical termination",
+        "the control van/room and consoles"
+      ]
+    },
+    "installation": {
+      "name": "Subsea installation campaign",
+      "scopes": [
+        "ROV support to subsea installation of structures, manifolds and protection covers.",
+        "Installation scope - rigging, landing and orientation of subsea structures, and mattress installation.",
+        "ROV support to heavy lift installation, suction pile operations and structure alignment.",
+        "Subsea structure installation - manifold and PLET landing, orientation and removal of installation aids."
+      ],
+      "tasks": [
+        "rigging recovery after landing",
+        "structure orientation and alignment",
+        "suction pile installation",
+        "mattress and GRP cover installation",
+        "manifold landing",
+        "seabed preparation check",
+        "removal of installation aids",
+        "verification of the as-installed position",
+        "guide wire handling",
+        "levelling of the structure"
+      ],
+      "tooling": [
+        "the lift rigging and shackles",
+        "the class 1 to 4 torque tool",
+        "the API 17H hot stab",
+        "the grabber",
+        "the subsea load cell"
+      ],
+      "systems": [
+        "the manipulators",
+        "the camera and lighting spread",
+        "the USBL positioning",
+        "the survey sensors"
+      ]
+    },
+    "decom": {
+      "name": "Decommissioning campaign",
+      "scopes": [
+        "ROV support to decommissioning - cutting, recovery of subsea structures and site clearance.",
+        "Decommissioning scope: disconnection, cutting operations and recovery of redundant equipment.",
+        "ROV support to removal and site clearance, including rigging and debris recovery.",
+        "Decommissioning and site clearance - isolation, cutting, rigging and recovery to deck."
+      ],
+      "tasks": [
+        "disconnection of flying leads",
+        "abrasive cutting operations",
+        "rigging of redundant structures",
+        "recovery of debris to deck",
+        "site clearance survey",
+        "isolation and make safe",
+        "removal of the anodes and clamps",
+        "confirmation of clear seabed after recovery"
+      ],
+      "tooling": [
+        "the cutting tool",
+        "the abrasive cutting spread",
+        "the lift rigging and shackles",
+        "the grabber",
+        "the class 1 to 4 torque tool"
+      ],
+      "systems": [
+        "the manipulators",
+        "the camera and lighting spread",
+        "the tooling skid",
+        "the sonar head"
+      ]
+    },
+    "drillsupport": {
+      "name": "Drill support campaign",
+      "scopes": [
+        "ROV support to drilling operations - wellhead monitoring, BOP intervention and seabed observation.",
+        "Drill support scope: BOP function testing, wellhead cleaning and cement monitoring.",
+        "ROV support to well operations, including hot stab intervention on the BOP and observation duties.",
+        "Drilling support - riser and LMRP monitoring, BOP intervention and guide base observation."
+      ],
+      "tasks": [
+        "BOP function testing",
+        "wellhead cleaning and inspection",
+        "cement returns monitoring",
+        "hot stab intervention on the BOP panel",
+        "guide base observation",
+        "torque operations on the wellhead",
+        "monitoring of the riser and LMRP",
+        "ROV observation during landing of the BOP",
+        "debris clearance around the wellhead"
+      ],
+      "tooling": [
+        "the API 17H hot stab",
+        "the class 1 to 4 torque tool",
+        "the wellhead bore brush tool",
+        "the camera skid",
+        "the cleaning brush and cavitation lance"
+      ],
+      "systems": [
+        "the manipulators",
+        "the hydraulic valve pack",
+        "the camera and lighting spread",
+        "the sonar head"
+      ]
+    },
+    "mooring": {
+      "name": "Mooring and riser campaign",
+      "scopes": [
+        "ROV support to mooring installation, chain handling and riser monitoring.",
+        "Mooring scope - anchor and chain inspection, connector installation and pre-tensioning support.",
+        "ROV support to mooring and riser operations, including inspection of chains and connectors.",
+        "Mooring hook up - chain handling, connector make up and monitoring during pre-tensioning."
+      ],
+      "tasks": [
+        "chain and connector inspection",
+        "anchor installation monitoring",
+        "pre-tensioning support",
+        "riser inspection",
+        "buoyancy module inspection",
+        "shackle and pin installation",
+        "mooring line laydown monitoring"
+      ],
+      "tooling": [
+        "the class 1 to 4 torque tool",
+        "the lift rigging and shackles",
+        "the CP probe",
+        "the grabber"
+      ],
+      "systems": [
+        "the manipulators",
+        "the camera and lighting spread",
+        "the sonar head",
+        "the USBL positioning"
+      ]
+    }
+  },
+  "rov_systems": [
+    "the manipulators",
+    "the seven function manipulator",
+    "the five function grabber arm",
+    "the hydraulic power unit",
+    "the valve packs",
+    "the thrusters and thruster controllers",
+    "the TMS and tether",
+    "the LARS and A-frame",
+    "the umbilical termination",
+    "the slip rings",
+    "the fibre optic multiplexer",
+    "the camera and lighting spread",
+    "the pan and tilt units",
+    "the sonar head",
+    "the DVL and INS",
+    "the USBL positioning",
+    "the survey sensors",
+    "the depth and altimeter sensors",
+    "the compensators",
+    "the junction boxes and penetrators",
+    "the subsea transformer",
+    "the control cans",
+    "the tooling skid",
+    "the hot stab receptacles",
+    "the control van/room and consoles",
+    "the power distribution",
+    "the buoyancy and frame",
+    "the pressure and flow instrumentation",
+    "the winch and fairlead",
+    "the tensioner and docking head"
+  ],
+  "tooling": [
+    "the API 17H hot stab",
+    "the zero leak hot stab",
+    "the paddle valve",
+    "the class 1 to 4 torque tool",
+    "the class 5 to 7 torque tool",
+    "the flying lead orientation tool",
+    "the linear valve override tool",
+    "the lockout tool",
+    "the tie-in tool",
+    "the cutting tool",
+    "the abrasive cutting spread",
+    "the cleaning brush and cavitation lance",
+    "the grinder",
+    "the CP probe",
+    "the FMD tool",
+    "the metrology frame",
+    "the survey skid",
+    "the pipetracker",
+    "the multibeam head",
+    "the grabber",
+    "the lift rigging and shackles",
+    "the pull-in rigging",
+    "the dredge pump",
+    "the AX / VX gasket tool",
+    "the hub cleaning tool",
+    "the docking cone",
+    "the subsea load cell",
+    "the test rig",
+    "the hand tools and test equipment"
+  ],
+  "faults": [
+    "a hydraulic leak on the manipulator",
+    "an intermittent fault on the camera loop",
+    "a failed solenoid on the valve pack",
+    "a comms dropout on the fibre optic multiplexer",
+    "a low insulation reading on the subsea power",
+    "a sticking function on the torque tool",
+    "a seized hot stab receptacle",
+    "a thruster drawing high current",
+    "a compensator losing level",
+    "a faulty pan and tilt unit",
+    "a damaged tether fairing",
+    "a loose connection in the junction box",
+    "a slow response on the grabber arm",
+    "an air lock in the hydraulic circuit",
+    "a drifting depth sensor",
+    "contaminated oil in the tooling circuit",
+    "a failed slip ring channel",
+    "a noisy DVL bottom lock",
+    "a leaking rotary union on the winch",
+    "an unresponsive latch on the docking head"
+  ],
+  "fix_actions": [
+    "isolated it, traced the fault and had the system back online before the next dive",
+    "diagnosed it correctly first time and repaired it between dives without affecting the schedule",
+    "worked through it methodically with the electrical technician and returned the system to service",
+    "identified the root cause rather than the symptom and made the repair permanent",
+    "carried out the repair on deck within the weather window available",
+    "found the fault during pre-dive checks and rectified it before it reached the operation",
+    "narrowed it down with the test rig rather than swapping parts, and saved a spare in the process",
+    "planned the repair around the dive schedule so no operational time was lost"
+  ],
+  "inspection": [
+    "GVI of the structure",
+    "CVI of the welds and anomalies",
+    "DVI where confidence was required",
+    "CP stab readings at the nodes",
+    "anode wastage measurement",
+    "coating condition assessment",
+    "flooded member detection on the braces",
+    "free span measurement",
+    "scour assessment",
+    "debris and dropped object survey"
+  ],
+  "regions": [
+    "the North Sea",
+    "the Norwegian sector",
+    "the UK sector",
+    "West Africa",
+    "offshore Angola",
+    "offshore Brazil",
+    "the Gulf of Mexico",
+    "the Mediterranean",
+    "offshore Guyana",
+    "the Barents Sea",
+    "offshore Egypt",
+    "offshore Australia"
+  ],
+  "conditions": [
+    "a demanding weather window",
+    "24 hour operations",
+    "back to back shifts",
+    "a compressed schedule",
+    "deepwater conditions",
+    "limited visibility on the seabed",
+    "a busy SIMOPS environment",
+    "a heavy workload",
+    "an extended campaign",
+    "strong currents on station",
+    "a tight client schedule",
+    "a long run of nights"
+  ],
+  "hse": [
+    "toolbox talks",
+    "pre-dive risk assessments",
+    "the daily safety meetings",
+    "the pre-job briefs",
+    "the shift safety briefs",
+    "the task risk assessments"
+  ],
+  "hse_rules": [
+    "the permit to work system",
+    "Stop Work Authority",
+    "the Life Saving Rules",
+    "LOTO and isolation procedures",
+    "the dropped object prevention scheme",
+    "the lifting and rigging procedures",
+    "company safety policy"
+  ],
+  "people": [
+    "the client representatives",
+    "the offshore construction manager",
+    "the bridge",
+    "the survey team",
+    "the deck crew",
+    "the night shift",
+    "the project engineer",
+    "the less experienced pilots",
+    "the tooling technicians",
+    "the marine crew",
+    "the onshore project team"
+  ],
+  "roles": {
+    "all": [
+      "ROV Team Lead",
+      "ROV Supervisor",
+      "ROV Sub Tech",
+      "ROV Pilot",
+      "ROV Trainee",
+      "Offshore Manager"
+    ]
+  },
+  "imca_grades": {
+    "R20": "ROV Superintendent",
+    "R01": "ROV Supervisor",
+    "R02": "Senior ROV Pilot Technician",
+    "R03": "ROV Pilot Technician Grade I",
+    "R04": "ROV Pilot Technician Grade II",
+    "R11": "ROV Tooling Supervisor",
+    "R12": "Senior Tooling Technician",
+    "R13": "Tooling Technician Grade 1",
+    "R14": "Tooling Technician Grade 2"
+  }
+}

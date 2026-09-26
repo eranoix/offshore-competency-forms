@@ -1,0 +1,1864 @@
+{
+ "roles": {
+  "ROV Pilot Technician": [
+   "Piloting and operations",
+   "Tooling and intervention",
+   "Survey and inspection",
+   "Preventative maintenance",
+   "Fault finding and repair",
+   "Terminations and cables",
+   "Launch, recovery and deck",
+   "Safety and emergency",
+   "Records and technical administration",
+   "Running the shift",
+   "Planning and risk",
+   "Safety leadership",
+   "Equipment and spares"
+  ],
+  "ROV Sub-Engineer": [
+   "Piloting and operations",
+   "Tooling and intervention",
+   "Survey and inspection",
+   "Preventative maintenance",
+   "Fault finding and repair",
+   "Terminations and cables",
+   "Launch, recovery and deck",
+   "Safety and emergency",
+   "Records and technical administration",
+   "Running the shift",
+   "Planning and risk",
+   "People and competence",
+   "Safety leadership",
+   "Equipment and spares",
+   "Client and vessel interface"
+  ],
+  "ROV Supervisor": [
+   "Piloting and operations",
+   "Tooling and intervention",
+   "Survey and inspection",
+   "Preventative maintenance",
+   "Fault finding and repair",
+   "Terminations and cables",
+   "Launch, recovery and deck",
+   "Safety and emergency",
+   "Records and technical administration",
+   "Running the shift",
+   "Planning and risk",
+   "People and competence",
+   "Safety leadership",
+   "Equipment and spares",
+   "Client and vessel interface"
+  ],
+  "ROV Superintendent": [
+   "Piloting and operations",
+   "Tooling and intervention",
+   "Survey and inspection",
+   "Preventative maintenance",
+   "Fault finding and repair",
+   "Terminations and cables",
+   "Launch, recovery and deck",
+   "Safety and emergency",
+   "Records and technical administration",
+   "Running the shift",
+   "Planning and risk",
+   "People and competence",
+   "Safety leadership",
+   "Equipment and spares",
+   "Client and vessel interface"
+  ]
+ },
+ "groups": {
+  "Piloting and operations": [
+   {
+    "text": "Tether management supervision",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Maintains position and heading in current while carrying out a task.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling."
+    ]
+   },
+   {
+    "text": "ROV and TMS pre-dive power-up sequence",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling.",
+     "Manages tether and clump weight to keep the working envelope available."
+    ]
+   },
+   {
+    "text": "5-function manipulator operation",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Manages tether and clump weight to keep the working envelope available.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces."
+    ]
+   },
+   {
+    "text": "7-function manipulator operation",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces.",
+     "Monitors vehicle health during the dive and reacts to a developing fault."
+    ]
+   },
+   {
+    "text": "HP pump hydraulic soft start operation",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Monitors vehicle health during the dive and reacts to a developing fault.",
+     "Carries out GVI, CVI and DVI inspection to the required standard."
+    ]
+   },
+   {
+    "text": "TMS heave control during operations",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Carries out GVI, CVI and DVI inspection to the required standard.",
+     "Conducts cathodic protection and field gradient measurements correctly."
+    ]
+   },
+   {
+    "text": "ROV docking in adverse weather",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Conducts cathodic protection and field gradient measurements correctly.",
+     "Maintains position and heading in current while carrying out a task."
+    ]
+   },
+   {
+    "text": "ROV navigation between seabed points",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Maintains position and heading in current while carrying out a task.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling."
+    ]
+   },
+   {
+    "text": "Tether return to TMS",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling.",
+     "Manages tether and clump weight to keep the working envelope available."
+    ]
+   },
+   {
+    "text": "Mid-water target location",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Manages tether and clump weight to keep the working envelope available.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces."
+    ]
+   },
+   {
+    "text": "ROV piloting in confined spaces",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces.",
+     "Monitors vehicle health during the dive and reacts to a developing fault."
+    ]
+   },
+   {
+    "text": "ROV piloting in adverse conditions",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Monitors vehicle health during the dive and reacts to a developing fault.",
+     "Carries out GVI, CVI and DVI inspection to the required standard."
+    ]
+   },
+   {
+    "text": "Piranha clamp installation piloting",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Carries out GVI, CVI and DVI inspection to the required standard.",
+     "Conducts cathodic protection and field gradient measurements correctly."
+    ]
+   },
+   {
+    "text": "DP beacon pick-up and deployment",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Conducts cathodic protection and field gradient measurements correctly.",
+     "Maintains position and heading in current while carrying out a task."
+    ]
+   },
+   {
+    "text": "LARS snubber head cylinder maintenance",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Maintains position and heading in current while carrying out a task.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling."
+    ]
+   },
+   {
+    "text": "ROV pre and post dive checks",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling.",
+     "Manages tether and clump weight to keep the working envelope available."
+    ]
+   },
+   {
+    "text": "ROV descent monitoring and depth management",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Manages tether and clump weight to keep the working envelope available.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces."
+    ]
+   },
+   {
+    "text": "Umbilical tension and winch monitoring during deployment",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces.",
+     "Monitors vehicle health during the dive and reacts to a developing fault."
+    ]
+   },
+   {
+    "text": "Safety briefing attendance and acknowledgement",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Monitors vehicle health during the dive and reacts to a developing fault.",
+     "Carries out GVI, CVI and DVI inspection to the required standard."
+    ],
+    "from": "scheme"
+   }
+  ],
+  "Tooling and intervention": [
+   {
+    "text": "Survey and tooling component fitting",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Operates torque tools within the class and range specified for the interface.",
+     "Deploys and recovers hot stabs without damage to the receptacle."
+    ]
+   },
+   {
+    "text": "STP disconnection and RFC connection to crane hook",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Deploys and recovers hot stabs without damage to the receptacle.",
+     "Sets up and operates survey sensors and verifies the data is usable."
+    ]
+   },
+   {
+    "text": "Debris clearance around PLET",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Sets up and operates survey sensors and verifies the data is usable.",
+     "Handles cutting and dredging tooling within its operating envelope."
+    ]
+   },
+   {
+    "text": "Suction pile installation system setup and testing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Handles cutting and dredging tooling within its operating envelope.",
+     "Configures the vehicle for the specific tooling skid in use."
+    ]
+   },
+   {
+    "text": "Torque tool end effector change-out",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Configures the vehicle for the specific tooling skid in use.",
+     "Operates torque tools within the class and range specified for the interface."
+    ]
+   },
+   {
+    "text": "Valve and PLR operations preparation",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Operates torque tools within the class and range specified for the interface.",
+     "Deploys and recovers hot stabs without damage to the receptacle."
+    ]
+   },
+   {
+    "text": "Specialist sensor and camera installation on ROV",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Deploys and recovers hot stabs without damage to the receptacle.",
+     "Sets up and operates survey sensors and verifies the data is usable."
+    ]
+   },
+   {
+    "text": "CP probe installation on ROV",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Sets up and operates survey sensors and verifies the data is usable.",
+     "Handles cutting and dredging tooling within its operating envelope."
+    ]
+   },
+   {
+    "text": "Tooling integration onto ROV and control van/room",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Handles cutting and dredging tooling within its operating envelope.",
+     "Configures the vehicle for the specific tooling skid in use."
+    ]
+   },
+   {
+    "text": "DCV replacement on backpack",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Configures the vehicle for the specific tooling skid in use.",
+     "Operates torque tools within the class and range specified for the interface."
+    ]
+   },
+   {
+    "text": "Sandbag transfer from seabed to crane basket",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Operates torque tools within the class and range specified for the interface.",
+     "Deploys and recovers hot stabs without damage to the receptacle."
+    ]
+   },
+   {
+    "text": "Titan 4 manipulator operations",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Deploys and recovers hot stabs without damage to the receptacle.",
+     "Sets up and operates survey sensors and verifies the data is usable."
+    ]
+   },
+   {
+    "text": "RingMaster 5-function manipulator operations",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Sets up and operates survey sensors and verifies the data is usable.",
+     "Handles cutting and dredging tooling within its operating envelope."
+    ]
+   },
+   {
+    "text": "Specialist tooling installation on ROV",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Handles cutting and dredging tooling within its operating envelope.",
+     "Configures the vehicle for the specific tooling skid in use."
+    ]
+   }
+  ],
+  "Survey and inspection": [
+   {
+    "text": "Pipeline as-laid survey piloting",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Maintains position and heading in current while carrying out a task.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling."
+    ]
+   },
+   {
+    "text": "GVI survey of PLETs and hubs",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling.",
+     "Manages tether and clump weight to keep the working envelope available."
+    ]
+   },
+   {
+    "text": "Sonar and navigation data interpretation",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Manages tether and clump weight to keep the working envelope available.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces."
+    ]
+   },
+   {
+    "text": "Subsea navigation aid operation",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces.",
+     "Monitors vehicle health during the dive and reacts to a developing fault."
+    ]
+   },
+   {
+    "text": "DP beacon pick-up and drop-off",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Monitors vehicle health during the dive and reacts to a developing fault.",
+     "Carries out GVI, CVI and DVI inspection to the required standard."
+    ]
+   },
+   {
+    "text": "Video commentary during ROV operations",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Carries out GVI, CVI and DVI inspection to the required standard.",
+     "Conducts cathodic protection and field gradient measurements correctly."
+    ]
+   },
+   {
+    "text": "HPR monitoring of ROV position",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Conducts cathodic protection and field gradient measurements correctly.",
+     "Maintains position and heading in current while carrying out a task."
+    ]
+   },
+   {
+    "text": "Environmental data gathering and logging",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Maintains position and heading in current while carrying out a task.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling."
+    ]
+   },
+   {
+    "text": "ROV umbilical visual inspection",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Flies the vehicle clear of structures, umbilicals and deployed tooling.",
+     "Manages tether and clump weight to keep the working envelope available."
+    ]
+   },
+   {
+    "text": "Fibre optic OTDR testing",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Manages tether and clump weight to keep the working envelope available.",
+     "Operates manipulators accurately enough for hot stab and torque tool interfaces."
+    ]
+   }
+  ],
+  "Preventative maintenance": [
+   {
+    "text": "Routine testing on energised equipment",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Carries out scheduled maintenance to the interval and records it accurately.",
+     "Identifies wear and degradation before it becomes a failure."
+    ]
+   },
+   {
+    "text": "Hydraulic system drain and refill",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Identifies wear and degradation before it becomes a failure.",
+     "Uses correct torque values and locking methods on critical fasteners."
+    ]
+   },
+   {
+    "text": "ROV and TMS filter change",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Uses correct torque values and locking methods on critical fasteners.",
+     "Maintains hydraulic cleanliness during any intervention on the system."
+    ]
+   },
+   {
+    "text": "ROV and TMS pre and post dive checks",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Maintains hydraulic cleanliness during any intervention on the system.",
+     "Keeps spares and consumables accounted for and reorders in good time."
+    ]
+   },
+   {
+    "text": "ROV and TMS compensator level checks",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Keeps spares and consumables accounted for and reorders in good time.",
+     "Carries out scheduled maintenance to the interval and records it accurately."
+    ]
+   },
+   {
+    "text": "TMS primary latch function testing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Carries out scheduled maintenance to the interval and records it accurately.",
+     "Identifies wear and degradation before it becomes a failure."
+    ]
+   },
+   {
+    "text": "Hydraulic equipment function testing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Identifies wear and degradation before it becomes a failure.",
+     "Uses correct torque values and locking methods on critical fasteners."
+    ]
+   },
+   {
+    "text": "Manipulator function testing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Uses correct torque values and locking methods on critical fasteners.",
+     "Maintains hydraulic cleanliness during any intervention on the system."
+    ]
+   },
+   {
+    "text": "ROV and TMS general maintenance",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Maintains hydraulic cleanliness during any intervention on the system.",
+     "Keeps spares and consumables accounted for and reorders in good time."
+    ]
+   },
+   {
+    "text": "LARS sheave and latch cleaning",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Keeps spares and consumables accounted for and reorders in good time.",
+     "Carries out scheduled maintenance to the interval and records it accurately."
+    ]
+   },
+   {
+    "text": "LARS A-frame degreasing and washing",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Carries out scheduled maintenance to the interval and records it accurately.",
+     "Identifies wear and degradation before it becomes a failure."
+    ]
+   },
+   {
+    "text": "Post-dive hydraulic checks",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Identifies wear and degradation before it becomes a failure.",
+     "Uses correct torque values and locking methods on critical fasteners."
+    ]
+   },
+   {
+    "text": "Pan and tilt function testing",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Uses correct torque values and locking methods on critical fasteners.",
+     "Maintains hydraulic cleanliness during any intervention on the system."
+    ]
+   },
+   {
+    "text": "ROV and TMS framework damage inspection",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Maintains hydraulic cleanliness during any intervention on the system.",
+     "Keeps spares and consumables accounted for and reorders in good time."
+    ]
+   },
+   {
+    "text": "PDU main breaker isolation",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Keeps spares and consumables accounted for and reorders in good time.",
+     "Carries out scheduled maintenance to the interval and records it accurately."
+    ]
+   },
+   {
+    "text": "TM Master maintenance tracking",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Carries out scheduled maintenance to the interval and records it accurately.",
+     "Identifies wear and degradation before it becomes a failure."
+    ]
+   },
+   {
+    "text": "Five-yearly TMS maintenance",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Identifies wear and degradation before it becomes a failure.",
+     "Uses correct torque values and locking methods on critical fasteners."
+    ]
+   },
+   {
+    "text": "TMS frame and latch system overhaul",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Uses correct torque values and locking methods on critical fasteners.",
+     "Maintains hydraulic cleanliness during any intervention on the system."
+    ]
+   },
+   {
+    "text": "Safety latch wear inspection",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Maintains hydraulic cleanliness during any intervention on the system.",
+     "Keeps spares and consumables accounted for and reorders in good time."
+    ]
+   },
+   {
+    "text": "Maintenance schedule review and improvement",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Keeps spares and consumables accounted for and reorders in good time.",
+     "Carries out scheduled maintenance to the interval and records it accurately."
+    ]
+   },
+   {
+    "text": "LARS maintenance and cleaning",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Carries out scheduled maintenance to the interval and records it accurately.",
+     "Identifies wear and degradation before it becomes a failure."
+    ]
+   }
+  ],
+  "Fault finding and repair": [
+   {
+    "text": "Electronic and mechanical fault finding",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Works from symptom to cause by elimination rather than by replacement.",
+     "Reads schematics and traces a circuit through connectors and junction boxes."
+    ]
+   },
+   {
+    "text": "Solenoid valve fault finding",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Reads schematics and traces a circuit through connectors and junction boxes.",
+     "Distinguishes a fault in the vehicle from one in the umbilical or the surface equipment."
+    ]
+   },
+   {
+    "text": "Servo valve change-out",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Distinguishes a fault in the vehicle from one in the umbilical or the surface equipment.",
+     "Documents the diagnosis and the fix so a repeat is recognised."
+    ]
+   },
+   {
+    "text": "Subsea light service and repair",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Documents the diagnosis and the fix so a repeat is recognised.",
+     "Knows when a fault exceeds shipboard repair and escalates it."
+    ]
+   },
+   {
+    "text": "Tool Tech backpack fault finding",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Knows when a fault exceeds shipboard repair and escalates it.",
+     "Works from symptom to cause by elimination rather than by replacement."
+    ]
+   },
+   {
+    "text": "ROV subsystem fault diagnosis coordination",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Works from symptom to cause by elimination rather than by replacement.",
+     "Reads schematics and traces a circuit through connectors and junction boxes."
+    ]
+   },
+   {
+    "text": "Full function test after tether re-termination",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Reads schematics and traces a circuit through connectors and junction boxes.",
+     "Distinguishes a fault in the vehicle from one in the umbilical or the surface equipment."
+    ]
+   },
+   {
+    "text": "Fault-finding team brief",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Distinguishes a fault in the vehicle from one in the umbilical or the surface equipment.",
+     "Documents the diagnosis and the fix so a repeat is recognised."
+    ]
+   },
+   {
+    "text": "Fibre optic fault finding",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Documents the diagnosis and the fix so a repeat is recognised.",
+     "Knows when a fault exceeds shipboard repair and escalates it."
+    ]
+   },
+   {
+    "text": "ROV system function testing after maintenance",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Knows when a fault exceeds shipboard repair and escalates it.",
+     "Works from symptom to cause by elimination rather than by replacement."
+    ]
+   },
+   {
+    "text": "Insulation testing on ROV electrical systems",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Works from symptom to cause by elimination rather than by replacement.",
+     "Reads schematics and traces a circuit through connectors and junction boxes."
+    ]
+   }
+  ],
+  "Terminations and cables": [
+   {
+    "text": "Cable and umbilical megger testing",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Terminates umbilical and tether assemblies to the specified procedure.",
+     "Prepares, tests and records optical fibre terminations."
+    ]
+   },
+   {
+    "text": "Fibre optic fault finding and splicing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Prepares, tests and records optical fibre terminations.",
+     "Makes and verifies electrical penetrator connections to the required IR value."
+    ]
+   },
+   {
+    "text": "Umbilical steel wire armoured termination preparation",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Makes and verifies electrical penetrator connections to the required IR value.",
+     "Applies correct bend radius and strain relief at every termination."
+    ]
+   },
+   {
+    "text": "Tether re-termination",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Applies correct bend radius and strain relief at every termination.",
+     "Pressure tests a completed termination before returning it to service."
+    ]
+   },
+   {
+    "text": "Umbilical continuity testing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Pressure tests a completed termination before returning it to service.",
+     "Terminates umbilical and tether assemblies to the specified procedure."
+    ]
+   },
+   {
+    "text": "Winch junction box termination checks",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Terminates umbilical and tether assemblies to the specified procedure.",
+     "Prepares, tests and records optical fibre terminations."
+    ]
+   },
+   {
+    "text": "Fibre optic preparation and termination",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Prepares, tests and records optical fibre terminations.",
+     "Makes and verifies electrical penetrator connections to the required IR value."
+    ]
+   },
+   {
+    "text": "Electrical conductor preparation and testing",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Makes and verifies electrical penetrator connections to the required IR value.",
+     "Applies correct bend radius and strain relief at every termination."
+    ]
+   },
+   {
+    "text": "Fibre optic fusion splicing",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Applies correct bend radius and strain relief at every termination.",
+     "Pressure tests a completed termination before returning it to service."
+    ]
+   },
+   {
+    "text": "OTDR tether and umbilical testing",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Pressure tests a completed termination before returning it to service.",
+     "Terminates umbilical and tether assemblies to the specified procedure."
+    ]
+   }
+  ],
+  "Launch, recovery and deck": [
+   {
+    "text": "Sandbag transfer to crane basket",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Completes risk assessments and toolbox talks before work starts, and records them."
+    ]
+   },
+   {
+    "text": "ROV and TMS launch and recovery",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor",
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Identifies hazards in the work area and stops the job when a control is missing."
+    ]
+   },
+   {
+    "text": "Deck supervision during launch and recovery",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Applies permit-to-work and isolation procedures without prompting."
+    ]
+   },
+   {
+    "text": "TMS and ROV splitting on deck",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Reports near misses and unsafe conditions through the correct channel."
+    ]
+   },
+   {
+    "text": "Winch operation in adverse weather",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Keeps the working area, walkways and deck free of avoidable hazards."
+    ]
+   },
+   {
+    "text": "Tether management during recovery",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Selects and wears the correct personal protective equipment for the task."
+    ]
+   }
+  ],
+  "Safety and emergency": [
+   {
+    "text": "Hazard identification on ROV worksite",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Knows the muster arrangements and their role in each alarm condition.",
+     "Responds correctly to loss of hydraulic power during an operation."
+    ]
+   },
+   {
+    "text": "Dead ROV and TMS emergency recovery",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Responds correctly to loss of hydraulic power during an operation.",
+     "Follows the agreed sequence for a dead-vehicle recovery."
+    ]
+   },
+   {
+    "text": "Inoperative winch emergency recovery",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Follows the agreed sequence for a dead-vehicle recovery.",
+     "Acts correctly on entanglement, including when to stop and call for support."
+    ]
+   },
+   {
+    "text": "Vehicle entanglement emergency recovery",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Acts correctly on entanglement, including when to stop and call for support.",
+     "Maintains control of the vehicle when camera or sonar picture is lost."
+    ]
+   },
+   {
+    "text": "Trapped umbilical or tether emergency recovery",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Maintains control of the vehicle when camera or sonar picture is lost.",
+     "Communicates status clearly and calmly to the bridge and the client representative."
+    ]
+   },
+   {
+    "text": "FRC deployment for ROV recovery",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Communicates status clearly and calmly to the bridge and the client representative.",
+     "Knows the muster arrangements and their role in each alarm condition."
+    ]
+   },
+   {
+    "text": "ROV emergency rigging and crane recovery",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Knows the muster arrangements and their role in each alarm condition.",
+     "Responds correctly to loss of hydraulic power during an operation."
+    ]
+   },
+   {
+    "text": "TMS power isolation on deck",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Responds correctly to loss of hydraulic power during an operation.",
+     "Follows the agreed sequence for a dead-vehicle recovery."
+    ]
+   },
+   {
+    "text": "Permit to work creation and completion",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Follows the agreed sequence for a dead-vehicle recovery.",
+     "Acts correctly on entanglement, including when to stop and call for support."
+    ]
+   },
+   {
+    "text": "MSDS and COSHH documentation retrieval",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Acts correctly on entanglement, including when to stop and call for support.",
+     "Maintains control of the vehicle when camera or sonar picture is lost."
+    ]
+   },
+   {
+    "text": "Working at heights task preparation",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Maintains control of the vehicle when camera or sonar picture is lost.",
+     "Communicates status clearly and calmly to the bridge and the client representative."
+    ]
+   },
+   {
+    "text": "Pre-maintenance safety documentation check",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Communicates status clearly and calmly to the bridge and the client representative.",
+     "Knows the muster arrangements and their role in each alarm condition."
+    ]
+   },
+   {
+    "text": "Lost vehicle search and recovery",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Knows the muster arrangements and their role in each alarm condition.",
+     "Responds correctly to loss of hydraulic power during an operation."
+    ]
+   },
+   {
+    "text": "Personal isolation procedure oversight",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Responds correctly to loss of hydraulic power during an operation.",
+     "Follows the agreed sequence for a dead-vehicle recovery."
+    ]
+   },
+   {
+    "text": "Energised equipment testing oversight",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Follows the agreed sequence for a dead-vehicle recovery.",
+     "Acts correctly on entanglement, including when to stop and call for support."
+    ]
+   }
+  ],
+  "Records and technical administration": [
+   {
+    "text": "Shift handover paperwork",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Understands the scope of the campaign and where the current task sits in it.",
+     "Works to the procedure issued for the task and flags a deviation before acting."
+    ]
+   },
+   {
+    "text": "Defect reporting and recording",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Superintendent",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Works to the procedure issued for the task and flags a deviation before acting.",
+     "Completes dive logs and task records accurately and on time."
+    ]
+   },
+   {
+    "text": "Technical report writing on equipment failure",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Completes dive logs and task records accurately and on time.",
+     "Contributes to pre-commissioning, tie-in and IMR activities as required."
+    ]
+   },
+   {
+    "text": "Dive log completion",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Contributes to pre-commissioning, tie-in and IMR activities as required.",
+     "Supports trenching and flexlay operations within the agreed plan."
+    ]
+   },
+   {
+    "text": "Video switcher and dive recorder verification",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Supports trenching and flexlay operations within the agreed plan.",
+     "Understands the scope of the campaign and where the current task sits in it."
+    ]
+   },
+   {
+    "text": "Video log and overlay maintenance",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Understands the scope of the campaign and where the current task sits in it.",
+     "Works to the procedure issued for the task and flags a deviation before acting."
+    ]
+   },
+   {
+    "text": "Video and audio file editing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Works to the procedure issued for the task and flags a deviation before acting.",
+     "Completes dive logs and task records accurately and on time."
+    ]
+   },
+   {
+    "text": "Task plan documentation",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Completes dive logs and task records accurately and on time.",
+     "Contributes to pre-commissioning, tie-in and IMR activities as required."
+    ]
+   },
+   {
+    "text": "Failure report completion in TMM",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Contributes to pre-commissioning, tie-in and IMR activities as required.",
+     "Supports trenching and flexlay operations within the agreed plan."
+    ]
+   },
+   {
+    "text": "Sub-engineer log updating",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Supports trenching and flexlay operations within the agreed plan.",
+     "Understands the scope of the campaign and where the current task sits in it."
+    ]
+   },
+   {
+    "text": "Job card extraction from TM Master",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Understands the scope of the campaign and where the current task sits in it.",
+     "Works to the procedure issued for the task and flags a deviation before acting."
+    ]
+   },
+   {
+    "text": "Maintenance documentation retrieval and distribution",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Works to the procedure issued for the task and flags a deviation before acting.",
+     "Completes dive logs and task records accurately and on time."
+    ]
+   },
+   {
+    "text": "TMM maintenance system update",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Completes dive logs and task records accurately and on time.",
+     "Contributes to pre-commissioning, tie-in and IMR activities as required."
+    ]
+   }
+  ],
+  "Running the shift": [
+   {
+    "text": "Shift handover technical briefing",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Plans the shift against the operational programme and the weather window.",
+     "Allocates work to match experience and keeps development in mind."
+    ]
+   },
+   {
+    "text": "Fault finding team brief",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Allocates work to match experience and keeps development in mind.",
+     "Maintains the dive log and the client interface throughout the shift."
+    ]
+   },
+   {
+    "text": "Maintenance task allocation to technicians",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Maintains the dive log and the client interface throughout the shift.",
+     "Escalates to the superintendent with a recommendation, not just a problem."
+    ]
+   },
+   {
+    "text": "Shift supervision in supervisor absence",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Escalates to the superintendent with a recommendation, not just a problem.",
+     "Plans the shift against the operational programme and the weather window."
+    ]
+   },
+   {
+    "text": "ROV repair and maintenance management",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Plans the shift against the operational programme and the weather window.",
+     "Allocates work to match experience and keeps development in mind."
+    ]
+   },
+   {
+    "text": "Shift supervision of ROV operations",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Allocates work to match experience and keeps development in mind.",
+     "Maintains the dive log and the client interface throughout the shift."
+    ]
+   }
+  ],
+  "Planning and risk": [
+   {
+    "text": "TRA creation and review",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Produces a task plan that names the hazards and the controls.",
+     "Reviews procedures against the actual spread and reports gaps."
+    ]
+   },
+   {
+    "text": "Task plan completion",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Reviews procedures against the actual spread and reports gaps.",
+     "Balances schedule pressure against operational limits, and says so in writing."
+    ]
+   },
+   {
+    "text": "PDU maintenance TRA authorship",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Balances schedule pressure against operational limits, and says so in writing.",
+     "Plans mobilisation and demobilisation so the spread is ready on arrival."
+    ]
+   },
+   {
+    "text": "LARS launch and recovery risk assessment",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Plans mobilisation and demobilisation so the spread is ready on arrival.",
+     "Produces a task plan that names the hazards and the controls."
+    ]
+   },
+   {
+    "text": "Weather assessment for ROV operations",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Produces a task plan that names the hazards and the controls.",
+     "Reviews procedures against the actual spread and reports gaps."
+    ]
+   },
+   {
+    "text": "ROV dive planning",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Reviews procedures against the actual spread and reports gaps.",
+     "Balances schedule pressure against operational limits, and says so in writing."
+    ]
+   },
+   {
+    "text": "Maintenance period scope planning",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Selects and wears the correct personal protective equipment for the task.",
+     "Balances schedule pressure against operational limits, and says so in writing.",
+     "Plans mobilisation and demobilisation so the spread is ready on arrival."
+    ]
+   },
+   {
+    "text": "Tether and umbilical work risk assessment",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Understands manual handling limits and asks for assistance before exceeding them.",
+     "Plans mobilisation and demobilisation so the spread is ready on arrival.",
+     "Produces a task plan that names the hazards and the controls."
+    ]
+   },
+   {
+    "text": "TRA leadership for hot work",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Produces a task plan that names the hazards and the controls.",
+     "Reviews procedures against the actual spread and reports gaps."
+    ]
+   },
+   {
+    "text": "Valve and PLR operation dive planning",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Reviews procedures against the actual spread and reports gaps.",
+     "Balances schedule pressure against operational limits, and says so in writing."
+    ]
+   }
+  ],
+  "People and competence": [
+   {
+    "text": "Relief crew technical briefing at handover",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Completes risk assessments and toolbox talks before work starts, and records them."
+    ]
+   },
+   {
+    "text": "ROV team instruction and supervision",
+    "levels": [
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Identifies hazards in the work area and stops the job when a control is missing."
+    ]
+   },
+   {
+    "text": "CAAP assessment and witnessing",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Applies permit-to-work and isolation procedures without prompting."
+    ]
+   },
+   {
+    "text": "Pilot technician coaching and assessment",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Reports near misses and unsafe conditions through the correct channel."
+    ]
+   },
+   {
+    "text": "Tether management instruction to team",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Keeps the working area, walkways and deck free of avoidable hazards."
+    ]
+   },
+   {
+    "text": "ROV induction of new personnel",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Keeps the working area, walkways and deck free of avoidable hazards.",
+     "Selects and wears the correct personal protective equipment for the task."
+    ]
+   }
+  ],
+  "Safety leadership": [
+   {
+    "text": "Toolbox talk leadership",
+    "levels": [
+     "ROV Pilot Technician",
+     "ROV Sub-Engineer",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Sets the standard expected on deck by doing it first.",
+     "Intervenes on unsafe acts regardless of who is performing them."
+    ]
+   },
+   {
+    "text": "TRA leadership for hangar welding",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Intervenes on unsafe acts regardless of who is performing them.",
+     "Runs incident reviews that reach a cause rather than a culprit."
+    ]
+   },
+   {
+    "text": "Hot work permit coordination",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Runs incident reviews that reach a cause rather than a culprit.",
+     "Makes it easy for the team to stop the job."
+    ]
+   }
+  ],
+  "Equipment and spares": [
+   {
+    "text": "Defect recording and spares planning",
+    "levels": [
+     "ROV Sub-Engineer",
+     "ROV Supervisor",
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Maintains the spares holding against campaign duration and criticality.",
+     "Tracks certification and calibration expiry across the spread."
+    ]
+   },
+   {
+    "text": "Spare parts planning for refit",
+    "levels": [
+     "ROV Pilot Technician"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Tracks certification and calibration expiry across the spread.",
+     "Plans overhaul and change-out around the operational programme."
+    ]
+   },
+   {
+    "text": "Standard fit equipment management",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Plans overhaul and change-out around the operational programme.",
+     "Maintains the spares holding against campaign duration and criticality."
+    ]
+   },
+   {
+    "text": "Project equipment and spares management",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Applies permit-to-work and isolation procedures without prompting.",
+     "Maintains the spares holding against campaign duration and criticality.",
+     "Tracks certification and calibration expiry across the spread."
+    ]
+   },
+   {
+    "text": "Spares ordering and inventory management",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Reports near misses and unsafe conditions through the correct channel.",
+     "Tracks certification and calibration expiry across the spread.",
+     "Plans overhaul and change-out around the operational programme."
+    ]
+   }
+  ],
+  "Client and vessel interface": [
+   {
+    "text": "DP trials launch and recovery",
+    "levels": [
+     "ROV Sub-Engineer"
+    ],
+    "proves": [
+     "Working knowledge of the operator's HSEQ policies and how they shape day-to-day work.",
+     "Completes risk assessments and toolbox talks before work starts, and records them."
+    ]
+   },
+   {
+    "text": "Bridge and shift supervisor communications",
+    "levels": [
+     "ROV Supervisor"
+    ],
+    "proves": [
+     "Completes risk assessments and toolbox talks before work starts, and records them.",
+     "Identifies hazards in the work area and stops the job when a control is missing."
+    ]
+   },
+   {
+    "text": "Offshore and onshore project coordination",
+    "levels": [
+     "ROV Superintendent"
+    ],
+    "proves": [
+     "Identifies hazards in the work area and stops the job when a control is missing.",
+     "Applies permit-to-work and isolation procedures without prompting."
+    ]
+   }
+  ]
+ }
+}
