@@ -1,0 +1,551 @@
+{
+  "_usage": "Sentence grammar for the Worksite Trip Feedback. This form is BEHAVIOURAL: it records how the person worked over the trip, how he was with the people around him, the care he put into his work and how he developed between the first day and the last. It never records WHAT was worked on, so the slots that name a job — {task} {tool} {system} {fault} {fix} {inspection} {scope_short} — have no place in it. Slots: {crew} {first} {vessel} {position} {sup} {sup_first} {campaign} {region} {condition} {hse} (safety meetings, plural) {hse_rules} (safety rules and procedures) {people}. Criterion comments must fit two lines of the table cell (about 170 characters). criteria.<key>.<score> holds the bank for that score: 1 Has Not Performed, 2 Requires Improvement, 3 On Target, 4 Above Target, 5 Outstanding. THREE IS A GOOD MARK — it says he does what the grade asks, properly — so the 3 bank reads as a solid performance and never as a shortfall. Only 1 and 2 are criticism.",
+  "criteria": {
+    "safety": {
+      "1": [
+        "Has not met the safety standard the job requires; he needed watching through routine work.",
+        "Safety behaviour fell short of what we expect on board on more than one occasion this trip."
+      ],
+      "2": [
+        "Needs to lift his eyes from his own task; hazards were pointed out to him rather than spotted by him.",
+        "Sits through {hse} without contributing. He needs to engage with a risk assessment, not just sign it.",
+        "Housekeeping and dropped object awareness around his work area need to improve.",
+        "Needs prompting to stop and think again when conditions change."
+      ],
+      "3": [
+        "Works safely and follows company policy. Takes part in {hse} and does what the risk assessment says.",
+        "Safe, steady, and aware of what is going on around him. No concerns at any point of the trip.",
+        "Good compliance with {hse_rules}, and he keeps his work area in order behind him.",
+        "Does the safe thing whether or not anybody is watching, and says so when something does not look right.",
+        "Meets the safety standard the grade asks for, consistently."
+      ],
+      "4": [
+        "Works safely, with good awareness of what is happening around him. Takes an active part in {hse} and raises concerns early.",
+        "Safety conscious throughout. Uses {hse_rules} properly and thinks the job through again when conditions change.",
+        "Good safety behaviour and compliance with company policy. Contributed well during {hse}.",
+        "Knows what is going on around him and speaks up before a job is allowed to drift.",
+        "Applies {hse_rules} without being prompted, and leaves the area tidy behind him.",
+        "Consistently safe in his approach; he finds the hazard at the planning stage rather than on the job.",
+        "Good awareness of SIMOPS on deck, and comfortable challenging something that is not right."
+      ],
+      "5": [
+        "Outstanding safety behaviour. Leads by example during {hse} and uses Stop Work Authority without hesitating.",
+        "Sets the standard for safety on the shift. He challenges a risk assessment constructively and the team follows his lead.",
+        "Exemplary awareness — he looks a step ahead and raises a hazard before it has the chance to develop.",
+        "Outstanding contribution to {hse}, turning them into a real conversation rather than a formality.",
+        "Safety leadership above his grade: he intervened when conditions changed, and explained to the team why.",
+        "Exceptional awareness on deck. He anticipates the next step and the risk that comes with it."
+      ]
+    },
+    "quality": {
+      "1": [
+        "Standard of work has not met the requirement; jobs had to be done again by others.",
+        "His work needed checking line by line before anybody could sign it off."
+      ],
+      "2": [
+        "Needs to improve his attention to detail; work had to be revisited by the oncoming shift.",
+        "Records and handovers need completing properly rather than left for later.",
+        "Needs to finish a job fully before moving on to the next one.",
+        "The work is acceptable, but it still needs checking behind him."
+      ],
+      "3": [
+        "Does what is asked of him, properly, and finishes it.",
+        "Sound standard of work, with his records kept up to date.",
+        "Careful and tidy. Nothing was left outstanding for the oncoming shift.",
+        "Reliable on everything given to him; the depth of detail will come with experience.",
+        "Quality of work meets what the grade asks for."
+      ],
+      "4": [
+        "Very good standard of work. He is thorough, and he finishes what he starts.",
+        "Always works to a high standard, and it shows in his records and his handovers.",
+        "Consistent quality — jobs are done properly and written up correctly.",
+        "Careful worker. The oncoming shift never picks up loose ends from him.",
+        "Thorough with the paperwork as well as with the work itself, which is rarer than it should be.",
+        "Held his standard through {condition}, with nothing needing to be done twice.",
+        "Takes pride in his work, and you can see it in the finish."
+      ],
+      "5": [
+        "Outstanding standard of work. Done right first time, written up properly, handed over clean.",
+        "Quality is exceptional. Nothing is left half done and the oncoming shift always picks up a clear job.",
+        "Outstanding attention to detail; his work stands up to scrutiny and rarely needs revisiting.",
+        "Exceptional standard, even through {condition}. His documentation is the quality others copy.",
+        "His finish is well above the grade, and {people} have commented on it.",
+        "Outstanding workmanship. He closes a job out properly rather than patching it to get through the shift."
+      ]
+    },
+    "knowledge": {
+      "1": [
+        "Does not yet have the knowledge the grade requires.",
+        "He had to be talked through routine work throughout the trip."
+      ],
+      "2": [
+        "Needs to build his knowledge; he relies on others for answers he should have himself.",
+        "Needs to understand why a procedure says what it says, not just the steps in it.",
+        "Knowledge is still thin, and it needs time and exposure to fill out.",
+        "Understands his own work, but not yet how it fits with everybody else's."
+      ],
+      "3": [
+        "Has a good knowledge of the grade he is in.",
+        "Knows what his position requires, and asks when he is unsure, which is the right habit.",
+        "Sound working knowledge for everything he is given, and he is building on it.",
+        "Knows the routine well and has the foundation for the rest.",
+        "Knowledge is right for the grade, and growing every trip."
+      ],
+      "4": [
+        "Good knowledge of the equipment on board and of the grade he is in.",
+        "Knows his job well, and brings useful experience from previous vessels and projects.",
+        "Has worked at higher grades and has a good knowledge of the one he is in.",
+        "Understands how his part fits the wider operation, which not everybody at this grade does.",
+        "Understands what his position requires and applies it consistently.",
+        "Knows where to look when something is not right, rather than guessing at it.",
+        "Goes to the procedure rather than working from memory, and knows why that matters."
+      ],
+      "5": [
+        "Fully understands what his position requires, and more often than not takes on responsibility above his grade.",
+        "Outstanding knowledge. The team goes to him for the answer, and he is usually right.",
+        "Knowledge of his role is well above the grade he is in, and the whole shift benefits from it.",
+        "Exceptional understanding of how the operation fits together — he sees how his part affects everybody else's.",
+        "Outstanding technical knowledge, and he can explain it plainly to {people}.",
+        "He is the reference point on shift, and he has earned that."
+      ]
+    },
+    "technical": {
+      "1": [
+        "Practical ability is below what the grade requires; he could not be left to work unsupervised.",
+        "Fault finding had to be done by others throughout the trip."
+      ],
+      "2": [
+        "Needs to develop his fault finding; he swaps parts rather than working out the cause.",
+        "Practical work is slow, and it needs checking behind him.",
+        "Comfortable with the routine, but he needs support as soon as the answer is not obvious.",
+        "Needs to think a problem through before putting a spanner on it."
+      ],
+      "3": [
+        "Competent with everything undertaken for the grade.",
+        "Methodical and careful in his practical work, and he knows when to ask for a hand.",
+        "Sound on the basics of fault finding, and takes guidance on the harder ones, which is right for the grade.",
+        "Practical, tidy and careful within the limits of his experience.",
+        "Technical ability is right for the grade."
+      ],
+      "4": [
+        "Strong practical ability. He troubleshoots and gets to the bottom of a problem on his own.",
+        "Has skills above what is expected, and delivers on everything given to him.",
+        "Methodical with fault finding, electrical and hydraulic alike, and patient with it.",
+        "Good with his hands, works cleanly, and knows the limits of what he should attempt alone.",
+        "Works a fault back logically rather than by trial and error.",
+        "Careful and thorough in his checks; problems get found before they reach the operation.",
+        "Confident and capable without being reckless, which is the right balance at this grade."
+      ],
+      "5": [
+        "Outstanding practical ability. He is the one the shift turns to when something will not come right.",
+        "Exceptional ability — consistently working at a level well above what the grade expects.",
+        "Outstanding fault finding. He works a problem back to its cause and puts it right properly.",
+        "Exceptional with his hands and with his head; he plans the repair instead of swapping parts until it works.",
+        "Technical ability well above the grade. The difficult problems end up with him, and they get solved.",
+        "Outstanding practical work, and just as strong on the unglamorous jobs behind it."
+      ]
+    },
+    "english": {
+      "1": [
+        "Communication has been a barrier to the operation; instructions had to be repeated and confirmed.",
+        "Needs formal support with written and spoken reporting before working unsupervised."
+      ],
+      "2": [
+        "Needs to improve his confidence on comms; his meaning was not always clear.",
+        "Written handovers need to improve — they have to stand alone for the oncoming shift.",
+        "Understands well, but needs to speak up and confirm rather than assume.",
+        "The technical vocabulary still needs work before he reports unsupervised."
+      ],
+      "3": [
+        "Communicates clearly enough, spoken and written, with no operational concerns.",
+        "Gets his message across, and asks for confirmation when it matters.",
+        "No concerns with his English at any point of the trip.",
+        "Clear on the headset and sound in writing, and both are still improving.",
+        "Meets the standard the grade asks for."
+      ],
+      "4": [
+        "Communicates clearly and accurately, spoken and written.",
+        "Pitches technical detail at the right level for whoever he is talking to.",
+        "Communicates confidently with the team and with {people}.",
+        "Clear on the headset, and his written handovers are accurate and easy to follow.",
+        "Good standard of written reporting — his handovers stand alone for the next shift.",
+        "Understood without difficulty by everybody on board."
+      ],
+      "5": [
+        "Excellent written and spoken English. He explains technical detail clearly to {people} and to the team.",
+        "Fluent and precise; his reports and handovers need no correction.",
+        "Outstanding command of the technical vocabulary; nothing he says is left open to interpretation.",
+        "Explains complicated things plainly, which is a skill in any language."
+      ]
+    },
+    "initiative": {
+      "1": [
+        "Waits to be tasked at all times, including through the quiet periods.",
+        "Has shown no initiative beyond the work put directly in front of him."
+      ],
+      "2": [
+        "Needs to go and look for work rather than wait for it, particularly when things are quiet.",
+        "Needs to take a job and own it through to the end.",
+        "Does what is asked, but rarely offers a better way of doing it.",
+        "Needs encouragement to pick something up off his own back."
+      ],
+      "3": [
+        "Shows initiative and knows what needs doing.",
+        "Picks work up when he sees it, and sees it through.",
+        "Willing and useful, and he will take on more as his confidence grows.",
+        "Contributes ideas when he is asked, and he is starting to raise them unprompted.",
+        "Initiative is what the grade asks for."
+      ],
+      "4": [
+        "Proactive. He looks for what needs doing and suggests better ways of doing it without being asked.",
+        "Always busy with something useful; he does not wait to be told.",
+        "Brings ideas to the table, and then follows them through himself.",
+        "Uses the quiet periods well rather than waiting them out.",
+        "Takes ownership of a job from start to finish, without being chased.",
+        "Raised improvements with me during the trip, and they were worth hearing."
+      ],
+      "5": [
+        "Outstanding initiative. He sees the work before it is asked for and takes it through to the end.",
+        "Consistently one step ahead — improvements he suggested during the trip were taken up by the shift.",
+        "Exceptional self-starter. He found the useful work in the quiet hours and got on with it.",
+        "Outstanding drive, and he puts it into the jobs nobody else volunteers for.",
+        "Anticipates what is coming next and has everything ready before it is called for."
+      ]
+    },
+    "decision": {
+      "1": [
+        "Decision making is not yet at the level the grade requires; he needed direction on routine calls.",
+        "His judgement needed correcting by the supervisor during the trip."
+      ],
+      "2": [
+        "Needs to think a call through before acting, and to escalate earlier when he is unsure.",
+        "Needs to weigh the risk against the schedule rather than one or the other.",
+        "Sound when the situation is familiar; anything new still needs support.",
+        "Needs to explain the reasoning behind his decisions more clearly."
+      ],
+      "3": [
+        "Calculated, with sound reasoning.",
+        "Makes sensible calls within his experience, and escalates when he should.",
+        "Thinks before he acts, and asks when the situation is new to him.",
+        "Sound judgement on the day to day, and it is getting stronger.",
+        "Decision making is what the grade asks for."
+      ],
+      "4": [
+        "Calculated decisions with sound reasoning, and he can explain why he made them.",
+        "Knows when to decide and when to escalate, and gets that balance right.",
+        "Makes good, considered calls with the clock running.",
+        "Weighs risk against schedule sensibly, and brings me in at the right point.",
+        "Sound judgement on when to carry on and when to stop and think again.",
+        "His calls this trip were well reasoned and clearly explained."
+      ],
+      "5": [
+        "Outstanding decision making. His judgement is trusted, and his reasoning stands up afterwards.",
+        "Exceptional judgement — he weighs risk and schedule correctly and explains the call clearly to {people}.",
+        "Decisions are consistently sound and made at the right moment, without needing to be chased.",
+        "Outstanding under pressure: he took the right call quickly and kept everybody informed."
+      ]
+    },
+    "motivation": {
+      "1": [
+        "Motivation has been a concern throughout the trip, and was raised with him directly.",
+        "Shows little interest in the work beyond the minimum."
+      ],
+      "2": [
+        "Needs to show more drive, particularly at the back end of a long shift.",
+        "His attitude towards the less interesting jobs needs to improve.",
+        "Willing when the work suits him; he needs the same energy for the rest of it.",
+        "Motivation dipped through {condition} and needed encouragement."
+      ],
+      "3": [
+        "Positive and willing throughout the trip.",
+        "Good attitude to everything put in front of him.",
+        "Keen to learn, and he asks for more when his own work is finished.",
+        "Turns up wanting to do a good job, every shift.",
+        "Motivation is what the grade asks for."
+      ],
+      "4": [
+        "Enthusiastic and keen to take anything on; he wants to keep developing.",
+        "Genuinely interested in the work, and it shows in how he goes about it.",
+        "Positive and willing all trip, with no encouragement needed from me.",
+        "Keen to get involved in the parts of the job he has least experience with.",
+        "Held his energy and his willingness right through {condition}.",
+        "Interested in the wider project, not just his own corner of it."
+      ],
+      "5": [
+        "Outstanding motivation. He sets the tone for the shift and lifts the people around him.",
+        "Exceptionally driven; he volunteers for the hard jobs and keeps his own development moving.",
+        "Motivation is a real strength — the enthusiasm never dropped, whatever the hours.",
+        "Outstanding attitude through {condition}. He never needed encouragement, and he kept the shift positive."
+      ]
+    },
+    "teamwork": {
+      "1": [
+        "Has not integrated with the team; he works on his own and keeps what he knows to himself.",
+        "Working relationships on shift needed the supervisor to step in."
+      ],
+      "2": [
+        "Needs to integrate better with the shift and share what he knows.",
+        "Handovers need to improve — information does not always get passed on.",
+        "Works well on his own, but needs to give more to the team.",
+        "Quiet and reserved; he is encouraged to engage more with {people}."
+      ],
+      "3": [
+        "A key team player, respected by all.",
+        "Fits in well with the shift and works comfortably alongside {people}.",
+        "Cooperative, reliable, and easy to have on a team.",
+        "Works well with the crew, and he will take a bigger role as his confidence grows.",
+        "Teamwork is what the grade asks for."
+      ],
+      "4": [
+        "Integrates well, and shares what he knows with the rest of the shift.",
+        "A key team player, respected across both shifts.",
+        "Settled in quickly with a crew he did not know, which is not as easy as he made it look.",
+        "Works well with {people}, and keeps the handover between shifts clean.",
+        "Looks after the less experienced members of the team without being asked to.",
+        "Good across departments — he works comfortably with {people} when the job needs it."
+      ],
+      "5": [
+        "Outstanding team player. He shares what he knows, supports the less experienced, and is respected on both shifts.",
+        "Exceptional within the team — the handover works better when he is on it.",
+        "Outstanding teamwork; he brings the crew together and keeps the lines open with {people}.",
+        "Brought the junior members of the shift along through the trip, off his own back."
+      ]
+    },
+    "attendance": {
+      "1": [
+        "Attendance and readiness for shift have not met the standard, and were raised formally.",
+        "Late for handover on several occasions during the trip."
+      ],
+      "2": [
+        "Needs to be ready at handover rather than arriving as the shift starts.",
+        "Readiness needs to improve; he missed the shift briefing more than once.",
+        "Timekeeping slipped through {condition} and had to be raised with him.",
+        "Attends as required, but needs to be prepared before the shift begins."
+      ],
+      "3": [
+        "Always on time, no issues.",
+        "Punctual and ready at handover throughout the trip.",
+        "Reliable across the whole rotation.",
+        "On shift when expected, every time, with no concerns.",
+        "Attendance is what the grade asks for."
+      ],
+      "4": [
+        "Always on time and ready at handover; never an issue.",
+        "There when expected, and stays on when the work in hand needs it.",
+        "Punctual and dependable throughout, including through {condition}.",
+        "Never late, and available whenever the operation needed cover.",
+        "Reliable timekeeping across the whole rotation."
+      ],
+      "5": [
+        "Always on time, and stayed on after shift more than once to see work finished.",
+        "Outstanding attendance. Never late, and regularly turns to early to get the shift ready.",
+        "Exemplary timekeeping; his availability was never in question at any point of the trip.",
+        "Outstanding — worked through {condition} without a single issue with attendance or readiness."
+      ]
+    },
+    "communication": {
+      "1": [
+        "Communication has not met the standard safe operations require.",
+        "Information was not passed on, and the oncoming shift felt it."
+      ],
+      "2": [
+        "Needs to keep me informed as the work goes along rather than at the end of it.",
+        "Comms discipline needs to improve during operations.",
+        "Handovers need more detail to be any use to the next shift.",
+        "Speaks up when he is asked; he needs to volunteer information sooner."
+      ],
+      "3": [
+        "Effective in all aspects, written and spoken.",
+        "Clear on comms, and sound in his written handovers.",
+        "Says what needs saying, when it needs saying.",
+        "Keeps the shift informed, and he will grow into dealing with {people} directly.",
+        "Communication is what the grade asks for."
+      ],
+      "4": [
+        "Communicates effectively at every level on board, including with {people}.",
+        "Effective in all aspects, written and spoken.",
+        "Clear on the headset, and thorough in his written handovers.",
+        "Keeps me informed as work progresses, and flags a problem early.",
+        "Good communication with {people} and with the oncoming shift.",
+        "Concise and accurate on comms when it matters."
+      ],
+      "5": [
+        "Outstanding communicator — clear and concise when it counts, and thorough in writing.",
+        "Exceptional communication at every level on board; he keeps {people} properly informed.",
+        "Outstanding clarity on the headset and in handover; nothing is left ambiguous for the next shift.",
+        "Exceptional this trip: he kept the bridge, the deck and the client informed without being asked."
+      ]
+    }
+  },
+  "supervisor": {
+    "opening": [
+      "{crew} sailed with us this trip as {position} on board the {vessel}. He settled in with the shift straight away, and from the first handover he was easy to have on the team.",
+      "{crew} joined my ROV shift on the {vessel} as {position}. He arrived ready to work, took the time to learn how we run things, and fitted in without any fuss.",
+      "This trip {crew} worked as {position} in the ROV department on board the {vessel}. He came in quietly, watched how the shift ran, and was pulling his weight within a couple of days.",
+      "I have had {crew} on my shift on board the {vessel} this trip, working as {position}. He has been a steady, willing member of the team from the first day to the last.",
+      "{crew} was part of the ROV team on the {vessel} this rotation as {position}. He is straightforward to work with and he leaves you in no doubt the job will get done.",
+      "{crew} sailed as {position} on the {vessel} for this rotation. The trip ran through {condition}, and he held his standard right the way through it.",
+      "This rotation {crew} worked as {position} on board the {vessel}. What stood out first was his attitude — he asks, he listens, and he does not need telling twice.",
+      "{crew} joined us on the {vessel} as {position} this trip. He started carefully, found his feet quickly, and finished the rotation doing more than he came aboard doing."
+    ],
+    "highlight": {
+      "safety": [
+        "His safety behaviour stood out during the trip: hazards were raised early, and {hse} were a real conversation rather than a formality.",
+        "He sets a good example on safety - he is comfortable stopping a job to re-assess it and explaining to the team why."
+      ],
+      "quality": [
+        "The standard of his work is consistently high — done right first time, written up properly, and left in good order for the oncoming shift.",
+        "Quality is a real strength: his work does not come back, and his paperwork became the reference for the rest of the shift."
+      ],
+      "knowledge": [
+        "His knowledge is above the grade he is in, and the rest of the shift makes use of it.",
+        "He understands how his own part fits the wider operation, and it shows in the way he plans his work."
+      ],
+      "technical": [
+        "His practical ability stands out. He gets to the bottom of a problem on his own, and the team leans on him when something will not come right.",
+        "Technically he is the strongest on the shift for his grade, and he stays with a problem until it is properly solved rather than patched."
+      ],
+      "english": [
+        "His written and verbal communication is a real strength, both on comms during operations and in his handovers.",
+        "He is clear with the team, the bridge and {people}, and his reporting needs no correction."
+      ],
+      "initiative": [
+        "He shows genuine initiative — work is spotted and picked up before it is asked for, including through the quieter periods.",
+        "He does not wait to be tasked. Improvements he suggested during the trip were taken up by the shift."
+      ],
+      "decision": [
+        "His decision making is sound and well explained, and his judgement is trusted during operations.",
+        "He makes the right call at the right time and is not afraid to escalate when the situation requires it."
+      ],
+      "motivation": [
+        "His motivation is constant and it lifts the people working around him.",
+        "Enthusiasm never dropped across the rotation, including through {condition}."
+      ],
+      "teamwork": [
+        "He is a strong team player and the shift works better for having him on it.",
+        "He supports the less experienced pilots and shares what he knows, which raises the standard of the whole team."
+      ],
+      "attendance": [
+        "His timekeeping and availability were exemplary throughout the trip.",
+        "He was always ready for handover and stayed on when the work in hand required it."
+      ],
+      "communication": [
+        "He communicates clearly at every level on board, including with {people}.",
+        "His handovers are complete, and he is concise and accurate on comms when it counts."
+      ]
+    },
+    "middle": [
+      "{first} is reliable and easy to approach. He works a problem through methodically, keeps me informed while he is at it, and passes on what he knows instead of keeping it to himself.",
+      "He is dependable and good company on a long shift. He takes ownership of what he is given, and I never had to go back and check behind him.",
+      "He is respectful with everyone on board, from the deck crew to the client, and he can be trusted with anything asked of him.",
+      "{first} works well on his own and just as well alongside somebody. He asks when he is unsure, which is the right instinct, and he remembers what he is shown.",
+      "He keeps a level head. When the plan changed he adjusted without complaint and without losing the thread of what he was doing.",
+      "He carries himself well in front of {people} and represents the department properly.",
+      "He takes feedback and acts on it inside the same trip. Not everybody does that."
+    ],
+    "development": [
+      "The next step for him is taking the lead more often — running the brief, making the call, and letting the shift follow him.",
+      "With a little more confidence in his own judgement he will stop checking calls he is already right about.",
+      "What will move him on now is responsibility rather than instruction, and he is ready for more of it than he was given this trip.",
+      "We talked about speaking up earlier when something does not look right. He has the judgement; he needs to trust it out loud.",
+      "He would come on quickest with somebody junior alongside him to bring along — he explains things well, and he does not know it yet.",
+      "More time carrying a shift on his own is the next thing for him, and I have passed that on to the onshore team."
+    ],
+    "development_low": [
+      "What he needs now is time alongside somebody experienced, and a clear brief at the start of every shift.",
+      "The step for him is finishing what he starts without having to be reminded.",
+      "He needs to ask earlier when he is unsure rather than pressing on and hoping.",
+      "More confidence in speaking up, and in saying when he does not know, is what will move him on.",
+      "He needs to take a job and own it end to end before he is given anything bigger.",
+      "What will help him most is close supervision and honest feedback at the end of each shift, and he is open to both."
+    ],
+    "closing": [
+      "{first} has been a genuine asset to the shift this trip and he would be welcome back on board at any time.",
+      "{first} has been reliable, capable and good to have around, and I have no hesitation in recommending him for continued work with us.",
+      "The attitude {first} brought to this rotation is exactly what we want on a shift, and I would take him again without a second thought.",
+      "Overall {first} has performed well above what the grade asks of him, and I would have him on any scope.",
+      "To conclude, {first} is a capable and trustworthy member of the ROV team and I would be glad to sail with him again.",
+      "{first} has proven himself this trip and I recommend him for continued work within the team."
+    ],
+    "concern": {
+      "safety": [
+        "Safety awareness is the area we agreed he needs to work on: hazards were raised to him rather than by him, and {hse} need to be used as a discussion and not a signature.",
+        "He needs to develop the habit of stopping a task to re-assess it when the conditions change, rather than pushing on."
+      ],
+      "quality": [
+        "The standard of his work needs to come up: some tasks were revisited by the oncoming shift, and records were left incomplete.",
+        "Attention to detail is the area to work on. A job is not finished until the paperwork and the handover are finished with it."
+      ],
+      "knowledge": [
+        "His knowledge is behind where the grade needs it to be, and he leans on the rest of the shift for answers he should hold himself.",
+        "He needs dedicated time to build the understanding the role requires, and he knows it."
+      ],
+      "technical": [
+        "Technically he needs support as soon as a problem is not obvious. Working a fault back to its cause is the area to develop before the next trip.",
+        "He tends to change parts rather than diagnose, and that is the habit we agreed he would work on."
+      ],
+      "english": [
+        "Comms clarity is the area we agreed he needs to work on: instructions needed repeating and confirming during operations.",
+        "His written handovers need to be complete enough to stand alone for the oncoming shift."
+      ],
+      "initiative": [
+        "He waits to be tasked. Through the quiet periods there is always work to be found, and he needs to go and find it.",
+        "Taking a job through to completion on his own initiative is the step he needs to make."
+      ],
+      "decision": [
+        "His decision making needs to mature: calls were made before the situation was fully understood, and escalation came late.",
+        "He needs to talk through his reasoning before acting when the situation is unfamiliar."
+      ],
+      "motivation": [
+        "Motivation was discussed with him during the trip; the energy he brings needs to be the same across the whole scope, not only the work that interests him.",
+        "He needs to keep the same standard through the back end of a long shift."
+      ],
+      "teamwork": [
+        "He works in isolation more than the shift needs. Sharing what he knows, and the handover itself, are the areas to work on.",
+        "Integration with the team is the area we agreed he would focus on."
+      ],
+      "attendance": [
+        "Readiness at handover needs to improve - arriving as the shift starts is not the same as being ready for it.",
+        "Timekeeping was raised with him during the trip and needs to hold for the next rotation."
+      ],
+      "communication": [
+        "He needs to keep his supervisor informed as the work progresses rather than once it is done.",
+        "Comms discipline during operations is the area to work on before the next trip."
+      ]
+    },
+    "middle_low": [
+      "{first} takes feedback without argument, which is the right place to start from, and the conversation on board was an open one.",
+      "{first} wants to do the job well and that is not in question. What he needs now is time, closer supervision, and the points above.",
+      "{first} works better with a clear brief and somebody alongside him, and that is how he was employed this trip."
+    ],
+    "closing_mid": [
+      "In summary, {first} has met what the grade asks of him this trip, with the areas above to work on before the next one.",
+      "In summary, {first} did what was asked of him. With the points above picked up he will be ready for more.",
+      "Overall a fair trip from {first}, with clear areas to work on that we went through on board."
+    ],
+    "closing_low": [
+      "In summary, this trip fell short of what the grade requires. The points above were discussed with him on board and should be addressed before he returns offshore.",
+      "In summary, this trip did not meet the standard expected. I would ask that the points above are picked up onshore before the next rotation.",
+      "Overall {first} needs further development and close supervision before working at this grade unsupported."
+    ],
+    "opening_low": [
+      "{crew} worked in the ROV department on board the {vessel} this trip as {position}. This feedback covers the rotation and was discussed with him on board.",
+      "{crew} sailed as {position} on the {vessel} for this rotation. The points below were raised with him during the trip rather than kept back for the report.",
+      "For this trip {crew} was part of the ROV team on the {vessel} as {position}, working through {condition}.",
+      "{crew} joined my shift on board the {vessel} as {position} for this rotation. This is his feedback for the trip, and he has seen it."
+    ]
+  },
+  "crew": [
+    "Thank you to {sup_first} and to the whole ROV team for this trip. I was well received and given the space to show my work and to learn from the team, which is what keeps me motivated.\n\nI agree with the feedback received. I am aware of the points I still need to develop and I work on them every trip, both technically and in how I communicate. I am ready to take on more responsibility and I hope to keep working with this team on Northwind Offshore vessels.",
+    "I agree with every word {sup_first} has written. I am happy to be part of this team — they allow me to show my work and my knowledge, and that motivates me to keep learning and to share what I have with them.\n\nI thank the whole crew for the opportunity and I hope to keep working on Northwind Offshore vessels.",
+    "Thank you for the feedback and for the trip. The team received me well and had the patience to listen to my ideas, and I felt part of it from the first day.\n\nI know where I still need to improve and I work on it every day. I am ready for the next challenge and confident I can contribute to Northwind Offshore's goals.",
+    "I would like to thank {sup_first} and the team for this rotation. The trip gave me the chance to develop and to contribute, and the team was always open to my questions and my ideas.\n\nI accept the feedback given and I will keep working on the areas identified. I would be glad to continue with this team on future campaigns.",
+    "Thank you for the trip and for the feedback. I enjoyed the work and the team, and I always try to leave things in better shape than I found them.\n\nI am aware of my shortcomings and I work on them every day, just as I try to keep improving, both in my own work and in the way I deal with people. I am ready to face any challenge ahead.",
+    "Throughout this trip I have worked with {sup_first}, who has proven to be an outstanding leader and somebody whose guidance I am proud to follow. I appreciate the feedback given and I would be very happy to continue under this leadership, whether on the {vessel} or any other vessel."
+  ],
+  "crew_low": [
+    "I have read the feedback and I accept it. I understand the points raised and I will work on each of them before my next trip.\n\nI would like to thank {sup_first} for discussing it with me directly on board rather than after the trip.",
+    "I accept the feedback given. I know where I fell short this trip and I would like the chance to put it right, with whatever training or support the department can offer.",
+    "I agree with most of the points raised and I understand the ones I do not yet see clearly. I will work on them and I welcome a review on the next trip."
+  ]
+}

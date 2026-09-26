@@ -1,0 +1,40 @@
+{
+ "ROV Pilot Technician": [
+  "Demonstrate general safety awareness and ensure compliance with Northwind Offshore HSEQ requirements",
+  "Ensure that all control measures identified by TRAs are in place prior to task commencing.",
+  "Participate in toolbox talks in accordance with Northwind Offshore requirements",
+  "Demonstrate the ability to effectively communicate with the operational team",
+  "Perform monthly (30 day) planned maintenance activities",
+  "Assist with installation and repair activities on electrical / electronic systems",
+  "Assist with installation and repair activities on mechanical / hydraulic systems",
+  "Act as Co-pilot / Observer",
+  "Act as ROV pilot for routine tasks in relatively placid environmental conditions",
+  "Operate launch and recovery equipment under supervision"
+ ],
+ "ROV Submersible Technician": [
+  "Demonstrate general safety awareness and ensure compliance with Northwind Offshore HSEQ requirements",
+  "Ensure that all control measures identified by TRAs are in place prior to task commencing.",
+  "Participate in toolbox talks in accordance with Northwind Offshore requirements",
+  "Demonstrate the ability to effectively communicate with the operational team",
+  "Find faults and make repairs to electronic/electrical equipment",
+  "Find faults and make repairs to mechanical/hydraulic equipment",
+  "Interface ancilliary equipment onto the ROV and into the Control Van",
+  "Act as Deck Supervisor during launch and recovery in placid environmental conditions",
+  "Act as ROV pilot in adverse environmental conditions or during difficult tasks",
+  "Take control of shift during supervisor’s absence"
+ ],
+ "ROV Supervisor": [
+  "Demonstrate general safety awareness and ensure compliance with Northwind Offshore HSEQ requirements",
+  "Lead by example and coach other personnel in general safety awareness, ensuring risk measures are enforced",
+  "Lead TRAs and toolbox talks in accordance with Northwind Offshore requirements",
+  "Demonstrate the ability to effectively communicate with the operational team",
+  "Demonstrate the ability to effectively communicate with the client, marine crew, and company management",
+  "Demonstrate effective supervision and leadership skills",
+  "Demonstrate the ability to provide ongoing assessment and coaching for personnel",
+  "Demonstrate understanding of project performance requirements and familiarity with project documentation relating to ROV operations",
+  "Demonstrate a thorough understanding of Project & ROV Dive Planning",
+  "Manage all ROV specific project equipment and spares to ensure they are in a satisfactory condition and being maintained as such to ensure efficient operations",
+  "Manage and review the amount of spares held for the forthcoming operations taking into account region of operation, duration of project",
+  "Provide detailed end of trip reports to relevant onshore departments"
+ ]
+}

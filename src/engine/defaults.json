@@ -1,0 +1,33 @@
+{
+ "roles": [
+  "ROV Team Lead",
+  "ROV Supervisor",
+  "ROV Sub Tech",
+  "ROV Pilot",
+  "ROV Trainee",
+  "Offshore Manager"
+ ],
+ "crew_default": "ROV Sub Tech",
+ "supervisor_default": "ROV Team Lead",
+ "bonds": {
+  "Worked alongside them": [
+   "Colleague",
+   "ROV department colleague",
+   "Sub Engineer",
+   "Senior Sub Engineer",
+   "Sub Technician",
+   "Pilot Technician"
+  ],
+  "Over them on the job": [
+   "Supervisor",
+   "ROV Supervisor",
+   "Superintendent",
+   "ROV Team Lead",
+   "Offshore Manager"
+  ],
+  "Assessing them": [
+   "Assessor",
+   "Supervisor & Assessor"
+  ]
+ }
+}

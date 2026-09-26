@@ -1,0 +1,27 @@
+[
+  {
+    "state": "later",
+    "title": "Reading a form you already have",
+    "detail": "A finished testimony dropped in and read back into a pack — who signed it, what it covered, which criteria it closes. The evidence you have already collected is worth as much as the evidence you are about to write, and at the moment only one of the two is counted."
+  },
+  {
+    "state": "later",
+    "title": "Other feedback forms",
+    "detail": "The same engine behind the agency equivalents and the annual appraisal form."
+  },
+  {
+    "state": "later",
+    "title": "Certificates",
+    "detail": "What you hold, when each one expires, and a word about it before it does rather than the week you fly."
+  },
+  {
+    "state": "considering",
+    "title": "Day rates",
+    "detail": "What a trip actually paid — day rate, travel days, the overtime — worked out here instead of on the back of a notebook. Undecided because it is money and this is a tool for paperwork: it may belong somewhere of its own."
+  },
+  {
+    "state": "considering",
+    "title": "A pack for somebody else",
+    "detail": "Assessors and supervisors assemble evidence for the people under them, not only for themselves. Whether that is this tool with more than one candidate in it, or a different thing entirely, is not settled."
+  }
+]
