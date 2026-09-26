@@ -1,0 +1,22 @@
+[Unit]
+Description=docx-render (lays out the company's Word forms exactly as Word does)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/docx-render
+ExecStart=/usr/bin/node /opt/docx-render/server.mjs
+Environment=DOCX_PORT=8791
+EnvironmentFile=/opt/docx-render/env
+Restart=always
+RestartSec=2
+# Nothing here needs more of the machine than a temp directory.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/docx-render /opt/docx-render/profile
+MemoryMax=2G
+
+[Install]
+WantedBy=multi-user.target

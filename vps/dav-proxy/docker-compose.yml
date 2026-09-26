@@ -1,0 +1,23 @@
+# The calendar account's proxy (see nginx.conf). Rides the Traefik that already
+# serves docs7p.northwind.example, on its /dav path only — the Word editor keeps
+# the rest of the name. Run from /docker/dav7p with `docker compose up -d`.
+services:
+  dav7p:
+    image: nginx:1.27-alpine
+    container_name: dav7p
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: [n8n_default]
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=n8n_default
+      - traefik.http.routers.dav7p.rule=Host(`docs7p.northwind.example`) && (PathPrefix(`/dav`) || Path(`/.well-known/caldav`))
+      - traefik.http.routers.dav7p.priority=1000
+      - traefik.http.routers.dav7p.tls=true
+      - traefik.http.routers.dav7p.entrypoints=websecure
+      - traefik.http.routers.dav7p.tls.certresolver=mytlschallenge
+      - traefik.http.services.dav7p.loadbalancer.server.port=80
+networks:
+  n8n_default:
+    external: true
