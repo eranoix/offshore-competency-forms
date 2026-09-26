@@ -1,0 +1,8 @@
+# `form.css` is derived from the printed form's markup; build output does not
+# count as a language written here.
+src/styles/form.css        linguist-generated=true
+
+# Data dump written by scripts/forms-pull.mjs. Linguist already drops it by
+# heuristic; saying so explicitly avoids depending on a heuristic for a number
+# that goes in the README.
+src/forms/published.js    linguist-generated=true

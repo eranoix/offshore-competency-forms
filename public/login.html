@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<title>Sign in · Offshore Report</title>
+<style>
+  /* Everything is drawn in CSS: no images, no fonts to fetch, nothing to wait
+     for on a bad connection. */
+  :root{
+    --deck:#0B1220; --deck-2:#152033; --deck-3:#1F2A40;
+    --rule:#2A3A5A; --rule-2:#1F2A3D;
+    --ink:#E5E7EB; --ink-2:#94A3B8; --ink-3:#7D8DA3;
+    --accent:#8B6FF0; --accent-lit:#A78BFA; --accent-dim:rgba(167,139,250,.34);
+    --warn:#FBBF24;
+    --sans:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--ink); overflow:hidden;
+    font:14px/1.5 var(--mono);
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(120% 90% at 50% 36%, #1B2B47 0%, #101A2D 48%, var(--deck) 100%);
+    display:grid; place-items:center; padding:24px;
+  }
+
+  .silt{
+    position:fixed; inset:0; pointer-events:none; opacity:.42;
+    background-image:
+      radial-gradient(1.6px 1.6px at 14% 28%,#CBD6EA,transparent),
+      radial-gradient(1.2px 1.2px at 62% 16%,#CBD6EA,transparent),
+      radial-gradient(1.8px 1.8px at 42% 72%,#CBD6EA,transparent),
+      radial-gradient(1.3px 1.3px at 84% 58%,#CBD6EA,transparent),
+      radial-gradient(1.5px 1.5px at 28% 88%,#CBD6EA,transparent),
+      radial-gradient(1.1px 1.1px at 72% 84%,#CBD6EA,transparent),
+      radial-gradient(1.4px 1.4px at 8% 62%,#CBD6EA,transparent),
+      radial-gradient(1.2px 1.2px at 92% 34%,#CBD6EA,transparent);
+    animation:silt 30s linear infinite;
+  }
+  @keyframes silt{to{translate:-28px -64px}}
+  .scan{
+    position:fixed; inset:0; pointer-events:none; opacity:.18;
+    background:repeating-linear-gradient(180deg,rgba(0,0,0,.6) 0 1px,transparent 1px 3px);
+  }
+  .vig{position:fixed; inset:0; pointer-events:none; box-shadow:inset 0 0 190px 46px rgba(6,10,18,.92)}
+
+  .hud{position:fixed; inset:clamp(14px,2.4vw,30px); pointer-events:none; color:var(--accent-lit)}
+  .hud .corner{position:absolute; width:26px; height:26px; border:1.5px solid var(--accent-dim)}
+  .hud .tl{top:0;left:0;border-right:0;border-bottom:0}
+  .hud .tr{top:0;right:0;border-left:0;border-bottom:0}
+  .hud .bl{bottom:0;left:0;border-right:0;border-top:0}
+  .hud .br{bottom:0;right:0;border-left:0;border-top:0}
+  .tape{
+    position:absolute; left:50%; translate:-50% 0; top:0; display:flex; gap:16px;
+    font-size:11px; letter-spacing:.14em; color:var(--ink-3); white-space:nowrap;
+  }
+  .tape b{color:var(--accent-lit); font-weight:500}
+  .gauge{
+    position:absolute; top:50%; translate:0 -50%; display:grid; gap:9px;
+    font-size:10.5px; letter-spacing:.1em; color:var(--ink-3);
+  }
+  .gauge.l{left:0}
+  .gauge.r{right:0; text-align:right}
+  .gauge s{text-decoration:none; color:var(--ink); font-variant-numeric:tabular-nums}
+  .cross{position:absolute; left:50%; top:50%; translate:-50% -50%; width:min(78vw,660px); height:min(70vh,520px); opacity:.4}
+  .cross::before,.cross::after{content:""; position:absolute; background:var(--accent-dim)}
+  .cross::before{left:50%; top:0; bottom:0; width:1px}
+  .cross::after{top:50%; left:0; right:0; height:1px}
+  .rec{
+    position:absolute; bottom:1px; left:36px; display:flex; align-items:center; gap:8px;
+    font-size:11px; letter-spacing:.12em; color:var(--ink-2);
+  }
+  .rec i{width:7px; height:7px; border-radius:50%; background:var(--warn);
+    box-shadow:0 0 8px rgba(251,191,36,.7); animation:blink 1.8s steps(2) infinite}
+  @keyframes blink{50%{opacity:.18}}
+  .stamp{position:absolute; bottom:1px; right:36px; font-size:11px; letter-spacing:.12em; color:var(--ink-3)}
+
+  .panel{
+    position:relative; width:min(404px,100%); padding:30px 30px 26px;
+    border:1px solid var(--rule); border-radius:10px;
+    background:rgba(21,32,51,.82); backdrop-filter:blur(4px);
+    box-shadow:0 30px 70px -30px #000, 0 0 60px -26px rgba(139,111,240,.55);
+  }
+  .lockup{display:flex; align-items:center; gap:10px; margin-bottom:22px}
+  .wordmark{font:500 17px/1 var(--sans); letter-spacing:-.02em}
+  .wordmark b{font-weight:700}
+  h1{margin:0; font:600 21px/1.2 var(--sans); letter-spacing:-.02em}
+  .lede{margin:8px 0 26px; color:var(--ink-2); font:14px/1.55 var(--sans); max-width:38ch}
+  label{display:block; font-size:10.5px; letter-spacing:.14em; color:var(--ink-3); margin:0 0 6px}
+  .row + .row{margin-top:15px}
+  input{
+    width:100%; background:rgba(11,18,32,.75); border:1px solid var(--rule-2); border-radius:6px;
+    padding:12px 13px; color:var(--ink); font:16px/1.3 var(--sans);
+    caret-color:var(--accent-lit); transition:border-color .12s, box-shadow .12s;
+  }
+  input:hover{border-color:var(--rule)}
+  input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(139,111,240,.22)}
+  input:-webkit-autofill,input:-webkit-autofill:focus{
+    -webkit-text-fill-color:var(--ink); -webkit-box-shadow:0 0 0 40px #101A2D inset;
+    caret-color:var(--ink); transition:background-color 9999s;
+  }
+  button{
+    width:100%; margin-top:22px; border:0; border-radius:6px; padding:12px;
+    background:linear-gradient(180deg,var(--accent-lit),var(--accent));
+    color:#140F27; font:700 13px/1 var(--mono); letter-spacing:.16em; cursor:pointer;
+    transition:filter .12s, transform .06s;
+  }
+  button:hover{filter:brightness(1.07)}
+  button:active{transform:translateY(1px)}
+  button[disabled]{opacity:.55; cursor:progress}
+  button:focus-visible,input:focus-visible{outline:2px solid var(--accent-lit); outline-offset:2px}
+  .msg{margin-top:13px; min-height:20px; font:13px/1.5 var(--sans); color:#F2B8C6}
+  .foot{
+    margin-top:22px; padding-top:16px; border-top:1px solid var(--rule-2);
+    color:var(--ink-3); font:12.5px/1.6 var(--sans);
+  }
+
+  @media (max-width:760px){
+    .hud{inset:10px}
+    .rec{left:8px}
+    .stamp{right:8px}
+    .gauge,.cross,.tape{display:none}
+    .panel{padding:26px 22px 22px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <div class="silt" aria-hidden="true"></div>
+  <div class="scan" aria-hidden="true"></div>
+  <div class="vig" aria-hidden="true"></div>
+
+  <div class="hud" aria-hidden="true">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="tape">HDG <b>184.2</b><span>·</span>PITCH <b>-1.4</b><span>·</span>ROLL <b>0.6</b></div>
+    <div class="gauge l">DEPTH<br><s>1420.6 m</s><br><br>ALT<br><s>2.4 m</s></div>
+    <div class="gauge r">TETHER<br><s>PAID 550 m</s><br><br>THRUST<br><s>42 %</s></div>
+    <div class="cross"></div>
+    <div class="rec"><i></i> REC · DIVE 214</div>
+    <div class="stamp">CAM 1 · WIDE</div>
+  </div>
+
+  <section class="panel">
+    <div class="lockup">
+      <svg width="30" height="30" viewBox="0 0 40 40" fill="none" role="img" aria-label="Offshore Report">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="40" y2="40">
+            <stop offset="0" stop-color="#A78BFA"/><stop offset="1" stop-color="#6D4FD6"/>
+          </linearGradient>
+          <linearGradient id="sheet" x1="10" y1="8" x2="30" y2="33">
+            <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9E2FF"/>
+          </linearGradient>
+        </defs>
+        <rect width="40" height="40" rx="11.5" fill="url(#bg)"/>
+        <path d="M13.4 8.5h8.8l5.4 5.6v15.4a2.6 2.6 0 0 1-2.6 2.6H13.4a2.6 2.6 0 0 1-2.6-2.6V11.1a2.6 2.6 0 0 1 2.6-2.6Z" fill="url(#sheet)"/>
+        <path d="M22.2 8.5l5.4 5.6h-5.4V8.5Z" fill="#8B6FF0" opacity=".55"/>
+        <path d="M15.6 15.4h4.2M15.6 19.2h7" stroke="#8B6FF0" stroke-width="1.7" stroke-linecap="round" opacity=".45"/>
+        <path d="M15.4 25.2l3.1 3.1 6.3-6.6" stroke="#6D4FD6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">form<b>flow</b></span>
+    </div>
+
+    <h1>Welcome back.</h1>
+    <p class="lede">The worksite trip feedback is already written to the job. Sign in, check it, print it.</p>
+
+    <form id="f" autocomplete="on">
+      <div class="row">
+        <label for="email">USER</label>
+        <input id="email" name="email" type="text" autocomplete="username" autofocus required>
+      </div>
+      <div class="row">
+        <label for="password">PASSWORD</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button id="go" type="submit">SIGN IN</button>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+
+    <p class="foot">
+      No account yet? Whoever runs this site can make you one in a minute. Forgotten your
+      password? They can set a new one — there is no email server here to send a link.
+    </p>
+  </section>
+
+<script>
+  /* Back to where he was — on this site only: an address from anywhere else,
+     or one starting "//", would send a person who just signed in elsewhere. */
+  const asked = new URLSearchParams(location.search).get("next") || "/";
+  const next = /^\/(?!\/|\\)/.test(asked) ? asked : "/";
+  const form = document.getElementById("f");
+  const msg = document.getElementById("msg");
+  const go = document.getElementById("go");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    go.disabled = true; msg.textContent = "";
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+        }),
+      });
+      if (res.ok) { location.href = next; return; }
+      const body = await res.json().catch(() => ({}));
+      msg.textContent = body.error === "wrong user or password"
+        ? "That user and password do not match an account."
+        : (body.error || "Could not sign in.");
+    } catch {
+      msg.textContent = "No connection to the server.";
+    }
+    go.disabled = false;
+  });
+</script>
+</body>
+</html>
