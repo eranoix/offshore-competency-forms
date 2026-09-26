@@ -1,0 +1,1651 @@
+/* The rail is overlaid, not inserted, so the page beside it never reflows when it grows
+   from 62px to 232px on hover or pin. */
+
+.site {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  height: 100%;
+}
+
+.sidebar {
+  position: relative;
+  z-index: 20;
+  width: 62px;
+  background: var(--rail);
+  border-right: 1px solid var(--rule-2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.16s ease;
+  -webkit-font-smoothing: antialiased;
+}
+.sidebar:hover,
+.sidebar:has(:focus-visible),
+.sidebar.pinned {
+  width: 232px;
+  box-shadow: 18px 0 40px -28px rgba(0, 0, 0, 0.9);
+}
+.sidebar .label,
+.sidebar .wordmark {
+  opacity: 0;
+  transition: opacity 0.14s ease;
+  white-space: nowrap;
+}
+.sidebar:hover .label,
+.sidebar:has(:focus-visible) .label,
+.sidebar.pinned .label,
+.sidebar:hover .wordmark,
+.sidebar:has(:focus-visible) .wordmark,
+.sidebar.pinned .wordmark {
+  opacity: 1;
+}
+
+.sb-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 14px 14px;
+  border-bottom: 1px solid var(--rule-2);
+}
+.sb-head .logo {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #140F27;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+.sb-head .wordmark { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.sb-pin {
+  margin-left: auto;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 2px 4px;
+  opacity: 0;
+  transition: opacity 0.14s ease, color 0.12s;
+}
+.sidebar:hover .sb-pin,
+.sidebar:has(:focus-visible) .sb-pin,
+.sidebar.pinned .sb-pin { opacity: 1; }
+.sb-pin:hover { color: var(--ink); }
+
+.sb-list { list-style: none; margin: 10px 0 0; padding: 0 8px; display: grid; gap: 2px; }
+.sb-list a,
+.sb-out {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 7px;
+  color: var(--ink-2);
+  text-decoration: none;
+  font-size: 13.5px;
+}
+.sb-list a:hover { background: var(--deck-2); color: var(--ink); }
+.sb-list a.on { background: var(--deck-2); color: var(--ink); box-shadow: inset 2px 0 0 var(--accent-lit); }
+.glyph { flex: none; color: var(--ink-3); }
+svg.glyph { display: block; }
+.sb-list a.on .glyph { color: var(--accent-lit); }
+
+
+.sb-version {
+  margin: auto 0 10px;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 11px;
+  opacity: .8;
+}
+.sb-notes {
+  margin: 0 8px 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  width: calc(100% - 16px);
+  color: var(--ink-3);
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 7px;
+}
+.sb-notes:hover { background: var(--deck-2); color: var(--ink); }
+
+.sb-out {
+  margin: 0 8px 12px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  width: calc(100% - 16px);
+}
+.sb-out:hover { background: var(--deck-2); color: var(--ink); }
+
+/* the slot the current page lives in — deliberately NOT called .page, which is
+   what one sheet of the form is called inside .sheet */
+.view { min-width: 0; overflow: hidden; display: flex; }
+.view > * { flex: 1; min-width: 0; }
+
+.workbench { display: grid; grid-template-columns: var(--rail-w) 1fr; height: 100%; min-width: 0; }
+
+.home {
+  position: relative;
+  overflow: hidden auto;
+  padding: 40px 40px 56px;
+  background: radial-gradient(900px 560px at 18% -140px, #16223A 0%, transparent 72%), var(--deck);
+}
+.home > *:not(.hero-sheet) { position: relative; z-index: 1; }
+
+.hero-sheet {
+  position: absolute;
+  top: -30px;
+  right: -210px;
+  bottom: -40px;
+  z-index: 0;
+  pointer-events: none;
+  transform: scale(0.92) rotate(-2.5deg);
+  transform-origin: top right;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
+  -webkit-mask-image: linear-gradient(to left, #000 46%, transparent 96%);
+  mask-image: linear-gradient(to left, #000 46%, transparent 96%);
+  opacity: 0.55;
+  animation: sheet-in 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+.hero-sheet .sheet:last-child { display: none; }
+@keyframes sheet-in {
+  from { opacity: 0; transform: scale(0.72) rotate(-3deg) translate(24px, 10px); }
+}
+@media (max-width: 1400px) { .hero-sheet { right: -320px; opacity: 0.38; } }
+@media (max-width: 1200px) { .hero-sheet { opacity: 0.26; } }
+@media (max-width: 1000px) { .hero-sheet { display: none; } }
+@media (max-width: 900px) { .home-grid { grid-template-columns: 1fr; } }
+.home header { max-width: 60ch; }
+.home h1 {
+  margin: 0;
+  max-width: 22ch;
+  font-size: clamp(23px, 2.4vw, 29px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+.home header p { margin: 9px 0 0; color: var(--ink-2); font-size: 14.5px; line-height: 1.55; }
+.home section { margin-top: 26px; }
+.home h2 { margin: 0 0 12px; font-size: 12.5px; font-weight: 600; color: var(--ink-3); }
+
+.home-grid {
+  display: grid; gap: 16px; margin-top: 24px; align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); max-width: 780px;
+}
+.home .panel {
+  margin: 0; padding: 16px 16px 14px;
+  background: var(--deck-2); border: 1px solid var(--rule-2); border-radius: 12px;
+}
+.tool-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.tool-list a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.12s, background 0.12s;
+}
+.tool-list a:hover { border-color: var(--rule-2); background: var(--deck-3); }
+.tool-list .glyph { color: var(--accent-lit); flex: none; }
+.tool-list b { display: block; font-weight: 600; font-size: 13.5px; }
+.tool-list em { display: block; margin-top: 1px; font-style: normal; color: var(--ink-3); font-size: 12px; }
+
+.saved-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.saved-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+.saved-list li:hover { background: var(--deck-3); border-color: var(--rule-2); }
+.saved-list a { flex: 1; min-width: 0; color: var(--ink); text-decoration: none; }
+.saved-list b { display: block; font-size: 13.5px; font-weight: 600; }
+.saved-list a span { display: block; color: var(--ink-3); font-size: 12px; margin-top: 1px; }
+.saved-list .ago { color: var(--ink-3); font-size: 11.5px; flex: none; }
+.saved-list button {
+  flex: none;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 5px;
+  opacity: 0;
+}
+.saved-list li:hover button { opacity: 1; }
+.saved-list button:hover { color: #ff9a9a; background: #2a1419; }
+
+
+@media (max-width: 1100px) {
+  .site { grid-template-columns: 52px 1fr; }
+  .sidebar { width: 52px; }
+  .sidebar.pinned { width: 52px; }
+  .sidebar:hover, .sidebar:has(:focus-visible) { width: 210px; }
+  .home { padding: 40px 20px 60px; }
+  .workbench { display: block; height: auto; }
+}
+
+.home .result { margin: 0; font-size: 13px; color: var(--ink-2); }
+.home .result.ok { color: #b6ead2; }
+.home .result.bad { color: #f4c3bb; }
+.home .note { color: var(--ink-3); font-size: 13.5px; line-height: 1.6; max-width: 62ch; margin: 0; }
+
+.users { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; max-width: 700px; }
+.users li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+.users li:hover { background: var(--deck-2); border-color: var(--rule-2); }
+.users li.off { opacity: 0.55; }
+.users .who { flex: 1; min-width: 0; }
+.users .who b { display: block; font-size: 13.5px; font-weight: 600; }
+.users .who span { color: var(--ink-3); font-size: 12px; }
+.users button {
+  border: 1px solid var(--rule-2);
+  background: var(--deck-2);
+  color: var(--ink-2);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.users button:hover { border-color: var(--accent-lit); color: var(--ink); }
+.users button.danger:hover { border-color: #8d1f2c; color: #ffb4b4; }
+.pw.wide { max-width: 420px; }
+
+.roadmap .tabs { display: flex; gap: 24px; border-bottom: 1px solid var(--rule-2); margin-top: 34px; }
+.roadmap .tabs button {
+  border: 0; background: none; color: var(--ink-3); cursor: pointer;
+  padding: 0 0 12px; font-size: 13.5px; border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.roadmap .tabs button:hover { color: var(--ink-2); }
+.roadmap .tabs button.on { color: var(--ink); border-bottom-color: var(--accent); }
+
+.roadmap .phase { padding: 26px 0 6px; }
+.roadmap .phase + .stage { border-top: 1px solid var(--rule-2); }
+.roadmap .phase-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+.roadmap .phase-head h2 { margin: 0; font-size: 14px; font-weight: 600; color: var(--ink); }
+.roadmap .phase-head span { color: var(--ink-3); font-size: 12px; }
+.roadmap .plans { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 70ch; }
+.roadmap .plans li {
+  display: grid; gap: 4px; padding: 14px 16px;
+  border: 1px solid var(--rule-2); border-radius: 10px; background: var(--deck-2);
+}
+.roadmap .plans b { font-size: 13.5px; font-weight: 600; }
+.roadmap .plans span { color: var(--ink-3); font-size: 12.5px; line-height: 1.55; }
+
+.roadmap .timeline { list-style: none; margin: 8px 0 0; padding: 0; }
+.roadmap .timeline > li { position: relative; padding: 24px 0 8px 22px; border-left: 1px solid var(--rule-2); }
+.roadmap .timeline > li:last-child { border-left-color: transparent; }
+.roadmap .timeline > li::before {
+  content: ""; position: absolute; left: -4px; top: 31px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--rule);
+}
+.roadmap .timeline > li.current::before {
+  background: var(--accent-lit); box-shadow: 0 0 0 3px rgba(167, 139, 250, .2);
+}
+.roadmap .stamp { display: flex; align-items: baseline; gap: 10px; font-size: 11.5px; color: var(--ink-3); }
+.roadmap .stamp b { color: var(--ink-2); font-size: 12.5px; font-weight: 600; }
+.roadmap .stamp em {
+  font-style: normal; color: var(--accent-lit); font-size: 10.5px;
+  border: 1px solid var(--accent-dim); border-radius: 99px; padding: 1px 8px;
+}
+.roadmap .timeline h2 { margin: 7px 0 10px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.roadmap .timeline ul { margin: 0; padding: 0; list-style: none; }
+.roadmap .timeline ul li {
+  position: relative; color: var(--ink-2); font-size: 13px; line-height: 1.55;
+  padding-left: 16px; margin-bottom: 8px; max-width: 66ch;
+}
+.roadmap .timeline ul li::before {
+  content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--rule);
+}
+
+.logo-lockup { display: flex; align-items: center; gap: 10px; }
+.sb-head .wordmark b { font-weight: 700; }
+
+/* Phones: touch screens have no hover, so below 760px the rail becomes a bottom tab bar
+   with its labels always visible. */
+@media (max-width: 760px) {
+  .site { display: block; height: auto; }
+  .sidebar {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: stretch;
+    border-right: 0;
+    border-top: 1px solid var(--rule-2);
+    padding: 4px 4px calc(4px + env(safe-area-inset-bottom));
+    box-shadow: 0 -14px 30px -22px #000;
+    overflow: visible;
+    transition: none;
+    z-index: 40;
+  }
+  .sidebar:hover,
+  .sidebar.pinned,
+  .sidebar:has(:focus-visible) { width: 100%; box-shadow: 0 -14px 30px -22px #000; }
+  .sb-head, .sb-version, .sb-pin { display: none; }
+  .sb-list { display: flex; flex: 1; margin: 0; padding: 0; gap: 0; }
+  .sb-list li { flex: 1; }
+  .sb-list a {
+    flex-direction: column;
+    gap: 3px;
+    padding: 7px 2px 5px;
+    font-size: 10.5px;
+    justify-content: center;
+  }
+  .sidebar .label, .sidebar:hover .label { opacity: 1; }
+  .sb-list a.on { background: none; box-shadow: none; color: var(--accent-lit); }
+  .sb-list a.on .glyph { color: var(--accent-lit); }
+  .sb-out {
+    margin: 0;
+    width: auto;
+    flex: 0 0 54px;
+    flex-direction: column;
+    gap: 3px;
+    padding: 7px 2px 5px;
+    font-size: 10.5px;
+  }
+  .view { display: block; padding-bottom: 66px; }
+  .home { padding: 26px 18px 36px; }
+  .home h1 { font-size: 25px; }
+  .hero-sheet { display: none; }
+}
+
+.library .give { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 14px; align-items: start; }
+.library .drop {
+  display: grid; justify-items: start; gap: 2px;
+  padding: 12px 14px; border: 1px dashed var(--rule); border-radius: 10px;
+  background: var(--deck-2); transition: border-color .14s, background .14s;
+}
+.library .drop.over { border-color: var(--accent-lit); background: var(--deck-3); }
+.library .drop .glyph { color: var(--accent-lit); }
+.library .drop b { font-size: 13.5px; }
+.library .drop span { color: var(--ink-3); font-size: 12px; }
+.library .drop .btn { margin-top: 8px; padding: 6px 12px; font-size: 12.5px; }
+.library .about { display: grid; gap: 8px; margin: 0; }
+.library .about .field span { display: block; color: var(--ink-3); font-size: 11.5px; margin-bottom: 3px; }
+.library .about select,
+.library .about input {
+  width: 100%; background: var(--deck-2); border: 1px solid var(--rule-2); border-radius: 8px;
+  padding: 7px 9px; color: var(--ink); font: inherit; font-size: 13px;
+}
+.library .about select:focus,
+.library .about input:focus { outline: none; border-color: var(--accent); }
+.library .result { margin: 8px 0 0; font-size: 13px; }
+.library .result.busy { color: var(--ink-2); }
+
+.library .shelf { margin-top: 6px; }
+.library .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; }
+.library .bar input[type="search"] {
+  flex: 1 1 220px; min-width: 0; background: var(--deck-2); border: 1px solid var(--rule-2);
+  border-radius: 8px; padding: 7px 10px; color: var(--ink); font: inherit; font-size: 13px;
+}
+.library .bar input[type="search"]:focus { outline: none; border-color: var(--accent); }
+.library .bar > select {
+  flex: none; width: auto; background: var(--deck-2); border: 1px solid var(--rule-2);
+  border-radius: 8px; padding: 7px 9px; color: var(--ink-2); font: inherit; font-size: 12.5px;
+}
+.library .kinds { display: flex; gap: 4px; flex-wrap: wrap; }
+.library .kinds button {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer; font: inherit; font-size: 12px;
+  color: var(--ink-2); background: transparent; border: 1px solid var(--rule-2);
+  border-radius: 7px; padding: 6px 9px;
+}
+.library .kinds button:hover { color: var(--ink); border-color: var(--rule); }
+.library .kinds button.on { background: var(--accent-dim); border-color: var(--accent-dim); color: var(--ink); }
+.library .kinds em { font-style: normal; font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.library .kinds button.on em { color: var(--accent-lit); }
+.library .picked-bar {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  padding: 7px 10px; border: 1px solid var(--accent-dim); border-radius: 9px; background: var(--deck-2);
+}
+.library .picked-bar b { font-size: 12.5px; margin-right: auto; }
+
+.library .wall {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+}
+.library .tile { position: relative; min-width: 0; }
+.library .tile .shot {
+  display: block; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; cursor: pointer;
+  padding: 0; border: 1px solid var(--rule-2); border-radius: 9px; background: var(--deck-2);
+}
+.library .tile .shot:hover { border-color: var(--rule); }
+.library .tile.on .shot { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-dim); }
+.library .tile img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.library .tile .glyph {
+  display: grid; place-items: center; width: 100%; height: 100%;
+  font-size: 13px; font-weight: 600; letter-spacing: .06em; color: var(--ink-3);
+  background: linear-gradient(160deg, var(--deck-3), var(--deck-2));
+}
+.library .tile .glyph.pdf { color: #f2a2a2; }
+.library .tile .glyph.word { color: #9db8f0; }
+.library .tile .glyph.text { color: #9ad9c0; }
+.library .tile .tick { position: absolute; top: 6px; left: 6px; display: grid; place-items: center;
+  width: 20px; height: 20px; border-radius: 6px; background: rgba(11,18,32,.72); cursor: pointer; }
+.library .tile .tick input { margin: 0; accent-color: var(--accent); cursor: pointer; }
+.library .tile .cap { margin-top: 5px; min-width: 0; }
+.library .tile .cap b {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: 12px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere;
+}
+.library .tile .cap span { display: block; color: var(--ink-3); font-size: 11px; margin-top: 1px; }
+
+.viewer {
+  width: min(1040px, 94vw); max-width: none; height: min(88vh, 900px); padding: 0;
+  border: 1px solid var(--rule); border-radius: 12px; background: var(--deck-2); color: var(--ink);
+  flex-direction: column; overflow: hidden;
+}
+.viewer[open] { display: flex; }
+.viewer::backdrop { background: rgba(6, 10, 18, .72); }
+.viewer header {
+  display: flex; align-items: center; gap: 8px; flex: none;
+  padding: 10px 12px; border-bottom: 1px solid var(--rule-2); background: var(--deck-2);
+}
+.viewer header > div { flex: 1; min-width: 0; margin-right: auto; }
+.viewer h2 { margin: 0; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.viewer header p { margin: 1px 0 0; font-size: 11.5px; color: var(--ink-3); }
+.viewer .shut {
+  justify-self: end; display: grid; place-items: center; width: 28px; height: 28px; padding: 0;
+  border: 1px solid var(--rule-2); border-radius: 7px; background: transparent;
+  color: var(--ink-3); cursor: pointer; font-size: 13px;
+}
+.viewer .shut:hover { color: var(--ink); border-color: var(--rule); }
+.viewer .look { flex: 1; min-height: 0; overflow: auto; background: var(--deck); display: grid; }
+.viewer .look.paper { background: #4a5163; display: block; padding: 16px 0; }
+.viewer .docx-paper { display: block; }
+.viewer .docx-paper .docx-wrapper { background: transparent; padding: 0; display: grid; gap: 16px; justify-items: center; }
+.viewer .docx-paper .docx { background: #fff; color: #111; box-shadow: 0 10px 30px -12px rgba(0,0,0,.7); }
+.viewer .docx-paper section.docx { min-height: auto; }
+/* Word's own page is white with its own margins; ours only adds the shadow. */
+.viewer .docx-paper .docx-wrapper > section.docx { margin-bottom: 0; }
+.viewer .look img { max-width: 100%; margin: auto; display: block; }
+.viewer .look iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+.viewer .look pre {
+  margin: 0; padding: 18px 20px; white-space: pre-wrap; overflow-wrap: anywhere;
+  font-size: 12.5px; line-height: 1.6; color: var(--ink-2);
+}
+.viewer .look .note { margin: auto; padding: 24px; max-width: 44ch; text-align: center; }
+
+.ghost {
+  flex: none; border: 1px solid var(--rule-2); border-radius: 7px; background: transparent;
+  color: var(--ink-2); font: inherit; font-size: 12.5px; padding: 6px 11px;
+  text-decoration: none; cursor: pointer;
+}
+.ghost:hover { color: var(--ink); border-color: var(--rule); background: var(--deck-2); }
+.ghost.bad:hover { color: #ff9a9a; border-color: #5a2630; background: #2a1419; }
+
+@media (max-width: 760px) {
+  .library .give { grid-template-columns: minmax(0, 1fr); }
+  .library .wall { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+  .viewer { width: 100vw; height: 100vh; border-radius: 0; }
+}
+
+
+/* Printing means the form and nothing else; otherwise the site rail prints as an extra page. */
+@media print {
+  .sidebar { display: none !important; }
+  .site { display: block; }
+  .view { padding: 0; margin: 0; }
+}
+
+.account header h1 { font-size: 26px; }
+.account header p { display: flex; align-items: center; gap: 10px; margin-top: 8px; font-size: 14px; }
+.account .badge {
+  font-size: 11px; color: var(--accent-lit); border: 1px solid var(--accent-dim);
+  border-radius: 999px; padding: 3px 9px;
+}
+.acc-grid {
+  display: grid; gap: 16px; margin-top: 26px; align-items: start;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); max-width: 900px;
+}
+.account .panel {
+  margin: 0; padding: 18px 18px 16px;
+  background: var(--deck-2); border: 1px solid var(--rule-2); border-radius: 12px;
+}
+.account .panel h2 { margin: 0 0 14px; }
+.account .stats { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; flex-wrap: wrap; }
+.account .stats li { display: grid; gap: 2px; }
+.account .stats b { font-size: 21px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.account .stats span { color: var(--ink-3); font-size: 12px; }
+.account .names { margin: 18px 0 16px; display: grid; gap: 12px; }
+.account .names h3 {
+  margin: 0 0 6px; font-size: 11px; font-weight: 600; color: var(--ink-3); letter-spacing: .04em;
+}
+.account .names ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 5px; }
+.account .names li {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px;
+  background: var(--deck-3); border: 1px solid var(--rule-2); border-radius: 999px;
+  padding: 4px 5px 4px 11px;
+}
+.account .names li button {
+  width: 17px; height: 17px; display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: transparent; color: var(--ink-3); font: inherit; font-size: 14px; line-height: 1; cursor: pointer;
+}
+.account .names li button:hover { background: #2a1419; color: #ff9a9a; }
+.account .names li button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.account .pw { display: grid; gap: 12px; }
+.account .pw .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.account .pw .field span { display: block; color: var(--ink-3); font-size: 12px; margin-bottom: 5px; }
+.account .pw input {
+  width: 100%; background: var(--deck); border: 1px solid var(--rule-2); border-radius: 8px;
+  padding: 9px 11px; color: var(--ink); font: inherit; font-size: 14px;
+}
+.account .pw input:focus { outline: none; border-color: var(--accent); }
+.account .pw input[aria-invalid="true"] { border-color: #7a3040; }
+.account .pw-foot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.account .pw-foot .btn { width: auto; padding: 9px 18px; }
+@media (max-width: 900px) {
+  .acc-grid { grid-template-columns: 1fr; }
+  .account .pw .pair { grid-template-columns: 1fr; }
+}
+
+/* Why a document could not be drawn — said in the viewer, not swallowed. */
+.viewer .note.bad { color: var(--warn, #f0a25a); display: flex; align-items: center; gap: 10px; justify-content: center; }
+.viewer .note.bad button { padding: 4px 10px; font: inherit; }
+
+.viewer iframe.docx-paper { width: 100%; height: 100%; min-height: 60vh; border: 0; background: #fff; }
+
+/* Documents are read and painted rather than framed: the site answers X-Frame-Options: deny,
+   which blocked its own iframe too. Painting also behaves on a phone. */
+.pages { display: flex; flex-direction: column; min-height: 0; height: 100%; }
+.pages-roll {
+  flex: 1; min-height: 0; overflow: auto; padding: 14px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+/* The sheet is a box the size of the printed page; the canvas fills it, and
+   anything placed on top is placed as a fraction of the page. */
+.pages-roll .leaf {
+  position: relative; flex: none; background: #fff; border-radius: 2px;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .7);
+}
+.pages-roll .leaf canvas { display: block; width: 100%; height: 100%; border-radius: 2px; }
+.pages-size {
+  flex: none; display: flex; align-items: center; gap: 4px; justify-content: flex-end;
+  padding: 7px 12px; border-bottom: 1px solid var(--rule-2); background: var(--deck);
+}
+.pages-size button {
+  font: inherit; font-size: 11.5px; cursor: pointer; padding: 3px 9px; border-radius: 6px;
+  background: var(--deck-2); border: 1px solid var(--rule-2); color: var(--ink-2);
+}
+.pages-size button:hover { border-color: var(--rule); color: var(--ink); }
+.pages-size button.on { background: var(--accent); border-color: var(--accent); color: var(--deck); font-weight: 600; }
+.pages-size b { font-size: 11.5px; font-variant-numeric: tabular-nums; min-width: 42px; text-align: center; color: var(--ink-2); }
+.viewer .look.paper { background: #39404f; display: block; padding: 0; }
+.viewer .look .pages .note { margin: auto; padding: 24px; text-align: center; color: var(--ink-2); }
+
+/* Each of the five states has a colour but never only a colour: its mark and word go with
+   it everywhere, because the sheet prints with backgrounds off. */
+.rota {
+  --st-out: #38BDF8;
+  --st-hotel: #FBBF24;
+  --st-aboard: var(--accent-lit);
+  --st-back: #F472B6;
+  --st-home: #34D399;
+  --st-none: #64748B;
+  display: flex; flex-direction: column;
+  height: 100%; min-width: 0; overflow: hidden;
+  background:
+    radial-gradient(1100px 520px at 88% -180px, #16223A, transparent 62%),
+    radial-gradient(900px 440px at -8% 110%, #121A2C, transparent 60%), var(--deck);
+}
+
+.rota-head {
+  flex: none; display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; min-width: 0;
+  padding: 11px 16px; border-bottom: 1px solid var(--rule-2);
+  background: rgba(7, 13, 24, .74);
+}
+.rota-grow { flex: 1 1 22px; }
+
+.rota-seg {
+  position: relative; display: flex; padding: 3px; border-radius: 11px;
+  background: var(--deck-2); border: 1px solid var(--rule-2);
+}
+.rota-ind {
+  position: absolute; top: 3px; bottom: 3px; z-index: 0; border-radius: 8px; background: var(--accent);
+  transition: left .22s cubic-bezier(.3, .9, .3, 1), width .22s cubic-bezier(.3, .9, .3, 1);
+}
+.rota-seg button {
+  position: relative; z-index: 1; display: flex; align-items: center; gap: 6px;
+  border: 0; background: transparent; border-radius: 8px; padding: 6px 13px;
+  cursor: pointer; font-size: 12.5px; color: var(--ink-3); transition: color .18s, background .18s;
+}
+.rota-seg button i { font-style: normal; font-size: 12px; line-height: 1; }
+.rota-seg button[aria-pressed="true"] { color: #0B1220; font-weight: 600; }
+.rota-seg button:hover:not([aria-pressed="true"]) { color: var(--ink-2); }
+/* The pay basis has no sliding bar: two indicators racing each other in one
+   header reads as one control that cannot make up its mind. */
+.rota-seg.is-plain button[aria-pressed="true"] {
+  background: var(--accent-dim); color: var(--ink); font-weight: 600;
+}
+
+.rota-step {
+  display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: 11px;
+  background: var(--deck-2); border: 1px solid var(--rule-2);
+}
+.rota-step button {
+  height: 27px; min-width: 28px; border: 0; border-radius: 8px; background: transparent;
+  color: var(--ink-2); cursor: pointer; font-size: 15px; line-height: 1;
+  transition: background .15s, color .15s;
+}
+.rota-step .rota-now { padding: 0 12px; font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
+.rota-step button:hover { background: var(--deck-3); color: var(--ink); }
+
+
+.rota-btn {
+  display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+  border: 1px solid var(--rule-2); background: var(--deck-2); border-radius: 11px;
+  padding: 7px 12px; font-size: 12.5px; color: var(--ink-2);
+  transition: border-color .16s, background .16s, color .16s, transform .1s;
+}
+.rota-btn i { font-style: normal; font-size: 13px; line-height: 1; }
+.rota-btn:hover { border-color: var(--rule); background: var(--deck-3); color: var(--ink); }
+.rota-btn:active { transform: translateY(1px); }
+.rota-btn[aria-pressed="false"] { color: var(--ink-3); }
+.rota-btn.is-key {
+  background: linear-gradient(145deg, var(--accent), #6F55D6); border-color: transparent;
+  color: #fff; font-weight: 600; box-shadow: 0 6px 18px -9px var(--accent);
+}
+.rota-btn.is-key:hover { filter: brightness(1.08); }
+
+/* The message floats at the foot of the screen like a toast, so it never pushes the board down. */
+.rota-said {
+  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 80;
+  display: flex; align-items: center; gap: 10px; margin: 0; max-width: min(640px, 92vw);
+  padding: 10px 10px 10px 16px; font-size: 12.5px; border-radius: 10px;
+  background: #E8ECF4; color: #0B1220; box-shadow: 0 12px 34px rgba(0, 0, 0, .55);
+  animation: rota-toast .18s ease-out;
+}
+@keyframes rota-toast { from { opacity: 0; transform: translate(-50%, 8px); } }
+@media (prefers-reduced-motion: reduce) { .rota-said { animation: none; } }
+.rota-said span { flex: 1; min-width: 0; }
+.rota-said.is-bad { background: #3A1A20; color: #FFB4B4; }
+.rota-said button {
+  flex: none; cursor: pointer; font: inherit; font-size: 12px; color: inherit; opacity: .7;
+  background: transparent; border: 0; border-radius: 7px; padding: 4px 8px;
+}
+.rota-said button:hover { opacity: 1; background: rgba(0, 0, 0, .08); }
+.rota-said button.is-undo { opacity: 1; font-weight: 700; color: #5B3FD0; }
+.rota-said.is-bad button.is-undo { color: #FFD1D1; }
+
+.rota-board {
+  flex: 1; min-height: 0;
+  display: grid; gap: 12px; padding: 12px 16px 16px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-auto-rows: minmax(0, 1fr);
+}
+.rota-q {
+  display: flex; flex-direction: column; min-height: 0; overflow: hidden; border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .028), transparent 40%), var(--deck-2);
+  border: 1px solid var(--rule-2);
+}
+.rota-q > header {
+  flex: none; display: flex; align-items: center; gap: 9px;
+  padding: 11px 15px 9px; border-bottom: 1px solid var(--rule-2);
+}
+.rota-q > header > span:first-child { font-size: 13px; }
+.rota-q > header h2 {
+  margin: 0; font-size: 11.5px; font-weight: 600; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.rota-tag {
+  margin-left: auto; font-size: 10.5px; color: var(--ink-3); padding: 2px 9px;
+  border: 1px solid var(--rule-2); border-radius: 999px; font-variant-numeric: tabular-nums;
+}
+/* Nothing in a quadrant scrolls: one block per quadrant takes the leftover height and the
+   rest keep their size, so the smallest usable window is a measurement, not a scrollbar. */
+.rota-body {
+  flex: 1; min-height: 0; overflow: hidden;
+  padding: 12px 14px 13px;
+  display: flex; flex-direction: column; gap: 9px;
+}
+/* Two blocks that will not fit under each other go beside each other. The
+   figures keep the full width across the top; what is left is split. Below
+   1180px of quadrant there is no width to split, and they stack again. */
+.rota-body.is-wide {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  /* Both rows `auto`, never `1fr`: a capped row lets its contents spill without the panel's
+     height changing, so the overflow would never be measured. */
+  grid-template-rows: auto auto; align-content: start; gap: 10px 16px;
+}
+.rota-body.is-wide > :first-child { grid-column: 1 / -1; }
+/* Each half stacks inside its own column, and neither may push the panel
+   taller than the panel is. */
+.rota-half { display: flex; flex-direction: column; gap: 7px; min-height: 0; }
+/* Nothing inside a half is allowed to be squeezed below what it is: squeezed,
+   it overflows its own box in silence and paints over its neighbour. */
+.rota-half > * { flex: none; }
+.rota-why { font-size: 10.5px; }
+.rota-why > summary {
+  cursor: pointer; color: var(--accent-lit); list-style: none;
+  padding: 2px 0; width: fit-content;
+}
+.rota-why > summary::-webkit-details-marker { display: none; }
+.rota-why > summary::before { content: "▸ "; }
+.rota-why[open] > summary::before { content: "▾ "; }
+.rota-why > summary:hover { color: var(--ink); }
+/* On paper nothing folds: a printed sheet cannot be opened. */
+@media print { .rota-why > summary { display: none; } .rota-why > * { display: block !important; } }
+@media (max-width: 1180px) {
+  .rota-body.is-wide { display: flex; flex-direction: column; }
+}
+
+/* Event bars: one per event per week on the day grid, spanning the columns they cover;
+   rounded at a real start or end, square where they carry on. */
+.rota-bar {
+  grid-row: auto; align-self: start; z-index: 2; position: relative;
+  margin-top: calc(19px + var(--lane) * 15px); margin-inline: 4px;
+  height: 13px; min-width: 0; padding: 0 5px;
+  display: flex; align-items: center; gap: 4px; overflow: hidden;
+  border: 0; border-radius: 0; cursor: pointer; text-align: left;
+  background: color-mix(in srgb, var(--ink) 30%, var(--deck-2));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 55%, transparent);
+  color: var(--ink); font: inherit; font-size: 9.5px; font-weight: 600; line-height: 13px;
+  white-space: nowrap;
+}
+.rota-bar.is-head { border-top-left-radius: 7px; border-bottom-left-radius: 7px; }
+.rota-bar.is-tail { border-top-right-radius: 7px; border-bottom-right-radius: 7px; }
+/* A piece that carries on reaches the edge of its column, so the two pieces
+   on either side of a week's end line up like one bar broken by the row. */
+.rota-bar:not(.is-head) { margin-left: 0; }
+.rota-bar:not(.is-tail) { margin-right: 0; }
+.rota-bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.rota-bar em { font-style: normal; font-weight: 400; opacity: .8; flex: none; }
+.rota-bar i { font-style: normal; font-size: 8.5px; flex: none; }
+.rota-bar i.is-on { margin-left: auto; }
+.rota-bar:hover { background: color-mix(in srgb, var(--ink) 45%, var(--deck-2)); }
+.rota-bar:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* A told stretch is drawn a touch quieter than an event: it is the day's own
+   state, already in the day's colour, and the bar is what joins the days. */
+.rota-bar.is-state { font-weight: 500; }
+/* A bar that can be moved says so: a grab hand over its body and a resize
+   grip at each real end — the eight pixels the page takes as "this end". */
+.rota-bar.is-movable { cursor: grab; touch-action: none; }
+.rota-bar.is-movable.is-head::before,
+.rota-bar.is-movable.is-tail::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 8px; cursor: ew-resize;
+}
+.rota-bar.is-movable.is-head::before { left: 0; }
+.rota-bar.is-movable.is-tail::after { right: 0; }
+.rota-bar.is-movable:hover.is-head::before,
+.rota-bar.is-movable:hover.is-tail::after {
+  background: linear-gradient(90deg, transparent 3px, color-mix(in srgb, var(--ink) 80%, transparent) 3px 5px, transparent 5px);
+}
+/* Where it will land, while it is being dragged: lifted, and drawn over
+   everything else so it is never lost behind another bar. */
+.rota-bar.is-moving {
+  cursor: grabbing; z-index: 5;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .5), inset 0 0 0 1.5px var(--ink);
+}
+body:has(.rota-bar.is-moving) { cursor: grabbing; }
+/* Bars that did not fit in the day, counted rather than dropped. */
+.rota-more {
+  position: absolute; left: 26px; top: 5px; padding: 0 4px; border-radius: 6px;
+  font-size: 9px; font-weight: 700; line-height: 13px;
+  color: var(--ink); background: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+@media print { .rota-bar, .rota-more { display: none; } }
+
+/* The day is a button: its card opens where the day is, the way a calendar opens a day. */
+.rota-day {
+  cursor: pointer; font: inherit; text-align: left; -webkit-appearance: none; appearance: none;
+  /* A button centres its content; the date number belongs at the top, as in a calendar. */
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+}
+.rota-day:hover { border-color: var(--accent-dim); }
+.rota-day:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* A day he has told the site about is not a projection, and the calendar says
+   so quietly rather than leaving him to remember which ones he changed. */
+.rota-day.is-said { box-shadow: inset 2px 0 0 var(--accent-lit); }
+.rota-day.is-picked { border-color: var(--accent); }
+
+.rota-card {
+  position: fixed; z-index: 60;
+  background: var(--deck-2); border: 1px solid var(--rule-2); border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .55);
+}
+.rota-card > header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 10px 9px 13px; border-bottom: 1px solid var(--rule-2);
+}
+.rota-card > header b { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.rota-x {
+  margin-left: auto; flex: none; width: 22px; height: 22px; padding: 0;
+  border: 0; border-radius: 6px; background: transparent; color: var(--ink-3);
+  font: inherit; font-size: 12px; cursor: pointer; line-height: 1;
+}
+.rota-x:hover { background: var(--deck-3); color: var(--ink); }
+.rota-card-body { padding: 11px 13px 13px; display: grid; gap: 7px; }
+.rota-card-lab {
+  margin: 2px 0 0; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.rota-card-note { margin: 0; font-size: 11px; line-height: 1.5; color: var(--ink-3); }
+.rota-link {
+  padding: 0; border: 0; background: none; font: inherit; font-size: 11px;
+  color: var(--accent-lit); text-decoration: underline; cursor: pointer;
+}
+.rota-chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; }
+.rota-chip {
+  display: flex; align-items: center; gap: 5px; padding: 6px 8px;
+  border: 1px solid var(--rule-2); border-radius: 8px; background: var(--deck);
+  color: var(--ink-2); font: inherit; font-size: 11px; cursor: pointer; text-align: left;
+}
+.rota-chip i { font-style: normal; font-size: 12px; }
+.rota-chip:hover { background: var(--deck-3); color: var(--ink); }
+.rota-chip.on { background: var(--deck-3); font-weight: 600; }
+/* Five states in a grid of two leaves one alone on the last row; it takes the
+   width rather than sitting half-empty beside nothing. */
+.rota-chip:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.rota-card-marks { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.rota-card-marks li {
+  display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--ink-2);
+}
+.rota-card-marks b { color: var(--ink-3); font-size: 9px; }
+.rota-card-marks span { flex: 1; min-width: 0; }
+.rota-range { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.rota-range label { display: grid; gap: 3px; }
+.rota-range span {
+  font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+/* Said with enough weight to beat the site's base rule for every input,
+   which is (0,3,1) and would otherwise decide the size and the padding. */
+.rota-card .rota-range input[type="date"] {
+  min-width: 0; width: 100%; padding: 5px 7px; border: 1px solid var(--rule-2); border-radius: 8px;
+  background: var(--deck); color: var(--ink); font-size: 11.5px; color-scheme: dark;
+}
+/* A phone keeps 16px inputs (smaller and iOS zooms the page on focus), and at 16px two
+   dates do not fit side by side in the card, so they stack. */
+@media (hover: none) {
+  .rota-range { grid-template-columns: 1fr; }
+  .rota-card .rota-range input[type="date"] { font-size: 16px; padding: 7px 9px; }
+}
+.rota-range input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* A saved date is opened like an event: click it to change its start, end
+   or name. It looks like something that can be pressed. */
+.rota-mark-open {
+  flex: 1; min-width: 0; padding: 0; border: 0; background: none; text-align: left;
+  font: inherit; font-size: 11.5px; color: var(--ink); cursor: pointer;
+}
+.rota-mark-open:hover { color: var(--accent-lit); text-decoration: underline; }
+.rota-mark-open em { font-style: normal; color: var(--ink-3); font-size: 10.5px; }
+.rota-card-marks li.is-editing { display: block; }
+.rota-edit {
+  display: grid; gap: 6px; padding: 8px; border-radius: 9px;
+  border: 1px solid var(--accent-dim); background: var(--deck);
+}
+.rota-edit > input {
+  padding: 6px 8px; border: 1px solid var(--rule-2); border-radius: 8px;
+  background: var(--deck-2); color: var(--ink); font: inherit; font-size: 11.5px;
+}
+.rota-edit-row { display: flex; align-items: center; gap: 8px; }
+.rota-edit-row select {
+  padding: 5px 7px; border: 1px solid var(--rule-2); border-radius: 8px;
+  background: var(--deck-2); color: var(--ink); font: inherit; font-size: 11px;
+}
+.rota-edit-row .rota-add { margin-left: auto; }
+/* Dragging across days picks them, it does not select their text. */
+.rota-grid { user-select: none; -webkit-user-select: none; }
+/* Only where there is a mouse: on a phone a finger on the calendar has to
+   scroll the page, and taking the gesture away for dragging would pin it. */
+@media (hover: hover) and (pointer: fine) { .rota-grid { touch-action: none; } }
+.rota-card-add { display: grid; grid-template-columns: 1fr auto; gap: 4px; margin-top: 2px; }
+.rota-card-add input { grid-column: 1 / -1; }
+.rota-card-add input, .rota-card-add select {
+  min-width: 0; padding: 6px 8px; border: 1px solid var(--rule-2); border-radius: 8px;
+  background: var(--deck); color: var(--ink); font: inherit; font-size: 11px;
+}
+.rota-add {
+  padding: 6px 11px; border: 1px solid var(--accent-dim); border-radius: 8px;
+  background: var(--accent); color: #fff; font: inherit; font-size: 11px;
+  font-weight: 600; cursor: pointer;
+}
+.rota-add:disabled { opacity: .45; cursor: default; }
+
+.rota-dow { flex: none; display: grid; grid-template-columns: repeat(7, 1fr); }
+.rota-dow span {
+  text-align: center; font-size: 9.5px; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+/* The weeks share whatever height the quadrant has. A month of six rows is
+   shorter in the cell than one of five, which is right: the month is the
+   thing that must be whole, not the cell. */
+.rota-grid {
+  position: relative; flex: 1; min-height: 0;
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(0, 1fr); gap: 4px;
+}
+.rota-day {
+  position: relative; container-type: size; min-height: 0; overflow: hidden;
+  padding: 4px 6px; border-radius: 9px;
+  border: 1px solid transparent; transition: transform .12s, border-color .12s;
+}
+/* The day's events go first when cells get short, and whole or not at all, never half a line. */
+@container (max-height: 44px) { .rota-ev { display: none; } }
+.rota-day:hover { transform: translateY(-1.5px); border-color: var(--rule); }
+.rota-day.is-dim { opacity: .28; }
+.rota-d { font-size: 11.5px; font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.rota-day.is-now .rota-d {
+  display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); color: #0B1220; font-weight: 700;
+}
+.rota-e { position: absolute; right: 5px; top: 4px; font-size: 11px; }
+/* The word for the state is there for a screen reader and for the legend; on
+   the tile the mark carries it, because five words in a 58px box is a wall. */
+.rota-word {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+.rota-ev {
+  display: block; margin-top: 3px; font-size: 9.5px; line-height: 1.3; color: var(--ink-2);
+  overflow: hidden; max-height: 25px;
+}
+.rota-ev b { color: var(--accent-lit); }
+
+.rota-year-grid {
+  flex: 1; min-height: 0; display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 10px 14px;
+}
+.rota-ym > button {
+  flex: none; display: block; margin-bottom: 3px; padding: 0; border: 0; background: transparent;
+  color: var(--accent-lit); font-size: 11.5px; font-weight: 600; cursor: pointer; letter-spacing: .02em;
+}
+.rota-ym > button:hover { color: var(--ink); }
+/* Twelve months on one screen: squares take the height there is, not the width they would like. */
+.rota-ym { display: flex; flex-direction: column; min-height: 0; }
+.rota-ym-grid {
+  flex: 1; min-height: 0; display: grid;
+  grid-template-columns: repeat(7, 1fr); grid-auto-rows: minmax(0, 1fr); gap: 1px 2px;
+}
+.rota-ym-grid i {
+  display: grid; place-items: center; font-style: normal;
+  font-size: 7.5px; color: var(--ink-3);
+}
+.rota-ym-grid span {
+  display: grid; place-items: center; border-radius: 999px;
+  font-size: 9px; color: var(--ink-2); font-variant-numeric: tabular-nums;
+}
+.rota-ym-grid span.is-blank { background: none !important; }
+.rota-ym-grid span.is-now { color: #0B1220; font-weight: 700; }
+
+.rota-legend {
+  flex: none; display: flex; flex-wrap: wrap; gap: 10px 12px;
+  font-size: 10.5px; color: var(--ink-3);
+}
+.rota-legend b {
+  display: inline-block; width: 12px; height: 8px; border-radius: 2px; margin-right: 4px;
+}
+
+.rota-stack { flex: none; display: flex; border-radius: 5px; overflow: hidden; }
+.rota-stack i { display: block; transition: flex .3s; }
+/* `flex: none`, not `1 1 auto`: a grid allowed to shrink below its content paints its rows
+   over what is under them while reporting no overflow. The panel is made tighter instead. */
+.rota-rows { flex: none; display: grid; gap: 1px; }
+.rota-row {
+  display: grid; grid-template-columns: 18px 1fr 44px 46px; gap: 9px; align-items: center;
+  padding: 4px 7px; border-radius: 9px; transition: background .14s;
+}
+.rota-row:hover { background: rgba(255, 255, 255, .035); }
+.rota-lbl { font-size: 12px; color: var(--ink-2); }
+.rota-v {
+  font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;
+}
+.rota-v.is-quiet { color: var(--ink-2); }
+.rota-v.is-date { font-size: 12px; white-space: nowrap; }
+.rota-pc { font-size: 10.5px; color: var(--ink-3); text-align: right; font-variant-numeric: tabular-nums; }
+.rota-row.is-sum {
+  margin-top: 3px; padding-top: 7px; border-top: 1px solid var(--rule-2); border-radius: 0 0 9px 9px;
+}
+.rota-row.is-sum .rota-lbl { color: var(--ink); }
+.rota-row.is-sum .rota-v { font-size: 17px; }
+
+.rota-kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 8px; }
+.rota-kpi { flex: none; }
+.rota-kpi.is-ruled { padding-top: 11px; border-top: 1px solid var(--rule-2); }
+.rota-kpi > div {
+  padding: 8px 10px; border-radius: 11px;
+  background: rgba(255, 255, 255, .03); border: 1px solid var(--rule-2);
+}
+.rota-k {
+  display: flex; align-items: center; gap: 5px; font-size: 9.5px;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);
+}
+.rota-big {
+  margin-top: 5px; font-size: 22px; font-weight: 700; line-height: 1;
+  letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+}
+.rota-big.is-date { font-size: 14px; letter-spacing: 0; }
+.rota-s { margin-top: 3px; font-size: 10px; color: var(--ink-3); }
+.rota-mini { display: flex; gap: 1.5px; align-items: flex-end; height: 20px; margin-top: 6px; }
+.rota-mini i { flex: 1; display: block; min-height: 2px; border-radius: 1.5px; }
+
+.rota-gauge-wrap { flex: none; margin-top: 2px; }
+.rota-gauge-top {
+  display: flex; justify-content: space-between; margin-top: 9px;
+  font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums;
+}
+.rota-gauge {
+  position: relative; height: 10px; margin-top: 6px; border-radius: 999px;
+  background: rgba(255, 255, 255, .07); overflow: visible;
+}
+.rota-gauge i { display: block; height: 100%; border-radius: 999px; transition: width .5s; }
+.rota-gauge u {
+  position: absolute; top: -5px; width: 2px; height: 20px; border-radius: 2px;
+  background: var(--ink); text-decoration: none;
+}
+.rota-note { margin: 5px 0 0; font-size: 11px; line-height: 1.4; color: var(--ink-3); }
+.rota-note.is-lit { color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+
+.rota-run {
+  display: grid; grid-template-columns: 3px 20px 1fr auto; gap: 10px; align-items: center;
+  padding: 9px 0; border-bottom: 1px solid var(--rule-2);
+}
+.rota-run:last-child { border-bottom: 0; }
+.rota-run-bar { min-height: 30px; height: 100%; border-radius: 2px; }
+.rota-run b { font-size: 12.5px; font-weight: 500; }
+.rota-run-days { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.rota-run-days em { font-size: 10px; font-style: normal; color: var(--ink-3); }
+
+.rota-table { width: 100%; border-collapse: collapse; }
+.rota-table { flex: none; }
+.rota-halves { flex: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+/* The year's own row, under both halves and in the same columns as them. */
+.rota-sum { border-top: 1px solid var(--rule-2); }
+@media (max-width: 1180px) { .rota-halves { grid-template-columns: minmax(0, 1fr); } }
+.rota-table th {
+  padding: 4px 6px; text-align: right; font-size: 9px; font-weight: 500;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3);
+}
+.rota-table th:first-child { text-align: left; }
+.rota-table td {
+  padding: 3px 6px; text-align: right; font-size: 11.5px;
+  border-top: 1px solid var(--rule-2); font-variant-numeric: tabular-nums;
+}
+.rota-table td:first-child { text-align: left; color: var(--ink-2); font-variant-numeric: normal; }
+.rota-table td.is-quiet { color: var(--ink-3); }
+.rota-link { border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; padding: 0; }
+.rota-link:hover { color: var(--ink); text-decoration: underline; }
+.rota-table tr.is-hit td { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.rota-table tr.is-hit td:first-child { color: var(--ink); font-weight: 600; }
+.rota-table tr.is-total td { border-top: 1.5px solid var(--rule); font-weight: 700; color: var(--ink); }
+
+/* The one thing on this page somebody could lose fourteen years over: the
+   margin is in half-days and the days he may stay is twice it. They are one
+   block, side by side, and neither is ever shown without the other. */
+.rota-margin {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center;
+  margin-top: 15px; padding: 13px 15px; border-radius: 12px;
+  background: rgba(255, 255, 255, .03); border: 1px solid var(--accent-dim);
+}
+.rota-margin.is-tight { border-color: #6B2B35; background: rgba(255, 120, 130, .07); }
+.rota-margin b {
+  display: block; margin-top: 4px; font-size: 27px; font-weight: 700; line-height: 1;
+  letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+}
+.rota-margin.is-tight b { color: #FF9A9A; }
+.rota-margin em { font-style: normal; font-size: 10.5px; color: var(--ink-3); }
+.rota-margin-is { font-size: 17px; color: var(--ink-3); }
+.rota-plain { padding: 4px 0; }
+.rota-plain b { font-size: 13px; }
+
+.rota-plan {
+  width: min(880px, 94vw); max-width: none; max-height: 88vh; padding: 0;
+  border: 1px solid var(--rule); border-radius: 14px;
+  background: var(--deck-2); color: var(--ink);
+  flex-direction: column; overflow: hidden;
+}
+.rota-plan[open] { display: flex; }
+.rota-plan::backdrop { background: rgba(6, 10, 18, .72); }
+.rota-plan > header {
+  flex: none; display: flex; align-items: baseline; gap: 12px;
+  padding: 13px 16px; border-bottom: 1px solid var(--rule-2);
+}
+.rota-plan > header b { font-size: 14px; }
+.rota-plan > header span { font-size: 11.5px; color: var(--ink-3); }
+.rota-plan > header button {
+  margin-left: auto; width: 27px; height: 27px; flex: none; cursor: pointer;
+  border: 1px solid var(--rule-2); border-radius: 8px; background: transparent;
+  color: var(--ink-3); font-size: 16px; line-height: 1;
+}
+.rota-plan > header button:hover { color: var(--ink); border-color: var(--rule); }
+.rota-plan-body {
+  flex: 1; min-height: 0; overflow: auto; padding: 14px 16px;
+  display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
+}
+.rota-plan .panel {
+  margin: 0; padding: 15px 16px 14px; border-radius: 12px;
+  background: var(--deck); border: 1px solid var(--rule-2);
+}
+.rota-plan .panel h2 { margin: 0 0 11px; font-size: 14px; color: var(--ink); }
+.rota-plan .panel .note { margin: 10px 0 0; }
+.rota-plan .btn-row {
+  display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px; margin-top: 12px;
+}
+.rota-plan .btn-row .btn { width: auto; }
+.rota-plan > footer {
+  flex: none; display: flex; gap: 8px; justify-content: flex-end;
+  padding: 11px 16px; border-top: 1px solid var(--rule-2); background: var(--deck);
+}
+.rota-plan > footer .btn { width: auto; min-width: 118px; }
+.rota-slips { grid-column: 1 / -1; }
+.rota-slips ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.rota-slips li {
+  display: flex; align-items: flex-end; gap: 9px; flex-wrap: wrap;
+  padding: 9px 11px; border-radius: 10px; background: var(--deck-2); border: 1px solid var(--rule-2);
+}
+.rota-slips li.is-moved { border-color: var(--accent-dim); }
+.rota-slips li > b { font-size: 12.5px; align-self: center; min-width: 54px; }
+.rota-slips li > span { font-size: 12px; color: var(--ink-2); align-self: center; font-variant-numeric: tabular-nums; }
+.rota-slips li > em { font-style: normal; font-size: 11.5px; color: var(--accent-lit); align-self: center; }
+.rota-slips .field { margin: 0; margin-left: auto; }
+.rota-slips .field + .field { margin-left: 0; }
+.rota-slips .field span { font-size: 10.5px; }
+.rota-slips .btn { width: auto; font-size: 11.5px; padding: 5px 10px; }
+
+.rot-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.rot-list li { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.rot-list input[type="text"], .rot-list input:not([type]) { flex: 1 1 130px; min-width: 0; }
+.rot-list input {
+  font: inherit; font-size: 12.5px; padding: 6px 8px; border-radius: 7px;
+  border: 1px solid var(--rule-2); background: var(--deck-2); color: var(--ink);
+}
+.rot-list input:focus { outline: none; border-color: var(--accent); }
+.rot-list button {
+  margin-left: auto; width: 26px; height: 26px; flex: none; cursor: pointer;
+  border-radius: 7px; border: 1px solid var(--rule-2); background: transparent;
+  color: var(--ink-3); font-size: 15px; line-height: 1;
+}
+.rot-list button:hover { border-color: #ff9a9a; color: #ff9a9a; }
+.rot-every { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--ink-3); }
+.rot-standing {
+  font-size: 11px; padding: 2px 8px; border-radius: 999px;
+  border: 1px solid var(--rule-2); color: var(--ink-3);
+}
+.rot-standing.is-soon { color: var(--warn); border-color: var(--warn); }
+.rot-standing.is-gone { color: #ff9a9a; border-color: #ff9a9a; }
+.rot-standing.is-ok { color: var(--ok); border-color: var(--rule-2); }
+
+/* Short or narrow windows: padding and type give way before any figure does, by measured
+   values. Narrow costs height too, because every paragraph wraps to more lines. */
+@media (max-height: 940px), (max-width: 1520px) {
+  /* The bottom row does not get more height than the top: its quadrants share it, and
+     that broke the count (a fixed list of rows) to feed the claim. */
+  .rota-body { padding: 9px 12px 10px; gap: 6px; }
+  .rota-body.is-wide { gap: 8px 14px; }
+  .rota-row { padding: 3px 7px; }
+  .rota-row.is-sum { margin-top: 2px; padding-top: 5px; }
+  .rota-kpi > div { padding: 7px 9px; }
+  .rota-kpi.is-ruled { padding-top: 9px; }
+  .rota-mini { height: 17px; margin-top: 5px; }
+  .rota-big { font-size: 20px; }
+  .rota-table td { padding: 2px 6px; }
+  .rota-table th { padding: 3px 6px; }
+  .rota-note { font-size: 10.5px; line-height: 1.34; }
+  /* The claim's explanation is the hardest prose to fit; this size is the measured fit. */
+  .rota-half .rota-note { font-size: 10px; line-height: 1.32; }
+  /* The margin block's big number is a `b`, not `.rota-big`: they look the same, and a
+     rule aimed at the wrong one silently does nothing. */
+  .rota-kpi > div { padding: 5px 9px; }
+  /* In the cramped claim panel the gloss under each figure goes first; the rows and the
+     margin block never give up room. */
+  .rota-half ~ .rota-kpi .rota-s, .rota-body.is-wide:has(.rota-half) .rota-kpi .rota-s { display: none; }
+  .rota-kpi .rota-big { font-size: 18px; }
+  .rota-kpi .rota-s { margin-top: 1px; }
+  .rota-half .rota-row { padding: 2px 6px; }
+  .rota-half .rota-row.is-sum { margin-top: 1px; padding-top: 4px; }
+  .rota-half { gap: 4px; }
+  .rota-why { font-size: 10px; }
+  .rota-why > summary { padding: 0; }
+  .rota-half .rota-note { margin-top: 0; }
+  .rota-margin { margin-top: 0; padding: 7px 11px; gap: 9px; }
+  .rota-margin b { margin-top: 1px; font-size: 18px; }
+  .rota-margin .rota-k { font-size: 9px; }
+  .rota-margin em { font-size: 9.5px; }
+  .rota-margin-is { font-size: 14px; }
+  .rota-gauge-top { margin-top: 7px; }
+  .rota-legend { gap: 7px 11px; font-size: 10px; }
+  .rota-run { padding: 7px 0; }
+}
+/* Four quadrants always, never a scrollbar in one. Narrow: buttons keep their icons and
+   drop their words (the title still carries them), since wrapping to a second line would
+   cost every panel a row of figures. */
+@media (max-width: 1460px) {
+  .rota-head { gap: 7px; }
+}
+@media (max-height: 800px), (max-width: 1320px) {
+  .rota-body { padding: 8px 10px 9px; gap: 5px; }
+  .rota-body.is-wide { gap: 6px 12px; }
+  .rota-row { padding: 2px 6px; }
+  .rota-lbl { font-size: 11px; }
+  .rota-v { font-size: 13.5px; }
+  .rota-row.is-sum .rota-v { font-size: 15px; }
+  .rota-kpi { gap: 6px; }
+  .rota-kpi > div { padding: 4px 8px; }
+  .rota-kpi .rota-big { font-size: 16px; }
+  .rota-k { font-size: 9px; }
+  .rota-mini { height: 14px; margin-top: 4px; }
+  .rota-table td { padding: 1px 5px; font-size: 11px; }
+  .rota-table th { padding: 2px 5px; }
+  .rota-note, .rota-why { font-size: 9.5px; line-height: 1.3; }
+  .rota-margin { padding: 5px 9px; }
+  .rota-margin b { font-size: 16px; }
+  .rota-run { padding: 5px 0; }
+  .rota-legend { gap: 5px 9px; font-size: 9.5px; }
+  .rota-ym > button { font-size: 10.5px; margin-bottom: 2px; }
+  .rota-dow span { font-size: 8.5px; }
+  .rota-d { font-size: 10.5px; }
+}
+
+/* The shortest desks this is used at. Still four quadrants: what gives is
+   the last of the padding and the glosses under the figures, never a panel
+   and never the board. */
+@media (max-height: 720px) {
+  .rota-head { padding: 7px 12px; }
+  .rota-board { padding: 8px 12px 10px; gap: 8px; }
+  .rota-q > header { padding: 7px 12px 6px; }
+  .rota-body { padding: 7px 10px 8px; gap: 4px; }
+  .rota-kpi > div { padding: 3px 7px; }
+  .rota-kpi .rota-big { font-size: 15px; }
+  .rota-kpi .rota-s { display: none; }
+  .rota-mini { height: 12px; margin-top: 3px; }
+  .rota-margin { padding: 4px 8px; }
+  .rota-margin b { font-size: 15px; }
+  .rota-row { padding: 1px 6px; }
+  .rota-note, .rota-why { font-size: 9px; line-height: 1.28; }
+  .rota-gauge-top { margin-top: 5px; }
+  .rota-table td { padding: 1px 4px; font-size: 10.5px; }
+}
+
+@media (max-width: 1080px) {
+  .rota { height: auto; overflow: visible; }
+  .rota-board { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+  .rota-q { max-height: 78vh; }
+}
+@media (max-width: 760px) {
+  .rota-head { padding: 10px 12px; gap: 8px; }
+  .rota-board { padding: 10px 12px 74px; }
+  /* On a phone the page scrolls and the panels do not. A panel with a scroll
+     bar of its own inside a page that also scrolls is two thumbs fighting. */
+  .rota-q { max-height: none; }
+  .rota-body { overflow: visible; display: block; }
+}
+
+/* Print-only sheet. It borrows `.sheet` for the measured page geometry (see the note above
+   @page in app.css); the shared @page rule is left alone because the CAAP forms print as
+   full-page images. States are told apart by word and mark, never by fill. */
+.rota .for-paper { display: none; }
+@media print {
+  .rota { display: block; height: auto; overflow: visible; background: none; }
+  .rota > .rota-head, .rota .rota-board, .rota .rota-said { display: none !important; }
+  .rota .rota-plan, .rota .rota-plan[open] { display: none !important; }
+  .rota .for-paper { display: block; }
+  /* No fixed height and nothing hidden: an overflowing sheet spills a blank page, which the
+     bench catches; clipping it would silently drop rows. */
+  .rota .sheet { min-height: 0; }
+  .rot-head {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    border-bottom: 1.4pt solid #000; padding-bottom: 4pt; margin-bottom: 10pt;
+  }
+  .rot-head b { font-size: 13pt; }
+  .rot-head span { font-size: 8.4pt; color: #444; }
+  .rot-head span:last-child { margin-left: auto; }
+  /* Overrides `.sheet td, .sheet th` in form.css with louder selectors instead of loosening
+     that rule: the forms are not this page's to change. */
+  .rota .rot-paper { width: 100%; border-collapse: collapse; }
+  .rota .rot-paper th {
+    width: 16pt; border: 0; text-align: left; vertical-align: top;
+    font-size: 12pt; font-weight: 400; padding: 7pt 6pt 7pt 0;
+  }
+  .rota .rot-paper td {
+    border: 0; border-top: .5pt solid #BBB; vertical-align: top; text-align: left;
+    padding: 7pt 8pt 7pt 0;
+  }
+  .rota .rot-p-when { width: 48%; font-variant-numeric: tabular-nums; }
+  .rota .rot-p-when b { display: inline-block; min-width: 40pt; font-weight: 700; }
+  .rota .rot-p-marks { font-size: 8pt; color: #333; }
+  .rota .rot-p-marks i { font-style: italic; }
+  /* The year's figures. Each state is named in words beside its mark, so the
+     sheet reads the same out of a photocopier as it does on a screen. */
+  .rota .rot-figures th, .rota .rot-months th { font-size: 10pt; }
+  .rota .rot-figures td, .rota .rot-months td { font-size: 10pt; padding: 5pt 8pt 5pt 0; }
+  .rota .rot-figures th { width: 20pt; }
+  .rota .rot-figures td:first-child { width: 58%; }
+  /* Fixed, so that a heading wider than its figures cannot pull a column off
+     the one under it — the header and its numbers have to line up or the eye
+     reads a month against the wrong count. */
+  .rota .rot-months { margin-top: 12pt; table-layout: fixed; }
+  .rota .rot-months th:first-child { width: 28%; }
+  .rota .rot-months th { width: auto; border-top: .5pt solid #BBB; padding: 5pt 8pt 5pt 0; }
+  .rota .rot-months tr:first-child th { border-top: 0; font-size: 8.5pt; color: #444; }
+  /* Said through `.rot-paper` as well, or `.sheet td { text-align: left }` in
+     form.css out-argues it and the figures sit under the wrong edge of their
+     own headings — which the bench cannot see, because ink is ink. */
+  .rota .rot-paper td.rot-n, .rota .rot-paper th.rot-n {
+    width: 12%; text-align: right; font-variant-numeric: tabular-nums;
+  }
+  .rota .rot-sum th, .rota .rot-sum td { font-weight: 700; border-top: 1.2pt solid #000; }
+  .rot-rule { margin: 8pt 0 0; font-size: 8pt; color: #555; font-style: italic; }
+  .rot-foot { margin-top: 14pt; border-top: 1.4pt solid #000; padding-top: 6pt; font-size: 8pt; }
+  .rot-foot b { display: block; font-size: 9.5pt; margin-bottom: 4pt; }
+  .rot-foot p { margin-top: 8pt; color: #555; font-style: italic; }
+}
+
+.rota-pop {
+  position: fixed; z-index: 70; padding: 8px 14px 14px;
+  background: var(--deck-2); border: 1px solid var(--rule-2); border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .55);
+}
+.rota-pop-tools { display: flex; align-items: center; gap: 2px; justify-content: flex-end; margin: 0 -6px 4px 0; }
+.rota-pop-tools button:not(.rota-x) {
+  display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--ink-2); font: inherit; font-size: 11px; cursor: pointer;
+}
+.rota-pop-tools button:not(.rota-x):hover { background: var(--deck-3); color: var(--ink); }
+.rota-pop-tools button.is-danger:hover { background: rgba(255, 110, 120, .14); color: #FF9A9A; }
+.rota-pop-tools .rota-x { margin-left: 4px; }
+.rota-pop-what { display: flex; align-items: center; gap: 9px; margin: 2px 0 6px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.rota-pop-what i { width: 12px; height: 12px; border-radius: 4px; flex: none; background: var(--accent-lit) !important; }
+.rota-pop.is-state .rota-pop-what i { background: var(--st-hotel) !important; }
+.rota-pop.is-holiday .rota-pop-what i { background: var(--st-hotel) !important; }
+.rota-pop.is-certificate .rota-pop-what i { background: #FB7185 !important; }
+.rota-pop-when { margin: 0 0 6px 21px; font-size: 12px; line-height: 1.45; color: var(--ink-2); }
+.rota-pop-kind { margin: 0 0 0 21px; font-size: 11px; color: var(--ink-3); }
+
+.rota-goto {
+  position: fixed; top: 70px; left: 50%; transform: translateX(-50%); z-index: 75;
+  display: flex; align-items: end; gap: 8px; padding: 12px 12px 12px 14px;
+  background: var(--deck-2); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 18px 44px rgba(0, 0, 0, .55);
+}
+.rota-goto label { display: grid; gap: 4px; }
+.rota-goto span { font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.rota-goto input[type="date"] { width: 170px; color-scheme: dark; }
+.rota-help { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: rgba(4, 8, 16, .6); }
+.rota-help > div {
+  width: min(460px, 92vw); padding: 14px 18px 18px; border-radius: 14px;
+  background: var(--deck-2); border: 1px solid var(--rule); box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+}
+.rota-help header { display: flex; align-items: center; margin-bottom: 10px; }
+.rota-help header b { font-size: 14px; }
+.rota-help dl { margin: 0; display: grid; gap: 5px; }
+.rota-help dl > div { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: center; }
+.rota-help dt, .rota-help dd { margin: 0; font-size: 12px; }
+.rota-help dd { color: var(--ink-2); }
+.rota-help kbd {
+  display: inline-block; padding: 2px 7px; border-radius: 6px; font: inherit; font-size: 11px; font-weight: 600;
+  background: var(--deck); border: 1px solid var(--rule-2); border-bottom-width: 2px; color: var(--ink);
+}
+.rota-btn.is-icon { padding-inline: 9px; }
+
+.rota-bin { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.rota-bin li { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--ink-2); }
+.rota-bin li span { flex: 1; min-width: 0; }
+.rota-bin em { font-style: normal; color: var(--ink-3); }
+@media print { .rota-pop, .rota-said, .rota-goto, .rota-help { display: none !important; } }
+
+.rota-parse { margin: -2px 0 0; font-size: 11px; color: var(--ink-2); }
+.rota-parse b { color: var(--ink); }
+.rota-parse em { font-style: normal; font-weight: 600; }
+.rota-card-add { grid-template-columns: 1fr; }
+.rota-add-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.rota-more-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.rota-more-opts input { grid-column: 1 / -1; }
+.rota-more-opts select, .rota-more-opts input, .rota-edit-row input {
+  min-width: 0; padding: 5px 7px; border: 1px solid var(--rule-2); border-radius: 8px;
+  background: var(--deck); color: var(--ink); font: inherit; font-size: 11px;
+}
+.rota-edit-row input { flex: 1; }
+.rota-note-day { display: grid; gap: 3px; }
+.rota-note-day span { font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.rota-note-day textarea {
+  resize: vertical; min-height: 34px; padding: 5px 7px; border: 1px solid var(--rule-2); border-radius: 8px;
+  background: var(--deck); color: var(--ink); font: inherit; font-size: 11px;
+}
+.rota-noted { position: absolute; left: 24px; top: 4px; font-size: 10px; color: var(--st-hotel); }
+.rota-cat {
+  display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border-radius: 999px;
+  border: 1px solid var(--rule-2); background: transparent; color: var(--ink-2);
+  font: inherit; font-size: 10px; cursor: pointer;
+}
+.rota-cat b { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.rota-cat.is-off { opacity: .45; text-decoration: line-through; }
+.rota-pop-desc { margin: 6px 0 0 21px; font-size: 11.5px; color: var(--ink-2); white-space: pre-wrap; }
+.rota-scope {
+  width: min(360px, 92vw) !important; display: grid; gap: 7px;
+}
+.rota-scope header { margin-bottom: 0 !important; }
+.rota-scope .rota-chip { justify-content: center; padding: 9px; font-size: 12px; }
+.rota-scope .rota-link { justify-self: center; margin-top: 2px; }
+
+.rota-tabs { display: flex; gap: 2px; margin-left: auto; padding: 2px; border-radius: 8px; background: var(--deck); }
+.rota-tabs button {
+  padding: 2px 8px; border: 0; border-radius: 6px; background: transparent; color: var(--ink-3);
+  font: inherit; font-size: 10.5px; cursor: pointer;
+}
+.rota-tabs button[aria-selected="true"] { background: var(--deck-3); color: var(--ink); font-weight: 600; }
+.rota-tabs + .rota-tag { margin-left: 8px; }
+.rota-tag.is-both { color: var(--st-home); border-color: color-mix(in srgb, var(--st-home) 45%, transparent); }
+.rota-them { position: absolute; left: 8px; right: 8px; top: 1px; height: 3px; border-radius: 0 0 2px 2px; opacity: .9; }
+
+.rota-agenda-wrap { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.rota-agenda { list-style: none; margin: 0; padding: 0; flex: 1; min-height: 0; display: grid; align-content: start; gap: 1px; }
+.rota-pager { flex: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 10.5px; color: var(--ink-3); }
+.rota-pager button {
+  width: 24px; height: 20px; border: 1px solid var(--rule-2); border-radius: 6px; background: transparent;
+  color: var(--ink-2); font: inherit; font-size: 13px; line-height: 1; cursor: pointer;
+}
+.rota-pager button:disabled { opacity: .35; cursor: default; }
+.rota-agenda-m { margin: 6px 0 2px; font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.rota-agenda li:first-child .rota-agenda-m { margin-top: 0; }
+.rota-agenda button {
+  width: 100%; display: grid; grid-template-columns: 44px 4px 1fr auto; gap: 9px; align-items: center;
+  padding: 3px 6px; border: 0; border-radius: 7px; background: transparent; color: var(--ink);
+  font: inherit; font-size: 11.5px; text-align: left; cursor: pointer;
+}
+.rota-agenda button:hover { background: var(--deck-3); }
+.rota-agenda-d { display: flex; align-items: baseline; gap: 4px; color: var(--ink-3); font-size: 10px; }
+.rota-agenda-d b { font-size: 13px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.rota-agenda button > i { align-self: stretch; border-radius: 2px; }
+.rota-agenda-w { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rota-agenda-w em { font-style: normal; color: var(--ink-3); }
+.rota-agenda-n { font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+.rota-years { flex: 1; min-height: 0; display: grid; grid-template-rows: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.rota-yr { display: grid; grid-template-columns: 38px 1fr auto; gap: 10px; align-items: center; min-height: 0; }
+.rota-yr > b { font-size: 12px; font-variant-numeric: tabular-nums; }
+.rota-yr-months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; height: 100%; min-height: 0; }
+.rota-yr-months button {
+  position: relative; display: flex; flex-direction: column; gap: 2px; padding: 0; min-height: 0;
+  border: 0; background: transparent; cursor: pointer;
+}
+.rota-yr-months .rota-stack { flex: 1; height: auto !important; min-height: 6px; flex-direction: column-reverse; border-radius: 4px; }
+.rota-yr-months span { font-size: 8.5px; color: var(--ink-3); text-align: center; line-height: 1; }
+.rota-yr-months button:hover .rota-stack { outline: 1.5px solid var(--accent); outline-offset: 1px; }
+.rota-yr-n { font-size: 10.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rota-yr-n em { font-style: normal; font-weight: 600; }
+
+.rota-other { padding: 8px 0; border-bottom: 1px solid var(--rule-2); }
+.rota-paste { flex: 1; min-width: 180px; }
+
+.rota-count {
+  flex: none; display: flex; align-items: center; gap: 7px; padding: 3px 12px 3px 10px; border-radius: 12px;
+  background: color-mix(in srgb, var(--st-home) 16%, var(--deck-2));
+  border: 1px solid color-mix(in srgb, var(--st-home) 45%, transparent);
+}
+.rota-count.is-out { background: color-mix(in srgb, var(--st-out) 16%, var(--deck-2)); border-color: color-mix(in srgb, var(--st-out) 45%, transparent); }
+.rota-count b { font-size: 24px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; color: var(--st-home); }
+.rota-count.is-out b { color: var(--st-out); }
+.rota-count span { display: grid; font-size: 10px; line-height: 1.15; color: var(--ink-2); }
+.rota-count em { font-style: normal; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.rota-delta { font-style: normal; margin-left: 4px; font-size: 9px; font-weight: 700; }
+.rota-delta.is-up { color: var(--st-home); }
+.rota-delta.is-down { color: #FB7185; }
+.rota-q > header .rota-tabs { margin-left: auto; }
+.rota-pay-set { margin: 8px 0; }
+@media (max-width: 1320px) { .rota-count b { font-size: 20px; } .rota-count span { display: none; } }
+
+.rota-pager.is-top { justify-content: flex-end; margin: -4px 0 2px; }
+
+/* The header keeps one line and every control in it keeps its own words on
+   one line. What gives, when the countdown needs the room, is the period
+   written beside it — the calendar's own heading already says the month. */
+.rota-head .rota-seg button { white-space: nowrap; }
+/* Measured: with the countdown and the QR button in it, the header's words
+   fit on one line from 1760px up; below that the buttons keep their icons,
+   and below 1600 the period beside the countdown goes too. */
+
+.rota-half .rota-link, .rota-plain .rota-link { font-size: 11px; }
+
+.rota-feed-row { display: flex; gap: 6px; margin: 6px 0; }
+.rota-feed-row input { flex: 1; min-width: 0; font-size: 11px; }
+.rota-rem { margin-top: 10px; }
+#rota-feed .btn-row { flex-wrap: wrap; align-items: center; }
+
+#rota-dav .btn-row { flex-wrap: wrap; align-items: center; }
+.rota-on { color: var(--ok); font-weight: 600; }
+.rota-steps { margin: 8px 0; font-size: 12px; }
+.rota-steps summary { cursor: pointer; color: var(--ink-2, inherit); }
+.rota-steps p { margin: 6px 0 0; line-height: 1.45; }
+.rota-dav-keys { margin: 6px 0; }
+.rota-dav-keys .rota-feed-row { align-items: center; }
+.rota-dav-label { flex: none; width: 64px; font-size: 11px; opacity: .75; }
+.rota-qr { width: min(360px, 92vw) !important; display: grid; gap: 10px; justify-items: center; }
+.rota-qr header { width: 100%; display: flex; align-items: center; }
+.rota-qr-img { width: 300px; height: 300px; padding: 10px; border-radius: 12px; background: #fff; }
+.rota-qr-img svg { width: 100%; height: 100%; display: block; }
+.rota-qr-img svg path { fill: #0B1220; }
+.rota-qr-img svg rect { fill: #fff; }
+
+.rota-printmenu {
+  position: fixed; top: 56px; right: 70px; z-index: 75; width: 290px; display: grid; gap: 4px; padding: 8px;
+  background: var(--deck-2); border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 18px 44px rgba(0,0,0,.55);
+}
+.rota-printmenu button {
+  display: grid; gap: 2px; padding: 8px 10px; border: 0; border-radius: 8px; background: transparent;
+  color: var(--ink); font: inherit; text-align: left; cursor: pointer;
+}
+.rota-printmenu button:hover { background: var(--deck-3); }
+.rota-printmenu b { font-size: 12.5px; }
+.rota-printmenu span { font-size: 11px; color: var(--ink-3); }
+.rota-printmenu .rota-note { margin: 2px 10px 4px; }
+@media print {
+  .rota-printmenu, .rota-help { display: none !important; }
+  .rota .rot-yearsheet { font-family: Arial, Helvetica, sans-serif; color: #000; }
+  .rot-ygrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm 5mm; margin-top: 4mm; }
+  .rot-ym > b { display: block; font-size: 9pt; margin-bottom: 1mm; border-bottom: 0.3mm solid #000; }
+  .rot-ydays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.4mm; }
+  .rot-ydays i { font-style: normal; font-size: 5.5pt; text-align: center; color: #444; }
+  .rot-ydays span { height: 9.6mm; border: 0.2mm solid #999; position: relative; }
+  .rot-ydays span:empty { border-color: transparent; }
+  .rot-ydays small { position: absolute; left: 0.5mm; top: 0.2mm; font-size: 5pt; color: #333; }
+  .rot-ydays em { position: absolute; right: 0.6mm; bottom: 0.2mm; font-style: normal; font-weight: 700; font-size: 8pt; }
+  /* Aboard is the thing the sheet is read for: a heavier box, not a colour. */
+  .rot-ydays span.is-aboard { border: 0.45mm solid #000; }
+  .rot-key { margin: 4mm 0 0; font-size: 7pt; }
+}
+
+/* The period and its one-line summary give way before anything else in the
+   header does: they shrink and end in an ellipsis rather than wrapping onto a
+   second line, which would take height from every panel. */
+.rota-head .rota-btn, .rota-head .rota-seg, .rota-head .rota-step, .rota-head .rota-count { flex: none; white-space: nowrap; }
+
+.rota-caret { font-style: normal; font-size: 9px; opacity: .7; margin-left: -1px; }
+.rota-glink { width: min(560px, 94vw) !important; display: grid; gap: 10px; }
+.rota-glink header { display: flex; align-items: center; }
+.rota-glist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.rota-glist li { display: flex; align-items: center; gap: 10px; font-size: 12px; padding: 6px 0; border-bottom: 1px solid var(--rule-2); }
+.rota-glist li > i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.rota-glist li > span { flex: 1; min-width: 0; display: grid; }
+.rota-glist em { font-style: normal; font-size: 10.5px; color: var(--ink-3); }
+.rota-steps { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 12px; color: var(--ink-2); }
+.rota-steps a { color: var(--accent-lit); }
+.rota-gform { display: grid; gap: 6px; }
+.rota-gform input { font-size: 12px; }
+.rota-gform-row { display: flex; align-items: center; gap: 8px; }
+.rota-gform-row > input { width: 140px; flex: none; }
+.rota-swatches { display: flex; gap: 5px; flex: 1; }
+.rota-swatches button { width: 20px; height: 20px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
+.rota-swatches button[aria-checked="true"] { border-color: var(--ink); box-shadow: 0 0 0 2px var(--deck-2) inset; }
+.rota-note.is-bad { color: #FF9A9A; }
+.rota-bar.is-linked { font-style: italic; }
+
+/* Every button keeps a name at every width. What gives on a narrower screen
+   is the icon beside it, the longer of its two names, and the line under
+   "Rotation" — measured at 1273, 1366, 1440 and 1600. */
+.rota-btn .is-short { display: none; }
+@media (max-width: 1640px) {
+  .rota-btn > i:first-child { display: none; }
+  .rota-btn .is-long { display: none; }
+  .rota-btn .is-short { display: inline; }
+  .rota-head { gap: 6px; }
+  .rota-btn { padding-inline: 9px; }
+}
+@media (max-width: 1400px) {
+  .rota-seg button { padding-inline: 8px; }
+  .rota-seg button > i { display: none; }
+}
+.rota-printmenu.is-google { width: 330px; }
+
+.rota-tag.is-suggest { cursor: pointer; font: inherit; font-size: 10.5px; color: var(--st-hotel); border-color: color-mix(in srgb, var(--st-hotel) 50%, transparent); background: color-mix(in srgb, var(--st-hotel) 10%, transparent); }
+.rota-tag.is-suggest:hover { background: color-mix(in srgb, var(--st-hotel) 20%, transparent); }
+.rota-hols { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 14px; max-height: 50vh; overflow: auto; }
+.rota-hols label { display: grid; grid-template-columns: auto 1fr; gap: 0 8px; align-items: center; padding: 4px 0; cursor: pointer; font-size: 12px; }
+.rota-hols input { width: auto; }
+.rota-hols em { grid-column: 2; font-style: normal; font-size: 10.5px; color: var(--ink-3); }
+
+.btn.is-danger { color: #FF9A9A; border-color: rgba(255, 110, 120, .45); }
+.btn.is-danger:hover:not(:disabled) { background: rgba(255, 110, 120, .14); color: #FFB4B4; }
+.rota-danger { border-color: rgba(255, 110, 120, .25); }
+.rota-clear { grid-template-columns: 1fr; max-height: none; }
+.rota-clear label.is-empty { opacity: .45; cursor: default; }
+.rota-clear li.is-wide { margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--rule-2); }
+
+/* Every day looks the same: the rotation is drawn as its events, not as a colour on the day. */
+.rota .rota-day { background: color-mix(in srgb, var(--deck-2) 45%, transparent); }
+.rota .rota-day.is-now { background: color-mix(in srgb, var(--accent-lit) 22%, transparent); }
+.rota-empty { display: grid; gap: 10px; justify-items: start; padding: 6px 2px; }
+.rota-empty p { margin: 0; font-size: 13px; line-height: 1.45; }
+.rota-suggest { display: grid; gap: 8px; justify-items: start; margin-bottom: 10px; }
+
+.rota-bar.is-suggested { background: transparent !important; border: 1.5px dashed var(--ink); color: var(--ink); }
+.rota-bar.is-hitch { font-weight: 600; }
+.rota-turn { display: grid; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule-2); }
+.rota-turn-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.rota-turn-row .btn { font-size: 12px; padding: 5px 9px; }
+.rota-turn-row.is-home { font-size: 12px; }
+.rota-turn-row.is-home > span { flex: 1 1 100%; }
+.rota-plus { width: 28px; height: 26px; border-radius: 6px; border: 1px solid var(--rule-2); background: var(--deck-2); color: inherit; font-size: 15px; cursor: pointer; }
+.rota-plus:disabled { opacity: .4; cursor: default; }
+.rota-legend b.is-dashed { background: transparent; border: 1.5px dashed; box-sizing: border-box; }
+.rota-tag.is-action { cursor: pointer; color: var(--ink-2, #CBD5E1); background: transparent; }
+.rota-tag.is-action:hover { border-color: var(--accent-dim); color: var(--accent-lit); }
+.rota-pop { overflow-y: auto; }
+.rota-turn .rota-range { gap: 6px; }
+.rota-turn-row .btn { flex: 1 1 0; white-space: nowrap; }
+.rota-turn .rota-range { display: grid; grid-template-columns: 1fr 1fr; }
+.rota-turn .rota-range label { display: grid; gap: 2px; font-size: 10.5px; }
+.rota-turn .rota-range input { padding: 4px 6px; font-size: 12px; min-width: 0; }
+.rota-pop:has(.rota-turn) .rota-pop-when, .rota-pop:has(.rota-turn) .rota-pop-kind { margin: 2px 0; }

@@ -1,0 +1,1244 @@
+@font-face {
+  font-family: "Metropolis";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  /* woff2: the same letters in a third of the bytes. */
+  src: url("../assets/Metropolis-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Metropolis";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("../assets/Metropolis-SemiBold.woff2") format("woff2");
+}
+
+:root {
+  /* A cool grey bench that lets the paper be the brightest thing on screen.
+     The violet accent is the mark's colour and the only saturated thing here. */
+  --deck: #0B1220;        /* the bench */
+  --deck-2: #152033;      /* raised surfaces: inputs, cards */
+  --deck-3: #1F2A40;      /* hover */
+  --rail: #070D18;        /* the side rail, one step deeper */
+  --rule: #2A3A5A;        /* borders that should be seen */
+  --rule-2: #1F2A3D;      /* borders that should not */
+  --ink: #E5E7EB;
+  --ink-2: #94A3B8;
+  --ink-3: #7D8DA3;
+  --paper: #FFFFFF;
+  --accent: #8B6FF0;
+  --accent-lit: #A78BFA;
+  --accent-dim: #43356F;
+  --s7: #1F4E79;          /* the form's own blue — the document, not the UI */
+  --s7-red: #E8112D;
+  --warn: #FBBF24;
+  --ok: #10B981;
+  --sans: "Metropolis", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --rail-w: 348px;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--deck);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.45;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+
+.app { display: grid; grid-template-columns: var(--rail-w) 1fr; height: 100%; }
+.rail {
+  background: var(--rail);
+  border-right: 1px solid var(--rule-2);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  -webkit-font-smoothing: antialiased;
+}
+.stage {
+  overflow: hidden auto;
+  padding: 34px 34px 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 26px;
+  background: radial-gradient(1100px 620px at 50% -160px, #16223A 0%, transparent 72%), var(--deck);
+}
+
+.brand { padding: 16px 18px 13px; border-bottom: 1px solid var(--rule-2); }
+.brand h1 { margin: 0; font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; }
+.brand p { margin: 2px 0 0; color: var(--ink-3); font-size: 11px; }
+.rail-body {
+  overflow: auto;
+  padding: 2px 14px 12px;
+  flex: 1;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+.rail-foot { padding: 7px 18px 9px; border-top: 1px solid var(--rule-2); background: var(--rail); }
+
+fieldset { border: 0; margin: 0; padding: 8px 0 2px; border-top: 1px solid var(--rule-2); }
+fieldset:first-of-type { border-top: 0; }
+legend { padding: 0 0 1px; color: var(--ink-3); font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.field { display: block; margin-top: 5px; }
+.field > span {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 8px; min-width: 0; color: var(--ink-3); font-size: 10.5px; margin-bottom: 2px;
+}
+.field > span > :first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* Two fields side by side: one label wraps to a second line, the other does
+   not, and the boxes stopped lining up. The controls sit on one line whatever
+   the labels do. */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: end; }
+/* a long option must not widen the rail: let the boxes shrink */
+.grid2 > *, .field, .rail-body { min-width: 0; }
+select, input, textarea { min-width: 0; max-width: 100%; }
+select { text-overflow: ellipsis; }
+
+/* Every text-ish field, whether or not the markup bothered to say type="text":
+   keying off the attribute left whole panels with the browser's raw input. */
+input:not([type="checkbox"]):not([type="radio"]):not([type="search"]), select, textarea {
+  width: 100%;
+  background: var(--deck-2);
+  border: 1px solid var(--rule-2);
+  border-radius: 6px;
+  padding: 4px 7px;
+  color: var(--ink);
+  font-size: 12px;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+input::placeholder, textarea::placeholder { color: #55757f; }
+/* Chrome paints its own grey over autofilled fields; keep the bench colour */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  -webkit-box-shadow: 0 0 0 40px var(--deck-2) inset;
+  caret-color: var(--ink);
+  transition: background-color 9999s ease-in-out 0s;
+}
+input[aria-invalid="true"] { border-color: #8d1f2c; }
+input:hover, select:hover, textarea:hover { border-color: var(--rule); }
+input:focus, select:focus, textarea:focus { border-color: var(--accent-lit); }
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+button:focus-visible, [contenteditable]:focus-visible {
+  outline: 2px solid var(--accent-lit);
+  outline-offset: 1px;
+}
+textarea { resize: vertical; min-height: 58px; line-height: 1.35; font-size: 12.5px; }
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink-3) 50%),
+    linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
+  background-position: calc(100% - 15px) 55%, calc(100% - 10px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 28px;
+}
+
+.dur {
+  display: inline-block;
+  margin-top: 7px;
+  color: var(--ink-2);
+  font-size: 12px;
+  border: 1px solid var(--rule-2);
+  border-radius: 99px;
+  padding: 2px 10px;
+}
+.dur.bad { color: #ffb4b4; border-color: #5a2530; background: #2a1419; }
+
+/* score presets: the band the whole document sits in */
+.presets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; margin-top: 10px; }
+.preset {
+  border: 1px solid var(--rule-2);
+  background: var(--deck-2);
+  color: var(--ink-3);
+  border-radius: 5px;
+  padding: 5px 4px;
+  font-size: 11.5px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.preset:hover { color: var(--ink); border-color: var(--rule); }
+.preset.on { background: var(--accent); border-color: var(--accent-lit); color: #fff; font-weight: 600; }
+
+/* score meter: mirrors the criteria table on the form */
+.scores { margin-top: 10px; display: flex; flex-direction: column; gap: 1px; }
+.srow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+.srow:hover { background: #16223A; }
+.srow > label {
+  color: var(--ink-2);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meter { display: flex; gap: 2px; }
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--rule-2);
+  background: var(--deck-2);
+  border-radius: 3px;
+  color: var(--ink-3);
+  font-size: 11px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: background 0.1s, color 0.1s;
+}
+.cell:hover:not(:disabled) { border-color: var(--accent-lit); color: var(--ink); }
+.cell[aria-pressed="true"] { background: var(--accent); border-color: var(--accent-lit); color: #fff; font-weight: 600; }
+/* below target: available by hand, but the dice never rolls it */
+.cell.low { color: #7d6068; }
+.cell.low[aria-pressed="true"] { background: #8d1f2c; border-color: #c4485a; color: #fff; }
+.dice {
+  width: 24px;
+  height: 22px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 3px;
+  color: var(--ink-3);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.dice:hover { color: var(--ink); border-color: var(--rule); }
+.dice.ai { color: var(--accent-lit); }
+.dice.ai:hover { color: #9fd0ff; border-color: var(--accent-lit); }
+.dice.ai.busy { color: var(--ink-3); cursor: progress; }
+.scores.with-ai .srow { grid-template-columns: 1fr auto auto auto; }
+
+.btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--rule);
+  background: var(--deck-2);
+  color: var(--ink);
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.btn:hover { background: var(--deck-3); border-color: var(--accent-lit); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #140F27; font-weight: 600; }
+.rail-foot .btn.primary { padding: 5px 12px; font-size: 12px; border-radius: 6px; gap: 6px; }
+.btn.primary:hover { background: var(--accent-lit); }
+.btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 7px; }
+.status { display: flex; align-items: center; gap: 6px; color: var(--ink-3); font-size: 11px; margin-bottom: 7px; }
+legend.legend-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; width: 100%; }
+legend.legend-row .avg { color: var(--ink-3); font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 11px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); flex: none; }
+.dot.ok { background: var(--ok); }
+.btn.draft { margin-top: 8px; }
+.notes-link {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  font-size: 11.5px;
+  text-align: center;
+  cursor: pointer;
+}
+.notes-link:hover { color: var(--accent-lit); }
+.foot-links { display: flex; gap: 14px; justify-content: center; }
+.foot-links .notes-link { width: auto; }
+
+.offline-tag { color: var(--warn); font-size: 11.5px; }
+.offline-tag.hidden { display: none; }
+
+.warn {
+  margin-top: 9px;
+  font-size: 12px;
+  color: #ffd9a8;
+  background: #2c2113;
+  border: 1px solid #5a421f;
+  border-radius: 5px;
+  padding: 7px 9px;
+}
+
+/* The width has to be stated: without it the sheet's 100% resolves against
+   its content, and an iframe with no width is 300px by specification. */
+.sheet-wrap { display: flex; flex-direction: column; align-items: stretch; width: 100%; gap: 26px; }
+/* A form that runs to several sheets is still a row of sheets, not one long
+   one: the wrapper that measures them takes no space of its own. */
+.sheet-run { display: contents; }
+/* The official form, drawn as Word lays it out. It fills the stage: a
+   document is read at the size it is printed. */
+.paper { display: block; width: 100%; }
+@media print {
+}
+/* The four page flavours, measured where nobody has to look at them. */
+.ruler { position: absolute; left: -12000px; top: 0; visibility: hidden; pointer-events: none; }
+@media print { .ruler { display: none !important; } }
+.sheet {
+  background: var(--paper);
+  width: 210mm;
+  min-height: 297mm;
+  flex: none;
+  /* A transform shrinks what you see, not the room it takes. The negative
+     margins give the scaled sheet the footprint it actually has, so the page
+     never scrolls sideways on a phone. */
+  transform: scale(var(--sheet-scale, 1));
+  transform-origin: top left;
+  margin-right: calc((var(--sheet-scale, 1) - 1) * 210mm);
+  margin-bottom: calc((var(--sheet-scale, 1) - 1) * 297mm);
+  padding: 14mm 12mm 10mm;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 50px -12px rgba(0, 0, 0, 0.65);
+  transform-origin: top center;
+  -webkit-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+}
+.tip { color: var(--ink-3); font-size: 12px; text-align: center; max-width: 210mm; -webkit-font-smoothing: antialiased; }
+.tip.quiet { font-size: 11px; line-height: 1.5; max-width: 148mm; margin: -2px auto 0; opacity: .82; }
+
+.sheet [contenteditable] { border-radius: 2px; transition: background 0.12s, box-shadow 0.12s; }
+.sheet [contenteditable]:hover { background: #eef5fb; box-shadow: 0 0 0 3px #eef5fb; }
+.sheet [contenteditable]:focus { background: #e7f1fa; box-shadow: 0 0 0 3px #e7f1fa; outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 1100px) {
+  .app { grid-template-columns: 1fr; height: auto; }
+  .rail { border-right: 0; border-bottom: 1px solid var(--rule-2); }
+  .rail-body { overflow: visible; }
+  .rail-foot { position: sticky; bottom: 0; z-index: 5; }
+  .stage { padding: 20px 12px 60px; }
+}
+@media (max-width: 560px) {
+  .grid2 { grid-template-columns: 1fr; }
+}
+
+/* A4, and no margin of its own. Measured on the printed file: 7mm of padding
+   on the sheet is the most that still prints as two pages (9mm adds a blank
+   page, and so did a page margin here). The top padding keeps the form out of
+   the strip no printer can reach. */
+@page { size: A4; margin: 0; }
+
+@media print {
+  html, body, #root { height: auto; }
+  body { background: #fff; }
+  .app { display: block; }
+  .rail, .tip { display: none !important; }
+  .stage { display: block; padding: 0; background: #fff; overflow: visible; }
+  .sheet-wrap { display: block; gap: 0; }
+  .sheet {
+    box-shadow: none;
+    width: auto;
+    min-height: 0;
+    transform: none;      /* the screen fit must never reach the paper */
+    /* Same geometry as on screen: 186mm of content wraps the same, and 265mm tall
+       sits inside the printable area even with the dialog's 10mm margins, so the
+       form does not spill onto a third page. */
+    width: 186mm;         /* 210mm of paper less the form's own 12mm margins */
+    /* Down the page by as much as the paper will take — see the note above
+       the @page rule, which has the measurements. */
+    padding: 7mm 0 0;
+    margin: 0 auto;
+    /* One sheet per printed page, whole. A statement longer than a page is cut
+       into more sheets by the layout, so nothing is lost by keeping them. */
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .sheet + .sheet { break-before: page; page-break-before: always; }
+  .sheet [contenteditable]:hover, .sheet [contenteditable]:focus { background: none; box-shadow: none; }
+}
+
+textarea.facts { min-height: 92px; margin-top: 10px; }
+textarea.facts::placeholder { line-height: 1.45; }
+
+.tag-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
+.block-tools { display: flex; gap: 6px; padding-bottom: 2px; }
+.block-tools button {
+  border: 1px solid #c9d3e0;
+  background: #f4f6fa;
+  color: #35507a;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font: inherit;
+  font-size: 7.6pt;
+  cursor: pointer;
+}
+.block-tools button:hover { border-color: #7f9bc4; background: #e9eef7; }
+.block-tools button:disabled { opacity: .6; cursor: progress; }
+@media print { .block-tools { display: none !important; } }
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  margin-top: 4px;
+}
+/* The document outputs sit on a row of their own, two abreast, because they
+   are a different kind of thing from Download/Share/Save/Draft. */
+.actions.docs { grid-template-columns: repeat(2, 1fr); }
+.actions.docs button { padding: 6px 3px; font-size: 11px; }
+.actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 3px;
+  border: 1px solid var(--rule-2);
+  background: var(--deck-2);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color .12s, color .12s, background .12s;
+}
+.actions button:hover { border-color: var(--accent-dim); color: var(--ink); background: var(--deck-3); }
+.actions button.on { border-color: var(--accent); color: var(--accent-lit); }
+.actions svg { opacity: .9; flex: none; }
+.actions span { line-height: 1; white-space: nowrap; }
+
+/* work scope: the ready-made list hides inside the label */
+.field.scope > span { margin-bottom: 4px; }
+/* Reading the library to rebuild the task list: a quiet line, because it is a
+   thing you do once in a while, not on every document. */
+.caap .mine {
+  width: 100%; margin-bottom: 4px; cursor: pointer; font: inherit; font-size: 11px;
+  color: var(--accent-lit); background: transparent; border: 1px dashed var(--accent-dim);
+  border-radius: 7px; padding: 5px 8px; text-align: left;
+}
+.caap .mine:hover:not(:disabled) { background: var(--deck-2); border-color: var(--accent); }
+.caap .mine:disabled { color: var(--ink-3); border-color: var(--rule-2); cursor: progress; }
+
+/* What the supervisor made of the set, under the buttons that made it. */
+.watch-tag { display: block; margin-top: 5px; font-size: 10.5px; color: var(--ink-3); }
+/* The same note, when it is something you can go and fix: it takes you there. */
+.watch-tag.as-link { width: 100%; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; font-size: 10.5px; }
+.watch-tag.as-link:hover { text-decoration: underline; }
+.watch-tag.bad { color: var(--warn, #FBBF24); }
+/* A document the supervisor could not finish says so on its own tab. */
+.doc-bar button.flag { position: relative; }
+.doc-bar button.flag::after {
+  content: ""; position: absolute; top: 4px; right: 4px; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--warn, #FBBF24);
+}
+
+/* The stepper stays put: the list is the grid and the rows step out of the
+   way, so the labels share one column and the steppers the next (per-row
+   grids never line up). The references, last, take the rest of the line. */
+.caap .copies {
+  list-style: none; margin: 4px 0 0; padding: 0;
+  display: grid; grid-template-columns: max-content auto minmax(0, 1fr);
+  align-items: center; gap: 3px 10px;
+}
+.caap .copies li { display: contents; }
+.caap .copies span { font-size: 11.5px; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.caap .copies em {
+  font-style: normal; font-size: 10.5px; color: var(--ink-3);
+  font-variant-numeric: tabular-nums; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.caap .step { display: flex; align-items: center; gap: 2px; }
+.caap .step button {
+  width: 20px; height: 20px; display: grid; place-items: center; cursor: pointer;
+  border: 1px solid var(--rule-2); border-radius: 5px; background: var(--deck-2);
+  color: var(--ink-2); font: inherit; font-size: 12px; line-height: 1;
+}
+.caap .step button:hover:not(:disabled) { color: var(--ink); border-color: var(--rule); }
+.caap .step button:disabled { opacity: .35; cursor: default; }
+.caap .step b { min-width: 16px; text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; }
+
+/* One choice, so no tray of chips and no tick boxes to hunt for. */
+.picker.single-pick .group label { grid-template-columns: minmax(0, 1fr) auto; }
+.picker.single-pick .group input { display: none; }
+.picker.single-pick footer { justify-content: flex-end; }
+
+/* Touch: no hover, fingers are wider than a mouse, and iOS zooms the page
+   whenever it focuses a field smaller than 16px. */
+@media (hover: none) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="search"]), select, textarea {
+    font-size: 16px;
+    padding: 9px 10px;
+  }
+  .cell { width: 30px; height: 30px; font-size: 13px; }
+  .dice { width: 32px; height: 30px; font-size: 15px; }
+  .preset { padding: 9px 4px; font-size: 12.5px; }
+  .srow { padding: 5px 4px; gap: 6px; }
+  .srow > label { font-size: 13px; }
+  .actions button { padding: 8px 4px; font-size: 11px; }
+  .rail-foot .btn.primary { padding: 9px 12px; font-size: 13px; }
+  .btn { padding: 11px 12px; }
+  .block-tools button { font-size: 11px; padding: 5px 10px; }
+}
+
+@media (max-width: 760px) {
+  .rail { border-bottom: 0; }
+  .rail-body { padding: 2px 14px 12px; }
+  .rail-foot { padding: 10px 14px 12px; }
+  .brand { padding: 10px 14px 8px; }
+  .stage { padding: 14px 8px 92px; }
+  .tip { display: none; }
+}
+
+.unit-pick { width: 100%; margin-bottom: 6px; }
+.criteria-pick {
+  list-style: none; margin: 0; padding: 0; max-height: 220px; overflow: auto;
+  border: 1px solid var(--rule-2); border-radius: 7px; background: var(--deck);
+}
+.criteria-pick li { border-bottom: 1px solid var(--rule-2); }
+.criteria-pick li:last-child { border-bottom: 0; }
+.criteria-pick label {
+  display: flex; gap: 8px; align-items: flex-start; padding: 7px 9px;
+  font-size: 12px; line-height: 1.4; color: var(--ink-2); cursor: pointer;
+}
+.criteria-pick label:hover { background: var(--deck-2); color: var(--ink); }
+.criteria-pick input { margin-top: 2px; accent-color: var(--accent); flex: none; }
+.picked { margin: 6px 0 0; font-size: 11.5px; color: var(--ink-3); }
+
+.form-pick { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.form-pick button {
+  width: 100%; text-align: left; border: 1px solid var(--rule-2); border-radius: 7px;
+  background: var(--deck-2); color: var(--ink-2); padding: 7px 10px; cursor: pointer; font: inherit;
+}
+.form-pick button:hover { border-color: var(--rule); color: var(--ink); }
+.form-pick button.on { border-color: var(--accent); background: var(--deck-3); color: var(--ink); }
+.form-pick b { display: block; font-size: 13px; font-weight: 600; }
+.form-pick em { display: block; font-style: normal; font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }
+
+
+.level-pick { width: 100%; font-size: 13.5px; }
+.level-note { margin: 6px 0 0; font-size: 11.5px; color: var(--ink-3); }
+
+.doc-bar {
+  position: sticky; top: 0; z-index: 6;
+  /* A flex item that scrolls has an automatic minimum of zero, so the column
+     was free to squash this bar to its padding. It keeps its own height. */
+  flex: none; align-self: stretch; min-height: max-content;
+  display: flex; gap: 4px; margin: 0 0 12px; padding: 2px 2px 9px;
+  background: linear-gradient(var(--deck) 74%, transparent);
+  overflow-x: auto; scrollbar-width: none;
+}
+.doc-bar::-webkit-scrollbar { display: none; }
+.doc-bar button {
+  flex: none; display: grid; gap: 0; justify-items: start; cursor: pointer;
+  border: 1px solid var(--rule-2); border-radius: 7px; background: var(--deck-2);
+  color: var(--ink-2); font: inherit; padding: 4px 9px; transition: border-color .12s, color .12s, background .12s;
+}
+.doc-bar button:hover { color: var(--ink); border-color: var(--rule); }
+.doc-bar button.on { color: var(--ink); border-color: var(--accent); background: var(--deck-3); }
+/* The reference leads in the accent and the kind is one word, so five
+   documents fit the width. */
+.doc-bar b { font-size: 11.5px; font-weight: 600; white-space: nowrap; display: flex; align-items: baseline; gap: 5px; }
+.doc-bar b .ref {
+  font-style: normal; font-size: 9.5px; font-weight: 700; letter-spacing: .04em;
+  color: var(--accent-lit);
+}
+.doc-bar em {
+  font-style: normal; font-size: 9.5px; color: var(--ink-3);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.doc-bar button.on em { color: var(--accent-lit); }
+@media print { .doc-bar { display: none !important; } }
+@media (max-width: 760px) { .doc-bar { margin: 0 0 10px; padding: 2px 2px 8px; } }
+
+.caap .rail-body { padding-top: 0; }
+.caap fieldset { padding: 9px 0 2px; }
+.caap .field { margin-top: 6px; }
+.caap .level-pick { padding: 6px 9px; font-size: 13px; }
+.caap .level-note { margin: 4px 0 0; font-size: 11px; }
+/* Which instrument the evidence is for — the same segmented control the trip
+   panel uses for its presets, because it is the same kind of choice. */
+.caap .scheme { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 5px; }
+.caap .scheme button {
+  display: grid; gap: 0; justify-items: center; cursor: pointer; font: inherit;
+  border: 1px solid var(--rule-2); background: var(--deck-2); color: var(--ink-3);
+  border-radius: 5px; padding: 4px 6px;
+  transition: background .12s, color .12s, border-color .12s;
+}
+.caap .scheme button b { font-size: 12px; font-weight: 600; letter-spacing: .04em; }
+.caap .scheme button em { font-style: normal; font-size: 10.5px; color: var(--ink-3); }
+.caap .scheme button:hover:not(:disabled) { color: var(--ink); border-color: var(--rule); }
+.caap .scheme button.on { background: var(--accent); border-color: var(--accent-lit); color: #fff; }
+.caap .scheme button.on em { color: rgba(255, 255, 255, .8); }
+.caap .scheme button:disabled { opacity: .45; cursor: default; }
+.caap .picked { margin-top: 5px; font-size: 11px; }
+.caap textarea { min-height: 62px; }
+.caap .note { font-size: 11.5px; line-height: 1.5; }
+.caap .btn-row { margin-top: 5px; }
+
+
+.summary {
+  display: grid; gap: 2px; width: 100%; text-align: left; cursor: pointer;
+  border: 1px solid var(--rule-2); border-radius: 8px; background: var(--deck-2);
+  padding: 7px 10px; font: inherit; color: var(--ink);
+  transition: border-color .12s, background .12s;
+}
+.summary:hover { border-color: var(--accent); background: var(--deck-3); }
+.summary b { font-size: 12.5px; font-weight: 600; }
+.summary em {
+  font-style: normal; font-size: 11px; color: var(--ink-3); line-height: 1.35;
+  overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+  -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+}
+
+/* A closed dialog is display:none by the browser's own stylesheet; a display
+   on .picker overrode that and drew both dialogs over everything. The layout
+   belongs to the open state. */
+.picker {
+  width: min(920px, 94vw); max-width: none; height: min(660px, 86vh);
+  padding: 0; border: 1px solid var(--rule); border-radius: 14px;
+  background: var(--deck); color: var(--ink);
+  box-shadow: 0 40px 90px -30px #000;
+  overflow: hidden;
+}
+.picker[open] { display: flex; flex-direction: column; }
+.picker::backdrop { background: rgba(4, 8, 16, .72); backdrop-filter: blur(2px); }
+.picker header {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px) auto;
+  gap: 14px; align-items: center;
+  padding: 14px 16px; border-bottom: 1px solid var(--rule-2); background: var(--deck-2);
+}
+.picker h2 { margin: 0; font-size: 15px; font-weight: 600; }
+.picker header p { margin: 2px 0 0; font-size: 11.5px; color: var(--ink-3); }
+.picker header input {
+  width: 100%; background: var(--deck); border: 1px solid var(--rule-2); border-radius: 8px;
+  padding: 7px 10px; color: var(--ink); font: inherit; font-size: 12.5px;
+}
+.picker header input:focus { outline: none; border-color: var(--accent); }
+.picker .shut {
+  /* Square, and never stretched by the column it happens to land in. */
+  justify-self: end; display: grid; place-items: center;
+  width: 28px; height: 28px; padding: 0;
+  border: 1px solid var(--rule-2); border-radius: 7px; background: transparent;
+  color: var(--ink-3); cursor: pointer; font-size: 13px;
+}
+.picker .shut:hover { color: var(--ink); border-color: var(--rule); }
+
+.picker .body { display: grid; grid-template-columns: 220px minmax(0, 1fr); flex: 1; min-height: 0; }
+.picker .body.single { grid-template-columns: minmax(0, 1fr); }
+.picker nav {
+  border-right: 1px solid var(--rule-2); background: var(--deck-2);
+  overflow: auto; padding: 8px;
+}
+.picker nav button {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  width: 100%; text-align: left; cursor: pointer; font: inherit; font-size: 12px;
+  color: var(--ink-2); background: transparent; border: 0; border-radius: 7px; padding: 7px 9px;
+}
+.picker nav button:hover { background: var(--deck-3); color: var(--ink); }
+.picker nav button.on { background: var(--accent-dim); color: var(--ink); }
+.picker nav em { font-style: normal; font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.picker nav button.on em { color: var(--accent-lit); }
+
+.picker .body > ul,
+.picker .list > ul { list-style: none; margin: 0; padding: 6px 0 10px; overflow: auto; }
+
+/* The list column: a bar that acts on what is on screen, then the list. */
+.picker .list { display: flex; flex-direction: column; min-height: 0; }
+.picker .bulk {
+  display: flex; align-items: center; gap: 8px; flex: none;
+  padding: 7px 16px; border-bottom: 1px solid var(--rule-2); background: var(--deck-2);
+}
+.picker .bulk button {
+  font: inherit; font-size: 11.5px; cursor: pointer; border-radius: 7px;
+  padding: 5px 10px; border: 1px solid var(--rule-2); background: transparent; color: var(--ink-2);
+}
+.picker .bulk button:hover:not(:disabled) { color: var(--ink); border-color: var(--rule); background: var(--deck-3); }
+.picker .bulk button:disabled { opacity: .45; cursor: default; }
+.picker .bulk .all { color: var(--accent-lit); border-color: var(--accent-dim); }
+.picker .bulk .clear { margin-left: auto; }
+.picker .group > h3 {
+  position: sticky; top: 0; z-index: 1; margin: 0;
+  padding: 6px 16px; background: var(--deck); border-bottom: 1px solid var(--rule-2);
+  font-size: 10.5px; font-weight: 600; color: var(--ink-3); letter-spacing: .05em; text-transform: uppercase;
+}
+.picker .group ul { list-style: none; margin: 0; padding: 0; }
+.picker .group label {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: start;
+  padding: 9px 16px; cursor: pointer; border-bottom: 1px solid var(--rule-2);
+  font-size: 13px; line-height: 1.45; color: var(--ink-2);
+}
+.picker .group label:hover { background: var(--deck-2); color: var(--ink); }
+.picker input[type="checkbox"] { margin-top: 3px; accent-color: var(--accent); }
+.picker .group em { display: flex; gap: 3px; font-style: normal; }
+.picker .group em i {
+  font-style: normal; font-size: 9.5px; line-height: 1; letter-spacing: .04em;
+  padding: 3px 5px; border-radius: 4px; color: var(--ink-3);
+  background: var(--deck-2); border: 1px solid var(--rule-2);
+}
+.picker .group em i.own { color: var(--accent-lit); border-color: var(--accent-dim); background: var(--accent-dim); }
+.picker .empty { padding: 26px 16px; color: var(--ink-3); font-size: 13px; }
+
+.picker footer {
+  display: flex; align-items: center; gap: 14px; justify-content: space-between;
+  padding: 10px 16px; border-top: 1px solid var(--rule-2); background: var(--deck-2);
+}
+.picker .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; flex: 1; max-height: 64px; overflow: auto; }
+.picker .chips li {
+  display: inline-flex; align-items: center; gap: 5px; max-width: 260px;
+  background: var(--accent-dim); border: 1px solid var(--accent); border-radius: 999px;
+  padding: 3px 5px 3px 10px; font-size: 11.5px;
+}
+.picker .chips span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.picker .chips button { border: 0; background: transparent; color: var(--ink-2); cursor: pointer; font-size: 13px; line-height: 1; }
+.picker .chips button:hover { color: #ff9a9a; }
+.picker .chips .none { border: 0; background: none; color: var(--ink-3); padding-left: 0; }
+.picker footer .btn { width: auto; padding: 7px 20px; }
+.picker footer .hint { margin: 0; font-size: 11.5px; color: var(--ink-3); }
+
+
+/* nothing in the panel scrolls sideways */
+.rail-body { overflow-x: hidden; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .picker[open] { animation: picker-in .14s cubic-bezier(.2,.7,.3,1); }
+  @keyframes picker-in { from { opacity: 0; transform: translateY(6px) scale(.99); } }
+}
+@media (max-width: 760px) {
+  .picker { width: 100vw; height: 100vh; border-radius: 0; }
+  .picker header { grid-template-columns: minmax(0,1fr) auto; }
+  .picker header input { grid-column: 1 / -1; }
+  .picker .body { grid-template-columns: minmax(0, 1fr); }
+  .picker nav { display: flex; gap: 6px; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--rule-2); }
+  .picker nav button { width: auto; white-space: nowrap; }
+}
+
+.rail .field > span { font-size: 10px; margin-bottom: 1px; }
+/* A date field comes out two pixels taller than the box beside it, so every
+   control in the panel gets the same height and a pair always lines up. */
+.rail input[type="date"] { font-size: 13px; }
+.rail .field > input, .rail .field > select { height: 33px; }
+.rail .field > textarea { height: auto; }
+.rail .days, .rail .chip { margin-top: 4px; }
+.rail fieldset { padding-top: 6px; }
+.rail .grid2 { gap: 5px; }
+.rail textarea { min-height: 44px; }
+.rail .btn-row { gap: 4px; margin-top: 4px; }
+.rail .btn-row .btn { padding: 5px 8px; font-size: 11.5px; line-height: 1.25; }
+.scores { gap: 0; }
+.srow { padding: 2px 3px; gap: 4px; }
+.srow > label { font-size: 11.5px; }
+.cell { width: 19px; height: 19px; font-size: 10.5px; border-radius: 4px; }
+.dice { width: 20px; height: 19px; font-size: 12px; }
+.ai-cell { width: 20px; height: 19px; }
+.presets { gap: 2px; margin-top: 4px; }
+.preset { padding: 4px 2px; font-size: 10.5px; }
+.notes-link { font-size: 10.5px; }
+
+/* a touch screen still needs something to hit, but not a third of the panel */
+@media (hover: none) {
+  /* On a touch screen the fields are set larger, so the pair is held at a
+     larger common height rather than each finding its own. */
+  .rail .field > input, .rail .field > select { height: 40px; }
+  .cell { width: 26px; height: 26px; font-size: 12px; }
+  .dice, .ai-cell { width: 26px; height: 26px; }
+  .srow { padding: 3px 4px; }
+  .rail input:not([type="checkbox"]):not([type="radio"]):not([type="search"]), .rail select, .rail textarea { font-size: 16px; padding: 6px 8px; }
+  .rail .btn-row .btn { font-size: 13px; padding: 8px 10px; }
+}
+
+/* One size for the score cells whatever the pointer: 22px with the row's own
+   padding is a real target on a phone and half the height it was on a laptop. */
+.cell, .dice, .ai-cell { width: 22px; height: 22px; font-size: 11px; }
+@media (hover: none) { .cell, .dice, .ai-cell { width: 24px; height: 24px; font-size: 12px; } }
+.srow { padding: 1px 3px; gap: 4px; }
+.scores { gap: 0; }
+.work-scope textarea, .rail textarea { min-height: 40px; }
+.rail .field.scope textarea { min-height: 44px; }
+.rail-body > fieldset > .btn-row .btn { white-space: nowrap; }
+.rail .brand { padding: 8px 14px 6px; }
+.rail-foot { padding: 5px 14px 7px; }
+.status { margin-bottom: 5px; }
+
+/* The label belongs beside the box it names, not above it: a form of short
+   fields reads as a table, and gets half its height back. Textareas keep
+   their label above, because their content is a paragraph, not a value. */
+.rail .field:has(> input), .rail .field:has(> select) {
+  display: grid; grid-template-columns: 88px minmax(0, 1fr);
+  align-items: center; gap: 8px; margin-top: 3px;
+}
+.rail .field:has(> input) > span, .rail .field:has(> select) > span { margin-bottom: 0; }
+.rail .grid2 .field:has(> input), .rail .grid2 .field:has(> select) { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.rail .grid2 .field > span { margin-bottom: 1px; }
+.srow { padding: 0 3px; }
+.cell, .dice, .ai-cell { width: 21px; height: 21px; }
+
+.rail textarea { min-height: 36px; }
+.rail .field.scope textarea { min-height: 40px; }
+.rail .days { display: inline-block; margin: 3px 0 0; }
+
+/* Each footer row says how many buttons it holds, so none is left hanging in
+   a third of a line. */
+.act-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+.act-row + .act-row { margin-top: 4px; }
+.act-row.one { grid-template-columns: minmax(0, 1fr); }
+.act-row.print { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr); }
+.act-row .btn { padding: 6px 6px; font-size: 11.5px; white-space: nowrap; gap: 5px; }
+
+.caap .summary { padding: 6px 9px; }
+.caap .summary b { font-size: 12px; }
+.caap .summary em { font-size: 10.5px; }
+.caap .level-pick { padding: 4px 8px; font-size: 12.5px; }
+.caap .level-note { margin: 3px 0 5px; }
+.caap fieldset { padding-top: 6px; }
+
+.rail .brand h1 { font-size: 15px; }
+.rail .brand p { font-size: 11.5px; }
+.rail legend { font-size: 11px; }
+.rail .field > span { font-size: 11px; }
+.rail input:not([type="checkbox"]):not([type="radio"]):not([type="search"]),
+.rail select, .rail textarea { font-size: 13px; }
+.rail .btn, .act-row .btn, .rail .btn-row .btn { font-size: 12.5px; }
+.rail-foot .btn.primary { font-size: 13px; }
+.srow > label { font-size: 12.5px; }
+.cell, .dice, .ai-cell { width: 22px; height: 22px; font-size: 12px; }
+@media (hover: none) { .cell, .dice, .ai-cell { width: 25px; height: 25px; font-size: 13px; } }
+.preset { font-size: 11.5px; }
+.rail .note, .picked, .level-note, .notes-link, .status, .offline-tag { font-size: 12px; }
+.summary b { font-size: 13px; }
+.summary em { font-size: 11.5px; }
+.caap .summary b { font-size: 13px; }
+.caap .summary em { font-size: 11.5px; }
+.caap .level-pick { font-size: 13.5px; }
+legend.legend-row .avg { font-size: 12px; }
+
+/* The form is a PDF laid out by Word's own engine, painted here page by page
+   so the size is ours to set and the blanks are ours to write on. */
+.paper .sheets { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.paper .leaf { position: relative; background: var(--paper, #fff); border-radius: 3px;
+  box-shadow: 0 10px 34px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.05); }
+.paper .leaf canvas { display: block; width: 100%; height: 100%; border-radius: 3px; }
+
+/* A field over each printed blank: it shows nothing until under the cursor,
+   since the page behind already holds the words. Four classes deep on purpose:
+   the site-wide dark field rule counts three, and these sit on white paper. */
+.paper .sheets .leaf .on-line, .paper .sheets .leaf .in-box {
+  position: absolute; width: auto; margin: 0; padding: 0 1px; border: 0; border-radius: 2px;
+  background: transparent; color: transparent; caret-color: #111;
+  font-family: Verdana, "DejaVu Sans", Geneva, sans-serif;
+  transition: background-color .12s, box-shadow .12s;
+  resize: none; overflow: hidden;
+}
+/* Paper has no scrollbar down the side of a box, and a field that hides half
+   of what you typed behind one is worse than paper. The box takes the height
+   its own text needs; nothing here ever scrolls. */
+.paper .sheets .leaf .in-box { padding: 2px 3px; line-height: 1.32; overflow: hidden; }
+/* While it is being written in, the box is over the document rather than
+   under it — it may be taller than the box the document was laid out with,
+   and what you are typing has to be the thing you can see. */
+.paper .sheets .leaf .in-box:focus { z-index: 3; }
+.paper .sheets .leaf .on-line::selection, .paper .sheets .leaf .in-box::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent); color: #111; }
+/* Somewhere to aim: a blank with nothing on it yet, and whatever the pointer
+   is over, saying so without drawing on the document. */
+.paper .sheets .leaf .on-line.blank, .paper .sheets .leaf .in-box.blank {
+  background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.paper .sheets .leaf .on-line:hover, .paper .sheets .leaf .in-box:hover {
+  background: color-mix(in srgb, var(--accent) 17%, transparent); }
+.paper .sheets .leaf .on-line:focus, .paper .sheets .leaf .in-box:focus {
+  background: #fff; color: #111; outline: 0; border: 0;
+  box-shadow: 0 0 0 1.5px var(--accent), 0 3px 12px rgba(0,0,0,.2);
+}
+@media print {
+  .paper .zoom { display: none; }
+  .paper .sheets .leaf .on-line, .paper .sheets .leaf .in-box { display: none; }
+  .paper .leaf { box-shadow: none; }
+}
+
+/* How big the form is drawn. Sits above the page, out of the way of it. */
+.paper { position: relative; }
+.paper .zoom { position: absolute; top: 6px; right: 10px; z-index: 3; display: flex; gap: 3px;
+  padding: 3px; border-radius: 8px; background: var(--deck-2); border: 1px solid var(--rule-2);
+  box-shadow: 0 6px 18px -8px rgba(0,0,0,.7); }
+.paper .zoom button { min-width: 30px; padding: 3px 8px; font: inherit; font-size: 11.5px;
+  border: 0; border-radius: 5px; background: transparent; color: var(--ink-2); cursor: pointer; }
+.paper .zoom button:hover:not(:disabled) { background: var(--deck); color: var(--ink-1); }
+.paper .zoom button:disabled { opacity: .35; cursor: default; }
+.paper .zoom button.fit.on { background: var(--accent); color: #fff; }
+.paper .tip.drawing { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 3;
+  margin: 0; padding: 4px 12px; border-radius: 999px; background: var(--deck-2);
+  border: 1px solid var(--rule-2); font-size: 12px; }
+@media print { .paper .zoom, .paper .tip { display: none !important; } }
+
+/* The block for the open copy. Everything around it applies to the whole pack;
+   this applies only to the document on screen, so it stands apart without shouting. */
+.rail fieldset.this-copy {
+  margin: 4px -6px 0;
+  padding: 6px 10px 10px;
+  border-left: 2px solid var(--accent, #8B6FF0);
+  border-radius: 0 8px 8px 0;
+  background: color-mix(in srgb, var(--accent, #8B6FF0) 7%, transparent);
+}
+.rail fieldset.this-copy legend { color: var(--accent, #8B6FF0); }
+
+/* What the writing can read in a library file. */
+.cap .teaches { font-style: normal; margin-left: 7px; padding: 1px 6px; border-radius: 999px;
+  font-size: 10.5px; letter-spacing: .01em;
+  background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent-lit); }
+.cap .teaches.none { background: color-mix(in srgb, #9AA4B2 14%, transparent); color: #9AA4B2; }
+
+/* Who reads a donation: only whoever gave it, or everyone's writing. */
+.cap .teaches.house { background: color-mix(in srgb, #4ADE80 16%, transparent); color: #7EE2A8; }
+.house-switch { position: absolute; top: 8px; right: 38px; z-index: 2;
+  padding: 2px 8px; border-radius: 999px; font-size: 10.5px; line-height: 1.5;
+  border: 1px solid var(--rule-2); background: var(--deck-2); color: #9AA4B2; cursor: pointer; }
+.house-switch:hover { border-color: var(--rule); color: var(--ink); }
+.house-switch.on { border-color: color-mix(in srgb, #4ADE80 45%, transparent);
+  background: color-mix(in srgb, #4ADE80 14%, transparent); color: #7EE2A8; }
+
+/* With no server to lay it out, the paper is blank: so what was written has
+   to show in the fields, and not only in the document underneath them. */
+.paper.plain .sheets .leaf .on-line, .paper.plain .sheets .leaf .in-box { color: #111; }
+
+/* The marking grid wants room: six references beside a line of the framework
+   is more than a 348px rail will hold without wrapping every row onto three
+   lines. This one tool takes a wider panel, and the sheet beside it is scaled
+   to whatever is left. */
+.workbench.caap { grid-template-columns: minmax(360px, 38%) 1fr; }
+@media (max-width: 1100px) { .workbench.caap { grid-template-columns: minmax(340px, 44%) 1fr; } }
+
+.tab-bar {
+  display: flex; gap: 3px; padding: 8px 12px 0;
+  border-bottom: 1px solid var(--rule-2); background: var(--rail);
+  position: sticky; top: 0; z-index: 6;
+}
+.tab-bar button {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 9px; margin-bottom: -1px;
+  font: inherit; font-size: 11px; line-height: 1.2; white-space: nowrap;
+  color: var(--ink-3); cursor: pointer;
+  background: color-mix(in srgb, var(--deck) 55%, transparent);
+  border: 1px solid var(--rule-2); border-bottom: 0; border-radius: 7px 7px 0 0;
+}
+.tab-bar button:hover { color: var(--ink-2); }
+.tab-bar button.on { background: var(--deck-2); border-color: var(--accent); color: var(--ink); font-weight: 600; }
+.tab-bar button b {
+  font-family: inherit; font-size: 9.5px; font-weight: 600;
+  padding: 0 5px; border-radius: 999px;
+  background: var(--deck-3); color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.tab-bar button.on b { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent-lit); }
+.tab-bar button b.gap { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+.tab-bar button:focus-visible { outline: 2px solid var(--accent-lit); outline-offset: 1px; }
+
+/* the line at the foot of a tab that says where the work goes next */
+.tab-next {
+  margin: 10px 0 2px; padding-top: 9px; border-top: 1px solid var(--rule-2);
+  font-size: 11px; color: var(--ink-3);
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.tab-next button {
+  margin-left: auto; font: inherit; font-size: 11px; cursor: pointer;
+  padding: 4px 9px; border-radius: 6px;
+  background: transparent; border: 1px solid var(--rule-2); color: var(--ink-2);
+}
+.tab-next button:hover { border-color: var(--accent); color: var(--accent-lit); }
+
+/* Which document the lists are marking for: with the lens off you see the
+   whole grid; choose a document and both lists become its ticklist. */
+.lens {
+  display: flex; gap: 3px; padding: 8px 0 9px; margin-bottom: 2px;
+  border-bottom: 1px solid var(--rule-2);
+  overflow-x: auto; scrollbar-width: none;
+}
+.lens::-webkit-scrollbar { display: none; }
+.lens button {
+  flex: none; font: inherit; font-size: 10.5px; cursor: pointer;
+  padding: 4px 9px; border-radius: 7px; white-space: nowrap;
+  background: var(--deck); border: 1px solid var(--rule-2); color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.lens button:hover { border-color: var(--rule); color: var(--ink); }
+.lens button.on { background: var(--accent); border-color: var(--accent); color: var(--deck); font-weight: 600; }
+.lens button.gap { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
+.lens button.gap.on { background: var(--warn); border-color: var(--warn); color: var(--deck); }
+
+.mark-group {
+  margin: 10px 0 3px; font-size: 9.5px; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3);
+  display: flex; align-items: center; gap: 7px;
+}
+.mark-group::after { content: ""; flex: 1; height: 1px; background: var(--rule-2); }
+.mark-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+/* A grid child is as wide as its widest unbreakable line unless it is told
+   otherwise, and one long criterion was setting the width of the whole rail. */
+.mark-row, .doc-card, .signer, .unit { min-width: 0; }
+.mark-row {
+  display: flex; align-items: center; gap: 7px;
+  padding: 4px 6px; border-radius: 7px; border: 1px solid transparent;
+}
+.mark-row:hover { background: color-mix(in srgb, var(--deck) 55%, transparent); }
+/* A line on no document is the ordinary state, so only marked rows are
+   lit; outlining all of them made the whole list look like a warning. */
+.mark-row.set { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+.mark-name { flex: 1; min-width: 0; font-size: 11.5px; line-height: 1.35; color: var(--ink-2); }
+.mark-name em { display: block; font-style: normal; font-size: 9.5px; color: var(--ink-3); }
+.mark-else {
+  flex: none; font-size: 9.5px; color: var(--ink-3); max-width: 96px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right;
+}
+.mark-on { flex: none; font-size: 9.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.marks { display: flex; gap: 2px; flex: none; align-items: center; }
+.marks button {
+  width: 32px; padding: 3px 0; font: inherit; font-size: 9.5px; cursor: pointer;
+  text-align: center; border-radius: 5px; font-variant-numeric: tabular-nums;
+  background: var(--deck); border: 1px solid var(--rule-2);
+  color: color-mix(in srgb, var(--ink-3) 70%, transparent);
+}
+.marks button:hover { border-color: var(--rule); color: var(--ink-2); }
+.marks button.on {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: var(--accent); color: var(--accent-lit); font-weight: 600;
+}
+.marks-sep { width: 1px; height: 13px; background: var(--rule-2); margin: 0 2px; }
+.tick {
+  flex: none; width: 21px; height: 21px; display: grid; place-items: center;
+  border-radius: 6px; cursor: pointer;
+  background: var(--deck); border: 1px solid var(--rule); color: transparent;
+}
+.tick:hover { border-color: var(--accent); }
+.tick.on { background: var(--accent); border-color: var(--accent); color: var(--deck); }
+.mark-row button:focus-visible, .lens button:focus-visible { outline: 2px solid var(--accent-lit); outline-offset: 1px; }
+
+.cover-meter { height: 4px; border-radius: 999px; background: var(--deck-3); overflow: hidden; margin: 6px 0 9px; }
+.cover-meter i { display: block; height: 100%; background: var(--accent); }
+.unit { border: 1px solid var(--rule-2); border-radius: 9px; margin-bottom: 5px; overflow: hidden; }
+.unit.offered { border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
+.unit-head {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 7px 9px; font: inherit; text-align: left; cursor: pointer;
+  background: var(--deck); border: 0; color: var(--ink-2);
+}
+.unit-head:hover { background: color-mix(in srgb, var(--deck-2) 70%, var(--deck)); }
+.unit-name { flex: 1; min-width: 0; font-size: 11.5px; }
+.unit-meter { display: block; height: 3px; margin-top: 4px; width: 78%; border-radius: 999px; background: var(--deck-3); overflow: hidden; }
+.unit-meter i { display: block; height: 100%; background: var(--accent); }
+.unit-head em { font-style: normal; font-size: 10px; color: var(--ink-3); }
+.unit .mark-list { padding: 2px 6px 7px; border-top: 1px solid var(--rule-2); }
+.state { width: 6px; height: 6px; border-radius: 99px; background: var(--ok); flex: none; }
+.state.gap { background: var(--warn); }
+
+/* what the tasks on this document say the scheme can hear */
+.suggest {
+  display: flex; align-items: center; gap: 9px; margin: 2px 0 9px;
+  padding: 8px 9px; border-radius: 9px;
+  border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+  background: color-mix(in srgb, var(--warn) 8%, transparent);
+}
+.suggest p { margin: 0; flex: 1; min-width: 0; }
+.suggest b { display: block; font-size: 11.5px; color: var(--warn); font-weight: 600; }
+.suggest em { display: block; font-style: normal; font-size: 9.5px; color: var(--ink-3); }
+.suggest button {
+  flex: none; font: inherit; font-size: 10.5px; cursor: pointer; padding: 4px 9px;
+  border-radius: 6px; background: transparent; color: var(--ink-2);
+  border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+}
+.suggest button:hover { color: var(--warn); }
+
+.doc-cards { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; min-width: 0; }
+.doc-card { border: 1px solid var(--rule-2); border-radius: 9px; padding: 8px 9px; }
+.doc-card.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.doc-card.gap { border-color: color-mix(in srgb, var(--warn) 38%, transparent); }
+.doc-card-head {
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  font: inherit; text-align: left; cursor: pointer; background: none; border: 0;
+  color: var(--ink); padding: 0 0 6px;
+}
+.doc-card-head .ref { font-size: 10px; font-weight: 700; letter-spacing: .04em; color: var(--accent-lit); }
+.doc-card-kind { flex: 1; min-width: 0; font-size: 12px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.doc-card-subject { margin: 0 0 7px; }
+.doc-card-subject span { display: block; font-size: 9.5px; color: var(--ink-3); margin-bottom: 2px; }
+.doc-card-subject b {
+  display: block; font-size: 11.5px; font-weight: 500; color: var(--ink);
+  padding: 5px 8px; border-radius: 6px; background: var(--deck); border: 1px solid var(--rule-2);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.doc-card-subject b.empty { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 35%, transparent); }
+.doc-card-foot { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.doc-card-foot .chip:last-child { margin-left: auto; max-width: 46%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip {
+  font-size: 10px; padding: 3px 8px; border-radius: 999px; font-variant-numeric: tabular-nums;
+  background: var(--deck-3); border: 1px solid var(--rule-2); color: var(--ink-2);
+  font: inherit; font-size: 10px; cursor: pointer; white-space: nowrap;
+}
+button.chip:hover { border-color: var(--rule); color: var(--ink); }
+.chip.on { color: var(--accent-lit); border-color: color-mix(in srgb, var(--accent) 50%, transparent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.chip.gap { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, transparent); background: color-mix(in srgb, var(--warn) 10%, transparent); }
+b.chip { cursor: default; }
+
+.signers { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 7px; min-width: 0; }
+.signer { border: 1px solid var(--rule-2); border-radius: 9px; padding: 9px; }
+.signer.gap { border-color: color-mix(in srgb, var(--warn) 38%, transparent); }
+.signer-head { display: flex; align-items: baseline; gap: 7px; margin: 0 0 7px; }
+.signer-head .ref { font-size: 10px; font-weight: 700; letter-spacing: .04em; color: var(--accent-lit); }
+.signer-head span { font-size: 12px; font-weight: 600; color: var(--ink); }
+.signer-head em {
+  flex: 1; min-width: 0; font-style: normal; font-size: 9.5px; color: var(--ink-3);
+  text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.signer-known { margin: 6px 0 0; font-size: 9.5px; color: var(--ink-3); }
+.mine.quiet { background: transparent; color: var(--ink-3); }
+.mine.quiet:hover { color: var(--ink-2); }
+
+/* The group header is two controls (a button cannot live inside a button).
+   The bulk control names its document: with the lens off every row offers six. */
+.unit-head { display: flex; align-items: stretch; gap: 0; background: var(--deck); }
+.unit-open {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px;
+  padding: 7px 9px; font: inherit; text-align: left; cursor: pointer;
+  background: none; border: 0; color: var(--ink-2);
+}
+.unit-open:hover { background: color-mix(in srgb, var(--deck-2) 70%, var(--deck)); }
+.unit-all {
+  flex: none; display: flex; align-items: center; gap: 4px; cursor: pointer;
+  padding: 0 9px; font: inherit; font-size: 10.5px;
+  background: none; border: 0; border-left: 1px solid var(--rule-2); color: var(--ink-3);
+}
+.unit-all:hover { color: var(--accent-lit); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.unit-all.on { color: var(--ink-2); }
+.unit-all.on:hover { color: var(--warn); background: color-mix(in srgb, var(--warn) 10%, transparent); }
+.unit-all .ref {
+  font-style: normal; font-size: 9.5px; font-weight: 700; letter-spacing: .04em;
+  color: var(--accent-lit);
+}
+.unit-all.on .ref { color: inherit; }
+.unit-open:focus-visible, .unit-all:focus-visible { outline: 2px solid var(--accent-lit); outline-offset: -2px; }
+
+/* The long jobs show their progress: a button that reads "Writing 0/4..."
+   and sits still looks exactly like a button that did nothing. */
+.caap .rail-foot { padding: 6px 12px 8px; display: grid; gap: 5px; }
+/* Four across, two rows. Three columns with a fourth button in the row left
+   the fourth alone on a line of its own. */
+.caap .rail-foot .act-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; margin: 0; }
+.caap .rail-foot .act-row.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.caap .rail-foot .act-row.out { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.caap .rail-foot .btn {
+  padding: 6px 4px; font-size: 11.5px; border-radius: 7px; gap: 5px;
+  justify-content: center; white-space: nowrap; overflow: hidden;
+}
+.caap .rail-foot .btn.primary { padding: 6px 4px; font-size: 11.5px; border-radius: 7px; }
+/* the fill sits behind the label, not over it */
+.caap .btn.run { position: relative; }
+.caap .btn.run > span { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 5px; }
+.caap .btn.run.going::before {
+  content: ""; position: absolute; inset: 0; width: var(--run, 0%);
+  background: color-mix(in srgb, var(--accent) 34%, transparent);
+  transition: width .3s ease;
+}
+.caap .btn.run.going { border-color: var(--accent); color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .caap .btn.run.going::before { transition: none; } }
+@media (max-width: 760px) {
+  .caap .rail-foot .btn, .caap .rail-foot .btn.primary { padding: 9px 4px; font-size: 12px; }
+}
+
+/* The reading that marks the scheme from the work: one wide control, and it
+   fills as it goes, because it takes a while and a still button is
+   indistinguishable from a button that did nothing. */
+.caap .mine.read { position: relative; overflow: hidden; text-align: center; margin: 2px 0 9px; }
+.caap .mine.read > span { position: relative; z-index: 1; }
+.caap .mine.read.going::before {
+  content: ""; position: absolute; inset: 0; width: var(--run, 0%);
+  background: color-mix(in srgb, var(--accent) 30%, transparent); transition: width .3s ease;
+}
+.caap .mine.read.going { border-color: var(--accent); color: var(--ink); }
+.caap .mine.read:disabled { cursor: default; }
+@media (prefers-reduced-motion: reduce) { .caap .mine.read.going::before { transition: none; } }
+
+/* A task that would close something the scheme is still waiting for. It is a
+   suggestion about what to record next, not a fault with what is there, so it
+   is lit rather than flagged: a thread of accent down the edge and the count
+   of what it would answer. */
+.mark-row.closes { background: color-mix(in srgb, var(--accent) 5%, transparent); box-shadow: inset 2px 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+.mark-row.closes .mark-name { color: var(--ink); }
+.mark-name em.would { color: var(--accent-lit); font-size: 9.5px; }
+.chip.would { color: var(--accent-lit); border-color: color-mix(in srgb, var(--accent) 40%, transparent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.level-note.lit { color: var(--ink-2); }
+.level-note.lit::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 2px;
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+/* The few that, between them, would finish the framework: the same light, one
+   step up, because "this helps" and "these finish it" are two answers to two
+   different questions and both are worth having. */
+.mark-row.finishes { background: color-mix(in srgb, var(--accent) 11%, transparent); box-shadow: inset 2px 0 0 var(--accent); }
+.mark-row.finishes .mark-name em.would { color: var(--accent-lit); font-weight: 600; }
+
+/* The editor is the page, with its own ribbon, rulers and scrollbars, so this
+   side gets out of its way: no bench padding, and the screen filled. */
+.forms.home { padding: 0; display: flex; flex-direction: column; overflow: hidden; height: 100%; }
+.forms .doc-bar { position: static; flex: none; margin: 0; padding: 10px 14px 9px; }
+.forms-tools { flex: none; display: flex; flex-wrap: wrap; gap: 7px; align-items: center;
+  padding: 0 14px 10px; border-bottom: 1px solid var(--rule-2); }
+.forms-tools .btn { width: auto; padding: 7px 14px; font-size: 12.5px; }
+.forms-tools .tools-gap { flex: 1 1 24px; }
+.forms-tools .note { font-size: 11.5px; color: var(--ink-3); }
+.forms-note { flex: 0 1 240px; min-width: 140px; font: inherit; font-size: 12px; padding: 6px 9px;
+  border-radius: 7px; border: 1px solid var(--rule-2); background: var(--deck-2); color: var(--ink); }
+.forms-said { flex: none; margin: 0; padding: 7px 14px 0; font-size: 12px; color: var(--ink-2); }
+.forms-said.bad { color: #ff9a9a; }
+
+.forms-doc { flex: 1; min-height: 0; margin: 0; }
+.word { position: relative; width: 100%; height: 100%; background: var(--deck-2); }
+.word-here, .word-here > div, .word iframe { width: 100%; height: 100%; border: 0; display: block; }
+.word.is-opening > .note {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  margin: 0; color: var(--ink-2); font-size: 12.5px; }
+
+/* Stands in when the editor cannot open. Somebody reads it to find out what
+   to do next, so it is set to be read rather than as one grey line. */
+.word-out { position: absolute; inset: 0; display: flex; flex-direction: column;
+  gap: 11px; align-items: flex-start; justify-content: center;
+  margin: 0 auto; padding: 24px 28px; max-width: 64ch; }
+.word-out p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--ink-2); }
+.word-out p b { color: var(--ink); font-weight: 600; }
+.word-out .note { font-size: 11.5px; line-height: 1.5; color: var(--ink-3); }
+.word-out .btn { width: auto; }
+
+/* The versions live under the document, out of the way of it: a strip that
+   opens rather than a list pushing the editor up the screen. */
+.versions { flex: none; border-top: 1px solid var(--rule-2); background: var(--rail); }
+.versions > summary { list-style: none; cursor: pointer; padding: 7px 14px; font-size: 11.5px;
+  color: var(--ink-3); display: flex; gap: 8px; align-items: baseline; }
+.versions > summary::-webkit-details-marker { display: none; }
+.versions > summary:hover { color: var(--ink-2); }
+.versions > summary b { font-size: 11.5px; color: var(--ink-2); font-weight: 600; }
+.versions ul { list-style: none; margin: 0; padding: 0 14px 10px; display: grid; gap: 3px;
+  max-height: 34vh; overflow: auto; }
+.versions li { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  font-size: 11.5px; color: var(--ink-3); padding: 4px 8px; border-radius: 6px;
+  border: 1px solid var(--rule-2); background: var(--deck-2); }
+.versions li.on { border-color: var(--accent); }
+.versions li b { font-size: 11.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.versions li.on b { color: var(--accent-lit); }
+.versions li button { margin-left: auto; font: inherit; font-size: 11px; cursor: pointer;
+  padding: 2px 8px; border-radius: 6px; background: transparent;
+  border: 1px solid var(--rule-2); color: var(--ink-2); }
+.versions li button:hover { border-color: var(--accent); color: var(--accent-lit); }
+
+/* What the copy from a folder is carrying, said where the version is said. */
+.sb-packed { display: block; margin-top: 2px; font-size: 9px; letter-spacing: .02em; color: var(--ink-3); opacity: .8; text-align: center; }
+/* A file chooser dressed as a button, so the way out to Word and back sits
+   with the rest of the actions instead of looking like an afterthought. */
+label.btn { cursor: pointer; }
+label.btn.off { opacity: .55; pointer-events: none; }
+a.btn { text-decoration: none; }

@@ -1,0 +1,372 @@
+/* Generated from NW-CAP-001 Rev 1 — generated from trip-feedback.html, do not edit by hand */
+
+  
+  .sheet *{ box-sizing: border-box;
+ }
+
+  .sheet{ font-family: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", "DejaVu Sans", sans-serif;
+ font-size: 8.6pt;
+ color:#000;
+ margin:0;
+ }
+
+  .sheet .page{ position: relative;
+ break-inside: avoid;
+ padding-bottom: 2mm;
+ /* Nothing leaves the sheet: if a measurement is ever off, the page clips
+    rather than pushing the footer off the paper. */
+ overflow: hidden;
+ /* One page, one sheet of A4. What does not fit is carried to the next sheet
+    by the layout, never spilled past the frame. */
+ height: 265mm;
+ page-break-after: always;
+ /* The footer is pinned to the bottom of the sheet, so the flowing content
+    stops above it and the comments box takes whatever room is left. */
+ display:flex;
+ flex-direction:column;
+ }
+
+  /* Supervisor comments: the rest of page one, not a fixed block. An empty box
+     shrinks to fit rather than pushing the signature off the paper. */
+  .sheet .sup{ flex:1 1 auto;
+ min-height:26mm;
+ }
+
+  .sheet .page:last-child{ page-break-after: auto;
+ }
+
+  .sheet .bms{ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:6mm;
+ }
+
+  .sheet .bms .band{ background:#1F4E79;
+ color:#fff;
+ font-weight:700;
+ font-size:10pt;
+ padding:3px 26px 3px 40px;
+ letter-spacing:.2px;
+ }
+
+  .sheet .bms .mark{ font-size:19pt;
+ font-weight:400;
+ color:#0B5FA5;
+ letter-spacing:-.5px;
+ }
+
+  .sheet .bms .mark b{ color:#E8112D;
+ font-weight:700;
+ }
+
+  .sheet h1{ font-size:10pt;
+ margin:0 0 5px;
+ }
+
+  .sheet table{ border-collapse: collapse;
+ width:100%;
+ }
+
+  .sheet td, .sheet th{ border:1px solid #000;
+ padding:2.5px 4px;
+ vertical-align:top;
+ text-align:left;
+ font-weight:400;
+ }
+
+  .sheet .hdr{ display:flex;
+ gap:3mm;
+ }
+
+  .sheet .hdr > div{ flex:1 1 0;
+ }
+
+  .sheet .lbl{ width:46%;
+ }
+
+  .sheet .tag{ display:inline-block;
+ border:1px solid #000;
+ border-bottom:none;
+ padding:2px 8px;
+ font-weight:600;
+ font-size:8.4pt;
+ }
+
+  .sheet .boxed{ border:1px solid #000;
+ padding:5px 7px;
+ font-size:8.2pt;
+ line-height:1.3;
+ }
+
+  .sheet .scale td{ font-size:7.3pt;
+ line-height:1.15;
+ padding:2px 4px;
+ }
+
+  .sheet .scale .n{ text-align:center;
+ font-weight:600;
+ }
+
+  .sheet .nf{ color:#E8112D;
+ font-weight:700;
+ }
+ .sheet .ri{ color:#C00000;
+ font-weight:700;
+ }
+
+  .sheet .ot{ color:#0B5FA5;
+ font-weight:700;
+ }
+ .sheet .at{ color:#0B5FA5;
+ font-weight:700;
+ }
+ .sheet .os{ color:#E8112D;
+ font-weight:700;
+ }
+
+  .sheet .crit{ font-size:7.5pt;
+ line-height:1.18;
+ }
+
+  .sheet .crit td{ padding:1.5px 4px;
+ }
+
+  .sheet .crit td:nth-child(n+2):nth-child(-n+6){ width:14px;
+ text-align:center;
+ }
+
+  .sheet .crit td:first-child{ width:29%;
+ }
+
+  .sheet .crit .x{ font-weight:700;
+ }
+
+  .sheet .cmt{ height:1px;
+ }
+
+  .sheet .sig td{ height:11mm;
+ }
+
+  .sheet .sig td:first-child{ width:14%;
+ height:auto;
+ }
+
+  .sheet .gap{ height:3.5mm;
+ }
+
+  .sheet .onshore th{ background:#2E9BD6;
+ color:#fff;
+ text-align:center;
+ font-weight:600;
+ }
+
+  .sheet .notes{ margin-top:6mm;
+ font-size:8.4pt;
+ line-height:1.45;
+ }
+
+  .sheet .notes h2{ font-size:8.6pt;
+ margin:0 0 7px;
+ }
+
+  .sheet .notes p{ margin:0 0 7px;
+ }
+
+  /* The footer is part of the page, not painted over it, and sits at the bottom
+     of the sheet whatever the page holds. */
+  .sheet .foot{ margin-top:auto;
+ padding-top:2mm;
+ flex:none;
+ font-size:7.6pt;
+ }
+
+  .sheet .foot .row{ display:flex;
+ justify-content:space-between;
+ }
+
+  .sheet .foot .cc{ color:#444;
+ }
+
+  .sheet .fill{ color:#555;
+ font-style:italic;
+ }
+
+  .sheet .wm{ position:absolute;
+ top:46%;
+ left:50%;
+ transform:translate(-50%,-50%) rotate(-27deg);
+
+        font-size:46pt;
+ font-weight:700;
+ letter-spacing:5px;
+ color:rgba(190,0,0,.11);
+
+        white-space:nowrap;
+ pointer-events:none;
+ }
+
+  .sheet .todo{ color:#B00000;
+ }
+
+
+  .sheet.wt h1{ font-size:13pt;
+ margin:0 0 2mm;
+ }
+
+  .sheet.wt .wt-note{ margin:0 0 6mm;
+ font-size:8pt;
+ font-style:italic;
+ color:#333;
+ }
+
+  .sheet.wt .wt-line{ display:flex;
+ align-items:baseline;
+ gap:4mm;
+ margin-bottom:5mm;
+ }
+
+  .sheet.wt .wt-line span{ font-weight:700;
+ font-size:8.4pt;
+ white-space:nowrap;
+ }
+
+  .sheet.wt .wt-line b{ flex:1;
+ font-weight:400;
+ border-bottom:1px dotted #555;
+ min-height:5mm;
+ padding:0 1mm 1mm;
+ }
+
+  .sheet.wt .wt-ask{ margin:6mm 0 3mm;
+ font-size:8.4pt;
+ }
+
+  .sheet.wt .wt-ask.cont{ margin:0 0 3mm;
+ font-size:7.6pt;
+ font-style:italic;
+ color:#444;
+ }
+
+  .sheet.wt .wt-box{ border:1px solid #000;
+ padding:3mm;
+ /* Takes the room left on the page, and never less than its own text: a flex
+    item that may shrink is how the words ended up outside the frame. */
+ flex:1 0 auto;
+ min-height:96mm;
+ font-size:9pt;
+ line-height:1.45;
+ white-space:pre-wrap;
+ }
+
+  /* A box in a flowed form takes the room the page has left and no more, and must
+     be free to shrink: what does not fit is carried to the next sheet. */
+  .sheet.wt .flow-box.wt-box{ flex:1 1 auto;
+ min-height:24mm;
+ overflow:hidden;
+ }
+
+  .sheet.wt .wt-confirm{ margin:3.5mm 0 4mm;
+ font-size:8pt;
+ }
+
+  .sheet.wt .wt-sign{ display:flex;
+ gap:10mm;
+ margin-bottom:3mm;
+ }
+
+  .sheet.wt .wt-sign > div{ flex:1;
+ }
+
+  .sheet.wt .wt-sign .date{ flex:0 0 36mm;
+ }
+
+  .sheet.wt .wt-sign i{ display:block;
+ border-bottom:1px solid #000;
+ height:5mm;
+ }
+
+  .sheet.wt .wt-sign span{ font-size:7.6pt;
+ color:#333;
+ }
+
+  .sheet.wt .wt-h2{ font-size:11pt;
+ margin:0 0 5mm;
+ }
+
+  .sheet.wt .wt-guide h3{ font-size:9pt;
+ margin:4mm 0 1.5mm;
+ }
+
+  .sheet.wt .wt-guide p{ margin:0 0 3mm;
+ font-size:8.6pt;
+ line-height:1.5;
+ }
+
+  .sheet.wt .wt-box.short{ min-height:42mm;
+ }
+
+
+  .sheet.wt .qa{ border:1px solid #000;
+ padding:3mm;
+ flex:1 1 auto;
+ min-height:24mm;
+ overflow:hidden;
+ }
+
+  /* An answer takes the room the page has left, and is cut before the footer
+     rather than painted over it. */
+  .sheet.wt .qa-text.answer{ flex:1 1 auto;
+ min-height:0;
+ overflow:hidden;
+ }
+
+  .sheet.wt .qa-row{ margin-bottom:5mm;
+ }
+
+  .sheet.wt .qa-row .q,.sheet.wt .qa-row .a{ display:flex;
+ gap:3mm;
+ margin-bottom:1.5mm;
+ }
+
+  .sheet.wt .qa-row span{ font-weight:700;
+ font-size:8.6pt;
+ min-width:7mm;
+ }
+
+  .sheet.wt .qa-text{ flex:1;
+ font-size:8.8pt;
+ line-height:1.4;
+ border-bottom:1px dotted #bbb;
+ min-height:4.5mm;
+ white-space:pre-wrap;
+ }
+
+  .sheet.wt .outcome{ margin:5mm 0 6mm;
+ font-size:8.2pt;
+ }
+
+  .sheet.wt .outcome p{ font-weight:700;
+ margin:0 0 2mm;
+ }
+
+  .sheet.wt .outcome label{ display:flex;
+ gap:3mm;
+ align-items:flex-start;
+ margin-bottom:2.5mm;
+ }
+
+  .sheet.wt .outcome i{ flex:none;
+ width:4mm;
+ height:4mm;
+ border:1px solid #000;
+ margin-top:.5mm;
+ }
+
+  .sheet.wt .outcome i.on{ background:#000;
+ box-shadow:inset 0 0 0 1px #fff;
+ }
+
+
+
+
+
